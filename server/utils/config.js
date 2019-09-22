@@ -9,7 +9,7 @@ const KnownConfigKey = {
     DbServer: 'DATABASE',
 };
 function get(key, fallback = '') {
-    return process.env[key] || fallback;
+    return process.env[key] || fallback; 
 }
 
 module.exports = { get, init, KnownConfigKey };
