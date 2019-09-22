@@ -2,7 +2,7 @@
 const  { connectDb }  = require('./server/store/connection');
 const express = require('express');
 const path = require('path');
-const routers = require('./routers');
+const routers = require('./server/routers');
 const formData = require('express-form-data');
 const cors = require('cors');
 
