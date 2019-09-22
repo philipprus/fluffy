@@ -12,7 +12,7 @@ import { summeryOrder, isDateInThisWeek, isDateInAfterWeek } from '../../utils/p
 import "../../css/OrderForm.css";
 import DatePicker from "./DatePicker";
 import moment from 'moment';
-import PaymentButton from '../paymentButton/PaymentButton';
+// import PaymentButton from '../paymentButton/PaymentButton';
 
 const StyckyBoxComponent = (props) => {
     const {errors, values} = props;
