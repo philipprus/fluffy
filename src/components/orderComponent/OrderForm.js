@@ -29,21 +29,21 @@ const StyckyBoxComponent = (props) => {
                         <li className="checklist-item">
                             <div className="mb-2">
                                 <h6 className={`my-0 checklist-agree ${ values.photo &&
-          values.style &&
-          values.canvasSize &&
-          values.canvasPosition &&
-          values.extraPet ? "checked": ""}`}>Order information</h6>
+                                    values.style &&
+                                    values.canvasSize &&
+                                    values.canvasPosition &&
+                                    values.extraPet ? "checked": ""}`}>Order information</h6>
                             </div>
                         </li>
                         <li className="checklist-item">
                             <div className="mb-2">
                                 <h6 className={`my-0 checklist-agree ${values.billingAddress_firstName && 
-                values.billingAddress_lastName && 
-                    values.billingAddress_email && 
-                    values.billingAddress_phone && 
-                    values.billingAddress_address && 
-                    values.billingAddress_country && 
-                    values.billingAddress_zip ? "checked": ""}`}>Billing information</h6>
+                                    values.billingAddress_lastName && 
+                                    values.billingAddress_email && 
+                                    values.billingAddress_phone && 
+                                    values.billingAddress_address && 
+                                    values.billingAddress_country && 
+                                    values.billingAddress_zip ? "checked": ""}`}>Billing information</h6>
                             </div>
                         </li>
                         {
@@ -51,10 +51,10 @@ const StyckyBoxComponent = (props) => {
                             <li className="checklist-item">
                             <div className="mb-2">
                                 <h6 className={`my-0 checklist-agree ${values.shippingAddress_firstName && 
-                values.shippingAddress_lastName && 
-                    values.shippingAddress_address && 
-                    values.shippingAddress_country && 
-                    values.shippingAddress_zip ? "checked": ""}`}>Shipping information</h6>
+                                    values.shippingAddress_lastName && 
+                                    values.shippingAddress_address && 
+                                    values.shippingAddress_country && 
+                                    values.shippingAddress_zip ? "checked": ""}`}>Shipping information</h6>
                             </div>
                         </li> : ""
                           }
