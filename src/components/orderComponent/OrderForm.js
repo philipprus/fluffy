@@ -88,7 +88,7 @@ const StyckyBoxComponent = (props) => {
             </div>
             <div className="form-group">
                 {/* <PaymentButton/> */}
-               <PaymentButton total={summeryOrder(values)} />
+               {/* <PaymentButton total={summeryOrder(values)} /> */}
                 <button type="submit"  disabled={errors} className="btn btn-primary mr-2 form-control">Pay</button>
             </div>
         </div>
