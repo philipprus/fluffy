@@ -25,7 +25,7 @@ app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.use(expressWinston.errorLogger(createExpressWinstonOptions()));
+// app.use(expressWinston.errorLogger(createExpressWinstonOptions()));
 
 
-module.exports =  app ; 
+module.exports = app; 
