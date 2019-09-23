@@ -12,6 +12,7 @@ import { summeryOrder, isDateInThisWeek, isDateInAfterWeek } from '../../utils/p
 import "../../css/OrderForm.css";
 import DatePicker from "./DatePicker";
 import moment from 'moment';
+import ModalBestPet from './ModalBestPet';
 // import PaymentButton from '../paymentButton/PaymentButton';
 
 const StyckyBoxComponent = (props) => {
@@ -118,7 +119,7 @@ const OrderFrom = (props) => {
                       <div className="col-md-12 mb-3">
                           <label htmlFor="photo">Upload photo</label>
                       <Upload onChange={handlerUpload} name="photo" id="photo" error={errors.photo} onDelete={handlerDelete} />
-                      Tip photo dog
+                    <ModalBestPet/>
                       </div>
                       <div className="col-md-12 mb-3">
                           <RadioButtonGroup id="style" label="Stylies" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
