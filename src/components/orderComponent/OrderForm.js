@@ -13,7 +13,7 @@ import "../../css/OrderForm.css";
 import DatePicker from "./DatePicker";
 import moment from 'moment';
 import ModalBestPet from './ModalBestPet';
-// import PaymentButton from '../paymentButton/PaymentButton';
+import PaymentButton from '../paymentButton/PaymentButton';
 
 const StyckyBoxComponent = (props) => {
     const {errors, values} = props;
@@ -88,8 +88,7 @@ const StyckyBoxComponent = (props) => {
                 <Field component={CheckboxField} id="isAgree" label="Agree?" name="isAgree" />
             </div>
             <div className="form-group">
-                {/* <PaymentButton/> */}
-               {/* <PaymentButton total={summeryOrder(values)} /> */}
+               <PaymentButton total={summeryOrder(values)} />
                 <button type="submit"  disabled={errors} className="btn btn-primary mr-2 form-control">Pay</button>
             </div>
         </div>

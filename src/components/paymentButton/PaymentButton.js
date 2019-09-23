@@ -1,28 +1,56 @@
-// import { PayPalButton } from "react-paypal-button-v2";
 import React from 'react';
 
-const PaymentButton = (props) => {
-    return (<></>
-      // <PayPalButton
-      //   // amount="0.01"
-      //   amount={props.total}
-      //   currency="ILS"
-      //   options={{clientId: "sb"}}
-      //   catchError={(err)=> {alert(err);}}
-      //   onCancel={(data)=> {alert(data);}}
-      //   onSuccess={(details, data) => {
-      //     alert("Transaction completed by " + details.payer.name.given_name);
-
-      //     // OPTIONAL: Call your server to save the transaction
-      //     return fetch("/paypal-transaction-complete", {
-      //       method: "post",
-      //       body: JSON.stringify({
-      //         orderID: data.orderID
-      //       })
-      //     });
-      //   }}
-      // />
-    );
+class PaymentButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isEnabled: false
+    }
   }
 
-  export default PaymentButton;
+  componentDidMount() {
+    this.setState({ isEnabled: true });
+    window.paypal.Buttons({
+      env: 'sandbox', // Optional: specify 'sandbox' environment
+      client: {
+        sandbox:    'Aeb2DbKkpdAGZVwxaUl-xQZpZPRrhVJZNqt5GLPOKkbK9mM4HrWcntBSzHnSGAzlA1yur1dwYWC1WKDd',
+        production: 'AaaC8Cxf5oVp9VsWbuk7LUbn4ko9goGfBA0I9h3CQx2p76nWpzjmx-XDbUFrswopS05r8KMhyQtbg-GX'
+      },
+      
+      // Set up the transaction
+      createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+              amount: {
+                    currency: 'ILS',
+                    value: '3.01',
+                },
+            }]
+        });
+    },
+
+    // Finalize the transaction
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            // Show a success message to the buyer
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        });
+    },
+    enableStandardCardFields: true,
+    style: {
+      color: 'black',
+      label: 'paypal'
+    }
+    }).render('#paypal-express-btn');
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.isEnabled ? <div id="paypal-express-btn" /> : 'Loading...'}
+      </div>
+    )
+  }
+}
+
+export default PaymentButton;
