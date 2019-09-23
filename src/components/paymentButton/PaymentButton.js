@@ -58,7 +58,7 @@ class PaymentButton extends React.Component {
     return actions.order.create({
         purchase_units: [{
             amount: {
-              currency:  process.env.NODE_ENV !== 'production' ? "USD" : "ILS" ,
+              currency_code:  process.env.NODE_ENV !== 'production' ? "USD" : "ILS" ,
               value: this.props.total,
             }
         }]
