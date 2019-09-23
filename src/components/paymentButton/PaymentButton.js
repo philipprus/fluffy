@@ -11,7 +11,7 @@ class PaymentButton extends React.Component {
   componentDidMount() {
     this.setState({ isEnabled: true });
     window.paypal.Buttons({
-      env: 'sandbox', // Optional: specify 'sandbox' environment
+      env: 'production', // Optional: specify 'sandbox' environment
       client: {
         sandbox:    'Aeb2DbKkpdAGZVwxaUl-xQZpZPRrhVJZNqt5GLPOKkbK9mM4HrWcntBSzHnSGAzlA1yur1dwYWC1WKDd',
         production: 'AaaC8Cxf5oVp9VsWbuk7LUbn4ko9goGfBA0I9h3CQx2p76nWpzjmx-XDbUFrswopS05r8KMhyQtbg-GX'
