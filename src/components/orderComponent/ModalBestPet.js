@@ -10,7 +10,7 @@ function ModalBestPet(props) {
       return (
         <>
           <Button variant="primary" onClick={handleShow}>
-          Photo and comments tips.
+          Photo and comments tips
           </Button>
     
           <Modal {...props} size="lg"

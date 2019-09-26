@@ -11,7 +11,7 @@ export default withFormik({
             photo:'',
             style:'',
             canvasSize: '',
-            canvasPosition: 'vertical',
+            canvasPosition: '',
             comments: '',
             extraPet: 1,
 
@@ -54,56 +54,56 @@ export default withFormik({
 
             const msg_requier = "Required"
 
-        if(values.photo === ""){
+        if(!values.photo){
             errors.photo = msg_requier;
         }
-        if(values.style === "") {
+        if(!values.style) {
             errors.style = msg_requier;
         }
-        if(values.canvasSize === "") {
+        if(!values.canvasSize) {
             errors.canvasSize = msg_requier;
         }
-        if(values.canvasPosition === "") {
+        if(!values.canvasPosition) {
             errors.canvasPosition = msg_requier;
         }
-        if(values.billingAddress_firstName === "") {
+        if(!values.billingAddress_firstName) {
             errors.billingAddress_firstName = msg_requier;
         }
-        if(values.billingAddress_lastName === "") {
+        if(!values.billingAddress_lastName) {
             errors.billingAddress_lastName = msg_requier;
         }
-        if(values.billingAddress_email === "") {
+        if(!values.billingAddress_email) {
             errors.billingAddress_email = msg_requier;
         }
-        if(values.billingAddress_phone === "") {
+        if(!values.billingAddress_phone) {
             errors.billingAddress_phone = msg_requier;
         }
-        if(values.billingAddress_address === "") {
+        if(!values.billingAddress_address) {
             errors.billingAddress_address = msg_requier;
         }
-        if(values.billingAddress_country === "") {
+        if(!values.billingAddress_country) {
             errors.billingAddress_country = msg_requier;
         }
-        if(values.billingAddress_zip === "") {
+        if(!values.billingAddress_zip) {
             errors.billingAddress_zip = msg_requier;
         }
 
-        if(values.isAnotherShippingAddress && values.shippingAddress_firstName === "") {
+        if(values.isAnotherShippingAddress && !values.shippingAddress_firstName) {
             errors.shippingAddress_firstName = msg_requier;
         }
-        if(values.isAnotherShippingAddress && values.shippingAddress_lastName === "") {
+        if(values.isAnotherShippingAddress && !values.shippingAddress_lastName) {
             errors.shippingAddress_lastName = msg_requier;
         }
-        if(values.isAnotherShippingAddress && values.shippingAddress_email === "") {
+        if(values.isAnotherShippingAddress && !values.shippingAddress_email) {
             errors.shippingAddress_email = msg_requier;
         }
-        if(values.isAnotherShippingAddress && values.shippingAddress_phone === "") {
+        if(values.isAnotherShippingAddress && !values.shippingAddress_phone) {
             errors.shippingAddress_phone = msg_requier;
         }
-        if(values.isAnotherShippingAddress && values.shippingAddress_address === "") {
+        if(values.isAnotherShippingAddress && !values.shippingAddress_address) {
             errors.shippingAddress_address = msg_requier;
         }
-        if(values.shippingAddress_zip && values.shippingAddress_zip === "") {
+        if(values.shippingAddress_zip && !values.shippingAddress_zip) {
             errors.shippingAddress_zip = msg_requier;
         }
           return errors;

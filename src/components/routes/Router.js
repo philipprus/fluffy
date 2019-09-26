@@ -12,8 +12,8 @@ export function Routes() {
         <BrowserRouter>
                   <Header/>
                 <Switch>
-                    <Route path="/about" component={About} />
                     <Route path="/order" component={Order} />
+                    <Route path="/about" component={About} />
                     <Route path="/contact" component={Contact} />
                     <Route path="/" component={Portfolio} />
                 </Switch>

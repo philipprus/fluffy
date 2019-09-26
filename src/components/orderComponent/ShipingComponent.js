@@ -20,12 +20,24 @@ const ShippingAddress = (props) => {
                       </div>
                   </div>
                   <div className="col-md-6 mb-3">
-                      <label for="shippingAddress_secondName">Second name</label>
+                      <label for="shippingAddress_lastName">Last name</label>
                       <div className="input-group">
-                          <Field name="shippingAddress_secondName" type="text" className={ 'form-control' + (errors.shippingAddress_secondName && touched.shippingAddress_secondName ? ' is-invalid' : '')} />
-                          <ErrorMessage name="shippingAddress_secondName" component="div" className="invalid-feedback" />
+                          <Field name="shippingAddress_lastName" type="text" className={ 'form-control' + (errors.shippingAddress_lastName && touched.shippingAddress_lastName ? ' is-invalid' : '')} />
+                          <ErrorMessage name="shippingAddress_lastName" component="div" className="invalid-feedback" />
                       </div>
                   </div>
+                  <div className="col-md-6 mb-3">
+                          <div className="input-group">
+                              <Field name="shippingAddress_email" placeholder="Email" type="text" className={ 'form-control' + (errors.shippingAddress_email && touched.shippingAddress_email ? ' is-invalid' : '')} />
+                              <ErrorMessage name="shippingAddress_email" component="div" className="invalid-feedback" />
+                          </div>
+                      </div>
+                      <div className="col-md-6  mb-3">
+                          <div className="input-group">
+                              <Field name="shippingAddress_phone" type="text" placeholder="Phone" className={ 'form-control' + (errors.shippingAddress_phone && touched.shippingAddress_phone ? ' is-invalid' : '')} />
+                              <ErrorMessage name="shippingAddress_phone" component="div" className="invalid-feedback" />
+                          </div>
+                      </div>
                   <div className="col-12 mb-3">
                       <label for="shippingAddress_address">Address</label>
                       <div className="input-group">

@@ -16,7 +16,6 @@ async function init() {
     app.use(express.urlencoded({ extended: true }));
       
     app.use(cors()); 
-    console.log(process.env);
     app.use(formData.parse());
 
 

@@ -3,8 +3,8 @@ const path = require('path');
 const routers = require('./routers');
 const formData = require('express-form-data');
 const cors = require('cors');
-const expressWinston = require('express-winston');
-const { createExpressWinstonOptions } =  require('./utils/logger');
+// const expressWinston = require('express-winston');
+// const { createExpressWinstonOptions } =  require('./utils/logger');
 
 const app = express();
 
@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
   
 app.use(cors()); 
-console.log(process.env);
 app.use(formData.parse());
 
 

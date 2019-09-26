@@ -46,8 +46,7 @@
   "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts build && node .",
-    "start:client": "node index.js",
-    "client": "react-scripts start:client",
+    "client": "react-scripts start",
     "server": "react-scripts build && node .",
     "build": "react-scripts build",
     "build:dev": "env-cmd .env.dev react-scripts v build",

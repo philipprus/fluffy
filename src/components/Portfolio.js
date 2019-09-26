@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos } from './photos';
+import {Link} from 'react-router-dom';
 
 const Portfolio = (props) => {
 
@@ -22,9 +23,8 @@ const Portfolio = (props) => {
           <div className="container-fluid mt-5">
             <div className="row">
               <div className="col text-center"> 
-                <h1 className="display-4">Fluffy</h1>
-                <h3 className="lead mt-4 mb-4">I Create Your Fluffy Pet Portrait from Photo!</h3>
-                <p>4 Styles & 1 Step order</p>
+                <h3 className="lead mt-4 mb-4">I Create Pet Portrait from Photo!</h3>
+                <p><Link to="/order">4 Styles & 1 Step order</Link></p>
               </div>
               <hr className="my-4"/>
               <div className="mt-5">
