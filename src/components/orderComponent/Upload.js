@@ -21,7 +21,7 @@ export default class Upload extends Component {
       formData.append(i, file)
     });
 
-    fetch(`${API_URL}/api/upload/single-image`, {
+    fetch(`/api/upload/single-image`, {
       method: 'POST',
       body: formData
     })

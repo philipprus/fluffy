@@ -117,14 +117,16 @@ const OrderFrom = (props) => {
           <div className="row mb-5">
               <div className="col-md-7 col-sm-6">
               <h4 className="mb-3 mt-3">Order information</h4>
-                  <div className="row">
+                  <div className="row ">
                       <div className="col-md-12 mb-3">
                           <label htmlFor="photo">Upload photo</label>
-                      <Upload onChange={handlerUpload} name="photo" id="photo" error={errors.photo} onDelete={handlerDelete} />
-                    <ModalBestPet/>
+                        </div>
+                        <div className="col-md-12 text-center">
+                          <Upload onChange={handlerUpload} name="photo" id="photo" error={errors.photo} onDelete={handlerDelete} />
+                            <ModalBestPet/>
                       </div>
                       <div className="col-md-12 mb-3">
-                          <RadioButtonGroup id="style" label="Stylies" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
+                          <RadioButtonGroup id="style" label="Choose style" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
                               <Field component={RadioImage} width="100px" name="style" id="Colorfull" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
                               <Field component={RadioImage} width="100px" name="style" id="Anime" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
                               <Field component={RadioImage} width="100px" name="style" id="Meme" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
