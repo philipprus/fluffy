@@ -3,6 +3,7 @@ import Images from '../Images';
 import Buttons from './UploadButton';
 import '../../css/UploadImage.css';
 import Loader from 'react-loader-spinner';
+
 export default class Upload extends Component {
   
   state = {
@@ -69,6 +70,7 @@ export default class Upload extends Component {
     return (
       <div>
         <div className='buttons'>
+          <ErrorMessage name="photo" component="div" className="invalid-feedback" />
           {content()}
           {this.props.error && this.props.error.photo}
         </div>

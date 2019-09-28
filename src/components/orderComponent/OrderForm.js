@@ -17,7 +17,7 @@ import PaymentButton from '../paymentButton/PaymentButton';
 
 
 const StyckyBoxComponent = (props) => {
-    const {errors, values} = props;
+    const {values} = props;
      
 
     return (<StickyBox offsetTop={20} offsetBottom={20} {...props}>
@@ -35,9 +35,11 @@ const StyckyBoxComponent = (props) => {
                                     values.canvasSize &&
                                     values.canvasPosition &&
                                     values.extraPet ? "checked": ""}`}>Order information</h6>
+                                    <small>
                                     {values.style ? <>Style: {values.style}<br/></> : ""}
                                     {values.canvasPosition ? <>Canvas position: {values.canvasPosition}<br/></> : ""}
                                     {values.canvasSize ? <>Canvas size: {values.canvasSize}<br/></> : ""}
+                                    </small>
                             </div>
                         </li>
                         <li className="checklist-item">
@@ -67,8 +69,10 @@ const StyckyBoxComponent = (props) => {
                             values.isGift ?  <li className="checklist-item">
                             <div className="mb-2">
                                 <h6 className={`my-0 checklist-agree checked`}>Gift information</h6>
-                    {values.addCard ? <>Add Card: +5$<br/></> : ""}
-                    {values.addPaper ? <>Add Paper: +5$<br/></> : ""}
+                                <small>
+                                    {values.addCard ? <>Add Card: +5$<br/></> : ""}
+                                    {values.addPaper ? <>Add Paper: +5$<br/></> : ""}
+                                </small>
                             </div>
                         </li> : ""
                         }
@@ -77,7 +81,9 @@ const StyckyBoxComponent = (props) => {
                         <li className="checklist-item">
                             <div className="mb-2">
                                 <h6 className={`my-0 checklist-agree ${values.dispatch_date ? "checked": ""}`}>Dispatch date:  {moment(values.dispatch_date).format("DD/MM/YYYY")}</h6>
-                                {isDateInThisWeek(values.dispatch_date) ? "+ 100% (extra fast)" : isDateInAfterWeek(values.dispatch_date) ? "+ 50% (fast)" : "Free"}
+                               <small>
+                                   {isDateInThisWeek(values.dispatch_date) ? "+ 100% (extra fast)" : isDateInAfterWeek(values.dispatch_date) ? "+ 50% (fast)" : "Free"}
+                                   </small> 
                             </div>
                         </li>
                     </ul>
@@ -121,13 +127,12 @@ const OrderFrom = (props) => {
                       <div className="col-md-12 mb-3">
                           <label htmlFor="photo">Upload photo</label>
                         </div>
-                        <div  className={ ' col-md-12 text-center ' + (errors.canvasSize && touched.canvasSize ? ' is-invalid' : '')}>
-                          <Field component={Upload} onChange={handlerUpload} name="photo" id="photo"  error={errors.photo} onDelete={handlerDelete} />
-                          <ErrorMessage name="photo" component="div" className="invalid-feedback" />
-                           
+
+                        <div className={'col-md-12 text-center' + (errors.photo && touched.photo ? ' is-invalid' : '')}>
+                            <Upload onChange={handlerUpload} name="photo" id="photo" error={errors.photo} onDelete={handlerDelete} />
                             <ModalBestPet/>
-                      </div>
-                      <div className="col-md-12 mb-3">
+                        </div>
+                        <div className="col-md-12 mb-3">
                           <RadioButtonGroup id="style" label="Choose style" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
                               <Field component={RadioImage} width="100px" name="style" id="Colorfull" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
                               <Field component={RadioImage} width="100px" name="style" id="Anime" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
@@ -139,10 +144,7 @@ const OrderFrom = (props) => {
                       <div className="col-md-6 mb-3">
                           <label htmlFor="canvasSize">Canvas size</label>
                             <Field component="select" name="canvasSize"   placeholder="Choose canvas size"  className={ 'form-control' + (errors.canvasSize && touched.canvasSize ? ' is-invalid' : '')}>
-                                {/* <option value="">Choose canvas size</option>    */}
                                 {canvasSizeList.map( (canvas,index) => <option value={canvas.value} key={index}>{canvas.label}</option> )}                             
-                                {/* <option value="20x40">20 x 40 cm</option> */}
-                                {/* <option value="30x40">30 x 40 cm</option> */}
                             </Field>
                           <ErrorMessage name="canvasSize" component="div" className="invalid-feedback" />
                       </div>
