@@ -3,6 +3,7 @@ import Images from '../Images';
 import Buttons from './UploadButton';
 import '../../css/UploadImage.css';
 import Loader from 'react-loader-spinner';
+import { ErrorMessage } from 'formik';
 
 export default class Upload extends Component {
   
