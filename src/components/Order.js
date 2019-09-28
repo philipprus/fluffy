@@ -52,7 +52,7 @@ export default withFormik({
       validate: (values) => {
           let errors = {};
 
-            const msg_requier = "Required"
+        const msg_requier = "Required";
 
         if(!values.photo){
             errors.photo = msg_requier;

@@ -29,6 +29,7 @@
     "react-datepicker": "^2.9.6",
     "react-dom": "^16.9.0",
     "react-images": "^1.0.0",
+    "react-loader-spinner": "^3.1.4",
     "react-loading": "^2.0.3",
     "react-paypal-button": "^4.1.1",
     "react-photo-gallery": "^8.0.0",

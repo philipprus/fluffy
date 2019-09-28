@@ -4,6 +4,10 @@
       top: 16px;
       right: 15px
     }
+
+    .uploadImage {
+      cursor: pointer;
+    }
     
      .delete svg {
       filter: drop-shadow(3px 3px 3px #999);

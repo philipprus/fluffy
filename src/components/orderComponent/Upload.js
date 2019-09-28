@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import Spinner from '../common/Spinner'
-import Images from '../Images'
-import Buttons from './UploadButton'
-import { API_URL } from '../../utils/config'
+import React, { Component } from 'react';
+import Images from '../Images';
+import Buttons from './UploadButton';
 import '../../css/UploadImage.css';
+import Loader from 'react-loader-spinner';
 export default class Upload extends Component {
   
   state = {
@@ -53,11 +52,17 @@ export default class Upload extends Component {
     const content = () => {
       switch(true) {
         case uploading:
-          return <Spinner />
+          return <Loader
+          type="Hearts"
+          color="#00BFFF"
+          height={168}
+          width={100}
+ 
+       />
         case images.length > 0:
           return <Images images={images} removeImage={this.removeImage} />
         default:
-          return <Buttons onChange={this.onChange} />
+          return <Buttons onChange={this.onChange}  className="uploadImage"/>
       }
     }
 
@@ -65,6 +70,7 @@ export default class Upload extends Component {
       <div>
         <div className='buttons'>
           {content()}
+          {this.props.error && this.props.error.photo}
         </div>
       </div>
     )

@@ -121,8 +121,10 @@ const OrderFrom = (props) => {
                       <div className="col-md-12 mb-3">
                           <label htmlFor="photo">Upload photo</label>
                         </div>
-                        <div className="col-md-12 text-center">
-                          <Upload onChange={handlerUpload} name="photo" id="photo" error={errors.photo} onDelete={handlerDelete} />
+                        <div  className={ ' col-md-12 text-center ' + (errors.canvasSize && touched.canvasSize ? ' is-invalid' : '')}>
+                          <Field component={Upload} onChange={handlerUpload} name="photo" id="photo"  error={errors.photo} onDelete={handlerDelete} />
+                          <ErrorMessage name="photo" component="div" className="invalid-feedback" />
+                           
                             <ModalBestPet/>
                       </div>
                       <div className="col-md-12 mb-3">

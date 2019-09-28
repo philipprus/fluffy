@@ -11,11 +11,11 @@ export const RadioButtonGroup = ({
     }) => {
     
       return (
-        <div>
-          <fieldset>
-            <legend>{label}</legend>
+        <div className="form-group">
+            <label htmlFor="formGroupExampleInput">{label}</label>
+            <div>
             {children}
-          </fieldset>
+            </div>
         </div>
       );
     };
