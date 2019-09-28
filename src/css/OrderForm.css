@@ -68,3 +68,7 @@ ul.checklist-container {
     max-height: 27px;
     min-height: 18px;
 }
+
+.is-invalid .invalid-feedback  {
+    display: block;
+}

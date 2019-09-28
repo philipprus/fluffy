@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import Spinner from '../common/Spinner'
 import Images from '../Images'
 import Buttons from './UploadButton'
-import { API_URL } from '../../utils/config'
 import '../../css/UploadImage.css';
+import { ErrorMessage } from 'formik';
+
+
 export default class Upload extends Component {
   
   state = {
@@ -64,6 +66,7 @@ export default class Upload extends Component {
     return (
       <div>
         <div className='buttons'>
+          <ErrorMessage name="photo" component="div" className="invalid-feedback" />
           {content()}
         </div>
       </div>
