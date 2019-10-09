@@ -14,7 +14,7 @@ const buildMessage = (recipients, htmlPart, subject) => {
       recipients.forEach( recipient => {
             const message = {
                         "From": {
-                           "Email": "prus+fluffy@beinisrael.com",
+                           "Email": "no-reply@fluffy.co.il",
                            "Name": "Fluffy.co.il"
                          },
                          "To": [
@@ -37,10 +37,9 @@ const buildMessage = (recipients, htmlPart, subject) => {
 const request = (messages) => mailjet.post("send", {'version': 'v3.1'}).request({"Messages": messages});
 
 const sendContactMail = async ({name, email, phone, comments = "", isCopy = false}) => {
-      const contact = { name, email, phone, comments, isCopy }
-
+      const contact = { name, email, phone, comments, isCopy };
       
-      let recipients = [{"Email": "prus+fluffy@beinisrael.com", "Name": "Fluffy Web Site"}];
+      let recipients = [{"Email": "info@fluffy.co.il", "Name": "Fluffy Web Site"}];
       
       if(isCopy) recipients.push({"Email": email, "Name": name});
       
@@ -51,10 +50,9 @@ const sendContactMail = async ({name, email, phone, comments = "", isCopy = fals
                         <p>Comments: ${contact.comments}</p>
                         `;
 
-      const messages = buildMessage(recipients, htmlPart, "Contact Form Fluffy");
+      const messages = buildMessage(recipients, htmlPart(contact), "Contact Form Fluffy");
       try {
             const result = await request(messages);
-            console.log(result);
             return result;
       } catch (e) {
             console.log(e);
@@ -67,14 +65,12 @@ const  {builderHtml} = require("../utils/builderEmailOrder.js")
 
 const sendOrderMail = async (order) => {
       const htmlOrder = builderHtml(order);
-      let recipients = [{"Email": "prus+fluffy@beinisrael.com", "Name": "Fluffy Web Site"}, {
+      let recipients = [{"Email": "order@fluffy.co.il", "Name": "New Order"}, {
             "Email": order.billingAddress_email, "Name": `${order.billingAddress_firstName} ${order.billingAddress_lastName}`
       }];
-      console.log(recipients);
       const messages = buildMessage(recipients, htmlOrder, "Order Form Fluffy");
       try {
             const result = await request(messages);
-            console.log(result);
             return result;
       } catch (e) {
             console.log(e);

@@ -1,11 +1,10 @@
 const Order = require("../model/order.model");
 
 const create = async (order) => {
-      console.log(order);
       try {
             await Order.insertMany(order);
-            console.log(order);
-            return order;
+            const count = await Order.count();
+            return {count: count};
       } catch (e) {
             console.log(e);
             throw Error("Error add order");

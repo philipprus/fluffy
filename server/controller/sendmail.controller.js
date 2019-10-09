@@ -1,7 +1,6 @@
 const sendMailService = require('../service/sendMail.service');
 
 const sendContactMail = async (req, res) => {
-      console.log(req.body);
       try {
         const result = await sendMailService.sendContactMail(req.body);
             return res.status(200).send(result);
@@ -11,7 +10,6 @@ const sendContactMail = async (req, res) => {
 }
 
 const sendOrderMail = async (req, res) => {
-  console.log("send");
   try {
     const result = await sendMailService.sendOrderMail(req.body);
     return res.status(200).send(result);

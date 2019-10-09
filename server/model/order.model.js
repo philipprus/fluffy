@@ -32,12 +32,23 @@ const OrderSchema =  new mongoose.Schema({
             type: Number,
             required: [true]
       },
-      
+      order_total: {
+            type: Number,
+            required: [true]
+      },
       billingAddress_firstName: {
             type: String,
             required: [true]
       },
       billingAddress_lastName: {
+            type: String,
+            required: [true]
+      },
+      billingAddress_email: {
+            type: String,
+            required: [true]
+      },
+      billingAddress_phone: {
             type: String,
             required: [true]
       },
@@ -64,6 +75,12 @@ const OrderSchema =  new mongoose.Schema({
             type: String,
       },
       shippingAddress_lastName: {
+            type: String,
+      },
+      shippingAddress_email: {
+            type: String,
+      },
+      shippingAddress_phone: {
             type: String,
       },
       shippingAddress_address: {
@@ -102,8 +119,12 @@ const OrderSchema =  new mongoose.Schema({
             required: [true],
             unique: [true]
       },
-      payment_discription: {
-            type: String
+      payment_description: {
+            type: Object
+      },
+      dispatch_date: {
+            type: Date,
+            required: [true]
       }
 
 },{

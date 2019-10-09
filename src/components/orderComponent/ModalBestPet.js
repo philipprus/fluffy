@@ -9,7 +9,7 @@ function ModalBestPet(props) {
     
       return (
         <>
-          <Button variant="primary"  className="mt-2" onClick={handleShow}>
+          <Button variant="primary"  className="mb-2 mt-5" onClick={handleShow}>
           Photo and comments tips
           </Button>
     

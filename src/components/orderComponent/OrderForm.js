@@ -8,17 +8,23 @@ import ShippingAddress from './ShipingComponent';
 import {CheckboxField} from './CheckboxField';
 import {canvasSizeList} from '../common/priceTable';
 import GiftInformation from './GiftInformation';
-import { summeryOrder, isDateInThisWeek, isDateInAfterWeek } from '../../utils/payment'
+import { summeryOrder, dispatchDescription } from '../../utils/payment'
 import "../../css/OrderForm.css";
 import DatePicker from "./DatePicker";
 import moment from 'moment';
 import ModalBestPet from './ModalBestPet';
 import PaymentButton from '../paymentButton/PaymentButton';
-
+import AgreeTermsPrivacy from './AgreeTermsPrivacy';
 
 const StyckyBoxComponent = (props) => {
     const {values} = props;
      
+    const handlerSubmit = (paymentDetails) => {
+        props.setFieldValue('payment_description', paymentDetails);
+        props.setFieldValue('payment_number', paymentDetails.id);  
+        props.setFieldValue('order_total', summeryOrder(values));
+        props.onSubmit();
+    };
 
     return (<StickyBox offsetTop={20} offsetBottom={20} {...props}>
         <div className=" order-md-2 mt-4 mb-4">
@@ -82,7 +88,8 @@ const StyckyBoxComponent = (props) => {
                             <div className="mb-2">
                                 <h6 className={`my-0 checklist-agree ${values.dispatch_date ? "checked": ""}`}>Dispatch date:  {moment(values.dispatch_date).format("DD/MM/YYYY")}</h6>
                                <small>
-                                   {isDateInThisWeek(values.dispatch_date) ? "+ 100% (extra fast)" : isDateInAfterWeek(values.dispatch_date) ? "+ 50% (fast)" : "Free"}
+                                 {dispatchDescription(values.dispatch_date)}
+
                                    </small> 
                             </div>
                         </li>
@@ -95,17 +102,18 @@ const StyckyBoxComponent = (props) => {
                 </li>
             </ul>
             <div className="mb-2 mt-2">
-                <Field component={CheckboxField} id="isAgree" label="Agree?" name="isAgree" />
+                <Field component={AgreeTermsPrivacy} id="isAgree" label="Agree with terms and privacy?" name="isAgree" >
+                </Field>
             </div>
             <div className="form-group">
-                {!(props.isValid && values.isAgree) ? <PayPalDisabled/> : <PaymentButton onSubmit={props.onSubmit} total={summeryOrder(values)} />}
+                {!(props.isValid && values.isAgree) ? <PayPalDisabled/> : <PaymentButton handlerSubmit={handlerSubmit} total={summeryOrder(values)} />}
             </div>
         </div>
     </StickyBox>);
 }
 
 const OrderFrom = (props) => {
-    const { errors, touched, values, setFieldValue, handleSubmit } = props;
+    const { errors, touched, values, setFieldValue, handleSubmit, status } = props;
  
     
     const handlerUpload = (path) => {
@@ -116,6 +124,19 @@ const OrderFrom = (props) => {
        setFieldValue('photo', '');
      }
  
+     if(status === "ide") return (
+        <div className="container mt-5">
+            <div className="row mb-5">
+                <div className="col-md-12 mb-3 text-center">
+                    <h2>Thank you</h2>
+                    <p className="mt-2">
+                        We recieved you order
+                    </p>
+                    <button className="btn btn-success" onClick={()=>{props.setStatus(undefined)}}>Make new order</button>
+                </div>
+            </div>
+        </div>
+     );
  
       return (
     <form onSubmit={handleSubmit}>
@@ -125,15 +146,19 @@ const OrderFrom = (props) => {
               <h4 className="mb-3 mt-3">Order information</h4>
                   <div className="row ">
                       <div className="col-md-12 mb-3">
-                          <label htmlFor="photo">Upload photo</label>
+                          <label htmlFor="photo">Upload photo*</label>
                         </div>
+                        {
+                            status === "loading" ? "Loading" : null
 
-                        <div className={'col-md-12 text-center' + (errors.photo && touched.photo ? ' is-invalid' : '')}>
-                            <Upload onChange={handlerUpload} name="photo" id="photo" error={errors.photo} onDelete={handlerDelete} />
+                        }
+
+                        <div className={'col-md-12 mb-3 text-center' + (errors && errors.photo ? ' is-invalid' : '')}>
+                            <Upload onChange={handlerUpload} name="photo" id="photo" value={values.photo} error={errors.photo} onDelete={handlerDelete} />
                             <ModalBestPet/>
                         </div>
                         <div className="col-md-12 mb-3">
-                          <RadioButtonGroup id="style" label="Choose style" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
+                          <RadioButtonGroup id="style" label="Choose style*" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
                               <Field component={RadioImage} width="100px" name="style" id="Colorfull" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
                               <Field component={RadioImage} width="100px" name="style" id="Anime" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
                               <Field component={RadioImage} width="100px" name="style" id="Meme" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
@@ -142,14 +167,14 @@ const OrderFrom = (props) => {
                       </div>
 
                       <div className="col-md-6 mb-3">
-                          <label htmlFor="canvasSize">Canvas size</label>
+                          <label htmlFor="canvasSize">Canvas size*</label>
                             <Field component="select" name="canvasSize"   placeholder="Choose canvas size"  className={ 'form-control' + (errors.canvasSize && touched.canvasSize ? ' is-invalid' : '')}>
                                 {canvasSizeList.map( (canvas,index) => <option value={canvas.value} key={index}>{canvas.label}</option> )}                             
                             </Field>
                           <ErrorMessage name="canvasSize" component="div" className="invalid-feedback" />
                       </div>
                       <div className="col-md-6 mb-3">
-                          <label htmlFor="canvasPosition">Canvas position</label>
+                          <label htmlFor="canvasPosition">Canvas position*</label>
                           <Field name={'canvasPosition'} placeholder="Choose canvas position" className={ 'form-control' + (errors.canvasPosition && touched.canvasPosition ? ' is-invalid' : '')}  component="select" >
                                 <option value="">Choose canvas position</option>
                                 <option value="horizontal">Horizontal</option>
@@ -175,31 +200,31 @@ const OrderFrom = (props) => {
                   <div className="row">
                       <div className="col-md-6 mb-3">
                           <div className="input-group">
-                              <Field name="billingAddress_firstName" placeholder="First name" type="text" className={ 'form-control' + (errors.billingAddress_firstName && touched.billingAddress_firstName ? ' is-invalid' : '')}  />
+                              <Field name="billingAddress_firstName" placeholder="First name*" type="text" className={ 'form-control' + (errors.billingAddress_firstName && touched.billingAddress_firstName ? ' is-invalid' : '')}  />
                               <ErrorMessage name="billingAddress_firstName" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                       <div className="col-md-6 mb-3">
                           <div className="input-group">
-                              <Field name="billingAddress_lastName" placeholder="Last name" type="text" className={ 'form-control' + (errors.billingAddress_lastName && touched.billingAddress_lastName ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_lastName" placeholder="Last name*" type="text" className={ 'form-control' + (errors.billingAddress_lastName && touched.billingAddress_lastName ? ' is-invalid' : '')} />
                               <ErrorMessage name="billingAddress_lastName" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                       <div className="col-md-6 mb-3">
                           <div className="input-group">
-                              <Field name="billingAddress_email" placeholder="Email" type="text" className={ 'form-control' + (errors.billingAddress_email && touched.billingAddress_email ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_email" placeholder="Email*" type="text" className={ 'form-control' + (errors.billingAddress_email && touched.billingAddress_email ? ' is-invalid' : '')} />
                               <ErrorMessage name="billingAddress_email" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                       <div className="col-md-6  mb-3">
                           <div className="input-group">
-                              <Field name="billingAddress_phone" type="text" placeholder="Phone" className={ 'form-control' + (errors.billingAddress_phone && touched.billingAddress_phone ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_phone" type="text" placeholder="Phone*" className={ 'form-control' + (errors.billingAddress_phone && touched.billingAddress_phone ? ' is-invalid' : '')} />
                               <ErrorMessage name="billingAddress_phone" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                       <div className="col-12 mb-3">
                           <div className="input-group">
-                              <Field name="billingAddress_address" placeholder="Address" type="text" className={ 'form-control' + (errors.billingAddress_address && touched.billingAddress_address ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_address" placeholder="Address*" type="text" className={ 'form-control' + (errors.billingAddress_address && touched.billingAddress_address ? ' is-invalid' : '')} />
                               <ErrorMessage name="billingAddress_address" component="div" className="invalid-feedback" />
                           </div>
                       </div>
@@ -213,7 +238,7 @@ const OrderFrom = (props) => {
                   </div>
                   <div className="row">
                       <div className="col-md-6 mb-3">
-                            <Field name='billingAddress_country' placeholder="Choose canvas size"  className={ 'form-control' + (errors.billingAddress_zip && touched.billingAddress_zip ? ' is-invalid' : '')} component="select"  >
+                            <Field name='billingAddress_country' placeholder="Country"  className={ 'form-control' + (errors.billingAddress_zip && touched.billingAddress_zip ? ' is-invalid' : '')} component="select"  >
                                 <option value="">Country</option>
                                 <option value="Israel">Israel</option>
                             </Field>
@@ -221,7 +246,7 @@ const OrderFrom = (props) => {
                       </div>
                       <div className="col-md-6 mb-3">
                           <div className="input-group">
-                              <Field name="billingAddress_zip" placeholder="Zip" type="text" className={ 'form-control' + (errors.billingAddress_zip && touched.billingAddress_zip ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_zip" placeholder="Zip*" type="text" className={ 'form-control' + (errors.billingAddress_zip && touched.billingAddress_zip ? ' is-invalid' : '')} />
                               <ErrorMessage name="billingAddress_zip" component="div" className="invalid-feedback" />
                           </div>
                       </div>
@@ -230,17 +255,23 @@ const OrderFrom = (props) => {
                   <Field component={CheckboxField} id="isAnotherShippingAddress" label="Shipping address is not the same as my billing address" name="isAnotherShippingAddress" />
                   {values.isAnotherShippingAddress ? <ShippingAddress {...props} /> : <></>}
                   
-                  <Field component={CheckboxField} id="isGift" label="is Gift?" name="isGift" />
+                  <Field component={CheckboxField} id="isGift" label="As a Gift?" name="isGift" />
                   {values.isGift ? <GiftInformation {...props} /> : <></>}
-                  <h4 className="mb-3 mt-3">Dispatch date</h4>
                     <div className="row">
-                        <div className="col-md-12 mb-3">
-                           This dispatch date, if you order today. 
-                           Your can change date. After 
-                           <Field component={DatePicker} type="date" className={ 'form-control' + (errors.dispatch_date && touched.dispatch_date ? ' is-invalid' : '')} name="dispatch_date" id="dispatch_date" />
+                        <div className="col-md-12 mb-3 mt-3 d-flex align-items-center">
+                            <h4 className="mb-3 mt-3 pr-4">Dispatch date</h4>
+                            <div className="mr-4">
+                                <Field component={DatePicker} type="date" className={ 'form-control' + (errors.dispatch_date && touched.dispatch_date ? ' is-invalid' : '')} name="dispatch_date" id="dispatch_date" />
+                            </div>
+                            {dispatchDescription(values.dispatch_date)}
+
+                        </div>
+                        <div className="col">
+                           <p>This is a standart dispatch date, if you complete your order today.<br/>
+                           More Fast options available for extra charge. Please check our calendar below.
+                           </p>
                         </div>
                     </div>
-                    <button type="submit"  className="btn btn-primary mr-2 form-control">Pay</button>
 
               </div>
               <div className="col-md-4 col-sm-5">

@@ -9,7 +9,7 @@ export default class Upload extends Component {
   
   state = {
     uploading: false,
-    images: []
+    images: this.props.value ||  []
   }
 
   onChange = e => {

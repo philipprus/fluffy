@@ -46,4 +46,6 @@ const summeryOrder = (values) => {
       return week < date  && date <= week2;
   }
 
-  export { summeryOrder, isDateInThisWeek,isDateInAfterWeek };
+const dispatchDescription = (date) => isDateInThisWeek(date) ? "+ 100% (extra fast)" : isDateInAfterWeek(date) ? "+ 50% (fast)" : "Free";
+
+  export { summeryOrder, isDateInThisWeek,isDateInAfterWeek, dispatchDescription};

@@ -19,8 +19,6 @@ const About = (props) => {
                         <p></p>
                         So this is where Fluffy concept began: my passion and skills of drawing pets and friendly order process.
                         <p></p>
-                        Me and my geek boyfriend created super simple order template: download your favourite pet photo, choose one of the suggested artistic styles, pick main colors scheme and pet accessories (if you wish), choose size of canvas and voila! After on-line payment your treasure will be yours within exhact time!
-                        <p></p>
                         Simple and full of joy! 
                         <p></p>
                         Just like a love with your pet friend) 

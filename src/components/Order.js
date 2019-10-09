@@ -1,14 +1,13 @@
 // import React from 'react';
 import { withFormik } from 'formik';
 import { addDays } from "date-fns";
-
-
 import axios from 'axios';
 import OrderFrom from './orderComponent/OrderForm';
 
 export default withFormik({
       mapPropsToValues: () => ({
-            photo:'',
+            // photo:'',
+            photo: process.ENV !== "production" ? [{"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}] : "",
             style:'',
             canvasSize: '',
             canvasPosition: '',
@@ -42,7 +41,9 @@ export default withFormik({
             addPaper: false,
             isAgree: false,
             payment_type: 'paypal',
-            payment_number: "dsddvwe234",
+
+            payment_number: process.ENV !== "production" ? Math.random() * 10000000 / 5 : "",
+            order_total: process.ENV !== "production" ? 10 : "",
 
             dispatch_date: addDays(new Date().setHours(0,0,0,0), 14),
 
@@ -111,23 +112,36 @@ export default withFormik({
 
    
 
-      handleSubmit: (values, {props, setSubmitting, resetForm, setStatus, setErrors}) => {
+      handleSubmit: async (values, {props, setSubmitting, resetForm, setStatus, setErrors}) =>  {
             console.log("2");
-            function sendOrderMail() { axios.post("/api/sendmail/order", values); }
-            function addOrderToDb() { axios.post("/api/order", values); }
-            axios.all([sendOrderMail(), addOrderToDb()])
-                .then(res => {
-                if(res.status === 200) {
-                        setSubmitting(false);
-                        resetForm();
-                        setStatus({success: true});
-                    }
-                })
-                .catch(({ response }) => {
-                    const { errors } = response.data;
-                    setErrors(errors);
-                });
+            setStatus("loading");
+           
+            axios.post("/api/order", values)
+              .then(function (response) {
+                if(response.status === 200) {
+                    console.log(response);
+                    const count = response && response.data && response.data.count;
+                    values.order_number = count;
+                    axios.post("/api/sendmail/order", values)
+                        .then(function (response){
+                            if(response.status === 200) {
+                                setSubmitting(false);
+                                resetForm();
+                                setStatus("ide");
+                            }
+                        }).catch(({ response }) => {
+                            const { errors } = response.data;
+                           console.log(response);
 
+                            // setErrors(errors);
+                        });
+                }
+              }).catch(({ response }) => {
+                  console.log(response);
+                const { errors } = response.data;
+                // setErrors(errors);
+            });
+         
       },
         
           displayName: 'OrderFrom',

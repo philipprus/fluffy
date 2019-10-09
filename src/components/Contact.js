@@ -24,28 +24,28 @@ const Contact = (props) => {
                         <Form>
                               <div className="row">
                                     <div className="col-md-12 mb-3">
-                                          <label for="name">Name</label>
+                                          <label htmlFor="name">Name</label>
                                           <div className="input-group">
                                                 <Field name="name" type="text" className={ 'form-control' + (errors.name && touched.name ? ' is-invalid' : '')} required />
                                                 <ErrorMessage name="name" component="div" className="invalid-feedback" />
                                           </div>
                                     </div>
                                     <div className="col-md-12 mb-3">
-                                          <label for="phone">Phone</label>
+                                          <label htmlFor="phone">Phone</label>
                                           <div className="input-group">
                                                 <Field name="phone" type="text" className={ 'form-control' + (errors.phone && touched.phone ? ' is-invalid' : '')} required />
                                                 <ErrorMessage name="phone" component="div" className="invalid-feedback" />
                                           </div>
                                     </div>
                                     <div className="col-md-12 mb-3">
-                                          <label for="email">E-mail</label>
+                                          <label htmlFor="email">E-mail</label>
                                           <div className="input-group">
                                                 <Field name="email" type="text" className={ 'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} required />
                                                 <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                           </div>
                                     </div>
                                     <div className="col-md-12 mb-3">
-                                          <label for="comments">Comments</label>
+                                          <label htmlFor="comments">Comments</label>
                                           <div className="input-group">
                                                 <Field name="comments" component="textarea" className={ 'form-control' + (errors.comments && touched.comments ? ' is-invalid' : '')} required />
                                                 <ErrorMessage name="comments" component="div" className="invalid-feedback" />
