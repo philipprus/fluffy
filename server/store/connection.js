@@ -3,7 +3,7 @@ const {get, KnownConfigKey } = require('../utils/config');
 
 const { MongoConnection } = require('../utils/mongo-connection');
 
-const url = get(KnownConfigKey.DbServer, 'mongodb://localhost:27017/fluffy?retryWrites=true&w=majority') || "mongodb+srv://fl_user_123:AnjukRa4jUqmseBt@cluster0-di3uu.mongodb.net/db_fluffy?retryWrites=true&w=majority";
+const url = process.env.NODE_ENV !== "production" ? get(KnownConfigKey.DbServer, 'mongodb://localhost:27017/fluffy?retryWrites=true&w=majority') : "mongodb+srv://fl_user_123:AnjukRa4jUqmseBt@cluster0-di3uu.mongodb.net/db_fluffy?retryWrites=true&w=majority";
 
 const connection = new MongoConnection(url);
 
