@@ -7,7 +7,7 @@ import OrderFrom from './orderComponent/OrderForm';
 export default withFormik({
       mapPropsToValues: () => ({
             // photo:'',
-            photo: process.ENV !== "production" ? [{"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}] : "",
+            photo: process.env.NODE_ENV !== "production" ? [{"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}] : "",
             style:'',
             canvasSize: '',
             canvasPosition: '',
