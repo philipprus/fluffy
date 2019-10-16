@@ -9,7 +9,7 @@ const Footer = () => {
                         <div className=" pt-3 pb-5 text-center">
                           Made with 💘 in Israel.
                           <p>
-                         Copyright © 2019 Ekaterina Preobrazhesky. All Rights Reserved.
+                         Copyright © 2019 Ekaterina Preobrazhenski. All Rights Reserved.
                          </p>
                         </div>
                   </div>

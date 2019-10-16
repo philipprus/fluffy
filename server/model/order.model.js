@@ -125,6 +125,10 @@ const OrderSchema =  new mongoose.Schema({
       dispatch_date: {
             type: Date,
             required: [true]
+      },
+      status: {
+            type: String,
+            default: "new"
       }
 
 },{

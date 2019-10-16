@@ -41,7 +41,7 @@ export default withFormik({
             addPaper: false,
             isAgree: false,
             payment_type: 'paypal',
-
+            shipping_type: 'pickup',
             payment_number: process.ENV !== "production" ? Math.random() * 10000000 / 5 : "",
             order_total: process.ENV !== "production" ? 10 : "",
 

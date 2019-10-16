@@ -8,6 +8,8 @@ import Contact from "../Contact";
 import Portfolio from "../Portfolio";
 import Email from "../Email";
 import Footer from "../Footer";
+import Admin from "../Admin";
+import AdminOrder from "../admin/AdminOrder";
 
 export function Routes() {
     return (
@@ -18,6 +20,8 @@ export function Routes() {
                     <Route path="/about" component={About} />
                     <Route path="/contact" component={Contact} />
                     <Route path="/email" component={Email} />
+                    <Route path="/admin/:id" component={AdminOrder} />
+                    <Route path="/admin" component={Admin} />
                     <Route path="/" component={Portfolio} />
 
                 </Switch>
