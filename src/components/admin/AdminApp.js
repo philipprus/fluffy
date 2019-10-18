@@ -65,7 +65,7 @@ const AdminApp = (props) => {
                                      </th>
                                     <td>{moment(item.created).format('DD/MM/YYYY') }</td>
                                     <td  className="text-left">
-                                          <a href={item.photo[0].secure_url} target="_blank">Open image</a>
+                                          <a href={item.photo[0].secure_url} target="_blank" rel="noopener noreferrer">Open image</a>
                                           <br/>
                                           <small>
                                                Style: {item.style} <br/>

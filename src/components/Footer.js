@@ -7,7 +7,7 @@ const Footer = () => {
                   <div className="col">
                         <hr/>
                         <div className=" pt-3 pb-5 text-center">
-                          Made with 💘 in Israel.
+                          Made with <span role="img" aria-label="img">💘</span> in Israel.
                           <p>
                          Copyright © 2019 Ekaterina Preobrazhenski. All Rights Reserved.
                          </p>

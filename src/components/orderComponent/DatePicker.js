@@ -4,8 +4,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addDays } from "date-fns";
 import {isDateInThisWeek, isDateInAfterWeek} from "../../utils/payment"
 
-const DatePickerField = ({ field: {name, value }, form: {setFieldValue}, className }) => {
-      const nowDay = new Date();
+const DatePickerField = ({ field: {name, value }, form: {setFieldValue}, className, created_date }) => {
+      const nowDay = created_date ? new Date(created_date) : new Date();
+      console.log(nowDay);
   return (
     <DatePicker
       selected={(value && new Date(value)) || null}

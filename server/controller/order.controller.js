@@ -39,6 +39,7 @@ const updateOrder = async (req,res) => {
     if (!replaced || !replaced.ok || !replaced.n) {
       return res.sendStatus(404);
     }
+    return res.sendStatus(200);
   } catch (e) {
     return res.sendStatus(400);
   }

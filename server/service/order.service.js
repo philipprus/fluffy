@@ -39,6 +39,7 @@ const update = async (order) => {
       try {
         const _id = new mongo.ObjectId(order.id);
         const replaced = await Order.updateOne({_id}, {$set: order}).exec();
+        console.log(replaced);
         return replaced;
       } catch (e) {
         // Log Errors

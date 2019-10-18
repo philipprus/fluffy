@@ -1,5 +1,5 @@
 import {priceTable} from '../components/common/priceTable';
-import { addDays } from "date-fns";
+import { addDays, differenceInDays } from "date-fns";
 
 const summeryOrder = (values) => { 
       let sum = 0
@@ -21,6 +21,9 @@ const summeryOrder = (values) => {
         if(values.addPaper) {
             sum = sum +5;
         }
+      }
+      if(values.shipping_type !== "pickup") {
+            sum = sum + 40;
       }
       return sum;
   }
@@ -48,4 +51,15 @@ const summeryOrder = (values) => {
 
 const dispatchDescription = (date) => isDateInThisWeek(date) ? "+ 100% (extra fast)" : isDateInAfterWeek(date) ? "+ 50% (fast)" : "Free";
 
-  export { summeryOrder, isDateInThisWeek,isDateInAfterWeek, dispatchDescription};
+const averageNowDispatch = (dispatch) => {
+      var result = differenceInDays(
+            new Date(dispatch),
+            new Date()
+          );
+
+          return result;
+}
+
+
+
+  export { summeryOrder, isDateInThisWeek,isDateInAfterWeek, dispatchDescription, averageNowDispatch};

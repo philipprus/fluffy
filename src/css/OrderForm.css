@@ -76,3 +76,60 @@ ul.checklist-container {
 .react-datepicker-wrapper .form-control {
     cursor: pointer;
 }
+
+
+/* Input css */
+
+.input-wrap {
+    position: relative;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.input-wrap.ch-invalid .ch-input, .select-wrap.ch-invalid .ch-select {
+    -moz-box-shadow: 0 0 0 2px #de2a2a;
+    -webkit-box-shadow: 0 0 0 2px #de2a2a;
+    box-shadow: 0 0 0 2px #de2a2a;
+    transition: all 0.4s;
+}
+.input-wrap .ch-input, .select-wrap .ch-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    outline: none;
+    width: 100%;
+    height: 44px;
+    color: black;
+    border: none;
+    -moz-box-shadow: 0 0 0 1px #d9d9d9;
+    -webkit-box-shadow: 0 0 0 1px #d9d9d9;
+    box-shadow: 0 0 0 1px #d9d9d9;
+}
+
+.input-wrap .input-label, .select-wrap .input-label {
+    font-weight: normal;
+    position: absolute;
+    top: 12px;
+    left: 0px;
+    padding-left: 13px;
+    padding-right: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+    color: #999999;
+    pointer-events: none;
+    width: calc(100% - 13px);
+}
+
+.input-wrap .ch-input.ch-dirty + .input-label, .select-wrap .ch-select.ch-dirty + .input-label {
+    top: 6px;
+    font-size: 12px;
+    -webkit-transition: top 0.2s, font-size 0.2s;
+    transition: top 0.2s, font-size 0.2s;
+}
+
+.ch-invalid .text-danger {
+    display: block;
+}

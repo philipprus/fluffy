@@ -107,6 +107,11 @@ export default withFormik({
         if(values.shippingAddress_zip && !values.shippingAddress_zip) {
             errors.shippingAddress_zip = msg_requier;
         }
+
+        if(!values.shipping_type) {
+            errors.shipping_type = msg_requier;
+        }
+
           return errors;
       },
 
@@ -131,15 +136,15 @@ export default withFormik({
                             }
                         }).catch(({ response }) => {
                             const { errors } = response.data;
-                           console.log(response);
+                           console.log(errors);
 
-                            // setErrors(errors);
+                            setErrors(errors);
                         });
                 }
               }).catch(({ response }) => {
                   console.log(response);
                 const { errors } = response.data;
-                // setErrors(errors);
+                setErrors(errors);
             });
          
       },

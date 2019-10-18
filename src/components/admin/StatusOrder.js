@@ -1,12 +1,12 @@
 import React from 'react';
 import { withFormik } from "formik";
 import axios from 'axios';
-import { Field, ErrorMessage } from 'formik';
+import { Field } from 'formik';
 import { testimonials } from '../../utils/const';
 
 
 const StatusOrderForm = (props) => {
-    const { errors, touched, values, setFieldValue, handleSubmit, status } = props;
+    const { errors, touched, handleSubmit } = props;
     
       return (
           <form onSubmit={handleSubmit}>
