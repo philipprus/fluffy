@@ -23,7 +23,7 @@ export default withFormik({
             billingAddress_country: 'Israel',
             billingAddress_zip: '',
 
-            isAnotherShippingAddress: false,
+            isAnotherShippingAddress: "true",
 
             shippingAddress_firstName: '',
             shippingAddress_lastName: '',

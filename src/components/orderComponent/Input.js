@@ -1,13 +1,26 @@
 import React from 'react';
 
 const Input = (props) => {
+      const [isFocus, setFocus] = React.useState(false);
+      const {form: {errors, dirty, touched}, field, id, label, type, helper, required} = props;
+      const {name} = field;
+    const _onFocus = () => {
+          if(!isFocus) {
+                setFocus(true);
+          }
+        }
+      const  _onBlur = (e) => {
+            if (isFocus) {
+                  field.onBlur(e);
+                setFocus(false);
+            };
+        }
       return (
-            <div className="input-wrap">
-                  <input data-vv-validate-on="change" name="email" autocomplete="email" type="email" id="customer_email" className="form-control ch-input input-email" data-vv-id="1" aria-required="true" aria-invalid="false" /> 
-                  <label for="customer_email" className="input-label"><span>Email</span></label> 
-                  <div className="text-danger">
-                        <span></span>
-                  </div>
+            <div className={`input-wrap  ${errors[name] && touched[name] && "ch-invalid"}`}>
+                  <input name={name} type={type || "text"} {...field}   onBlur={_onBlur}   onFocus={_onFocus}  id={id} className={`form-control ch-input ${isFocus || field.value ? "ch-dirty" : "" } ${touched[name] && "touched"} ${errors[name] && "invalid"} ${dirty ? "dirty" : "" }`} data-vv-id={id} aria-required={required ? "true" : "false"}  /> 
+                  <label htmlFor={name} className="input-label"><span>{label}</span></label> 
+                  {console.log(errors[name])}
+                  {errors[name] && touched[name] && <div className="text-danger"><span>{errors[name]}</span></div>}
             </div> 
       )
 }

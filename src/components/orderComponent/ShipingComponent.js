@@ -1,7 +1,11 @@
 
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
-
+import Input from './Input';
+import Textarea from './Textarea';
+import RadioBorder from './RadioBorder';
+import RadioGroupBorder from './RadioGroupBorder';
+import Select from './Select';
 
 const ShippingAddress = (props) => {
 
@@ -10,61 +14,59 @@ const ShippingAddress = (props) => {
       return (
           <>
               <div className="mb-4" />
-              <h4 className="mb-3">Shipping information</h4>
               <div className="row">
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-1">
                       <div className="input-group">
-                          <Field name="shippingAddress_firstName" placeholder="First name*" type="text" className={ 'form-control' + (errors.shippingAddress_firstName && touched.shippingAddress_firstName ? ' is-invalid' : '')} required />
+                          <Field name="shippingAddress_firstName" id="shippingAddress_firstName"  component={Input}  label="First name*" type="text"  required />
                           <ErrorMessage name="shippingAddress_firstName" component="div" className="invalid-feedback" />
                       </div>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-1">
                       <div className="input-group">
-                          <Field name="shippingAddress_lastName" placeholder="Last name*" type="text" className={ 'form-control' + (errors.shippingAddress_lastName && touched.shippingAddress_lastName ? ' is-invalid' : '')} />
+                          <Field name="shippingAddress_lastName" id="shippingAddress_lastName"  component={Input}  label="Last name*" type="text" />
                           <ErrorMessage name="shippingAddress_lastName" component="div" className="invalid-feedback" />
                       </div>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-1">
                           <div className="input-group">
-                              <Field name="shippingAddress_email" placeholder="Email*" type="text" className={ 'form-control' + (errors.shippingAddress_email && touched.shippingAddress_email ? ' is-invalid' : '')} />
+                              <Field name="shippingAddress_email" id="shippingAddress_email"  component={Input}  label="Email*" type="text"/>
                               <ErrorMessage name="shippingAddress_email" component="div" className="invalid-feedback" />
                           </div>
                       </div>
-                      <div className="col-md-6  mb-3">
+                      <div className="col-md-6  mb-1">
                           <div className="input-group">
-                              <Field name="shippingAddress_phone" type="text" placeholder="Phone*" className={ 'form-control' + (errors.shippingAddress_phone && touched.shippingAddress_phone ? ' is-invalid' : '')} />
+                              <Field name="shippingAddress_phone"  id="shippingAddress_phone"  component={Input}  type="text" label="Phone*"  />
                               <ErrorMessage name="shippingAddress_phone" component="div" className="invalid-feedback" />
                           </div>
                       </div>
-                  <div className="col-12 mb-3">
+                  <div className="col-8 mb-1">
                       <div className="input-group">
-                          <Field name="shippingAddress_address" placeholder="Address*"  type="text" className={ 'form-control' + (errors.shippingAddress_address && touched.shippingAddress_address ? ' is-invalid' : '')} />
+                          <Field name="shippingAddress_address"  id="shippingAddress_address" component={Input}  label="Address*"  type="text" />
                           <ErrorMessage name="shippingAddress_address" component="div" className="invalid-feedback" />
                       </div>
                   </div>
                 
-                  <div className="col-12 mb-3">
+                  <div className="col-4 mb-1">
                       <div className="input-group">
-                          <Field name="shippingAddress_address2" placeholder="Address 2"   type="text" className={ 'form-control' + (errors.shippingAddress_address2 && touched.shippingAddress_address2 ? ' is-invalid' : '')} />
+                          <Field name="shippingAddress_address2" id="shippingAddress_address2"  component={Input}  label="Apt, suite, etc. (optional)" type="text" />
                           <ErrorMessage name="shippingAddress_address2" component="div" className="invalid-feedback" />
                       </div>
                   </div>
               </div>
               <div className="row">
-                  <div className="col-md-6  mb-3">
-                      <Field name='shippingAddress_country' placeholder="Choose canvas size"  className={ 'form-control' + (errors.shippingAddress_country && touched.shippingAddress_country ? ' is-invalid' : '')} component="select" required >
-                                <option value="">Country</option>
+                  <div className="col-md-6  mb-1">
+                      <Field name='shippingAddress_country' id='shippingAddress_country' label="Country"   component={Select} required >
+                                <option value="">Select your country</option>
                                 <option value="israel">Israel</option>
-
-                            </Field>
+                        </Field>
                       <ErrorMessage name="shippingAddress_country" component="div" className="invalid-feedback" />
                       <div className="invalid-feedback">
                           Please select a valid country.
                       </div>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-1">
                       <div className="input-group">
-                          <Field name="shippingAddress_zip" placeholder="Zip*" type="text" className={ 'form-control' + (errors.shippingAddress_zip && touched.shippingAddress_zip ? ' is-invalid' : '')} />
+                          <Field name="shippingAddress_zip" label="Postal code*" type="text"  component={Input} />
                           <ErrorMessage name="shippingAddress_zip" component="div" className="invalid-feedback" />
                       </div>
                   </div>

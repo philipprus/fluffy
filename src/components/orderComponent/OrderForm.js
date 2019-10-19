@@ -17,6 +17,11 @@ import PaymentButton from '../paymentButton/PaymentButton';
 import AgreeTermsPrivacy from './AgreeTermsPrivacy';
 import {testimonials} from '../../utils/const';
 import Input from './Input';
+import Textarea from './Textarea';
+import RadioBorder from './RadioBorder';
+import RadioGroupBorder from './RadioGroupBorder';
+import Select from './Select';
+import Checkbox from './Checkbox';
 
 const StyckyBoxComponent = (props) => {
     const {values} = props;
@@ -30,10 +35,10 @@ const StyckyBoxComponent = (props) => {
 
     return (<StickyBox offsetTop={20} offsetBottom={20} {...props}>
         <div className=" order-md-2 mt-4 mb-4">
-            <h4 className="d-flex justify-content-between align-items-center mb-3">
+            <h4 className="header d-flex justify-content-between align-items-center mb-1">
             <span className="text-muted">Your Choise</span>
         </h4>
-            <ul className="list-group mb-3">
+            <ul className="list-group mb-1">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <ul className="list-unstyled checklist-container">
                         <li className="checklist-item">
@@ -62,7 +67,7 @@ const StyckyBoxComponent = (props) => {
                             </div>
                         </li>
                         {
-                            values.isAnotherShippingAddress ? 
+                            values.isAnotherShippingAddress === "false" ? 
                             <li className="checklist-item">
                                 <div className="mb-2">
                                     <h6 className={`my-0 checklist-agree ${values.shippingAddress_firstName && 
@@ -137,7 +142,7 @@ const OrderFrom = (props) => {
      if(status === "ide") return (
         <div className="container mt-5">
             <div className="row mb-5">
-                <div className="col-md-12 mb-3 text-center">
+                <div className="col-md-12 mb-1 text-center">
                     <h2>Thank you</h2>
                     <p className="mt-2">
                         We recieved you order
@@ -151,11 +156,16 @@ const OrderFrom = (props) => {
       return (
     <form onSubmit={handleSubmit}>
       <div className="container mt-5">
+          <div className="row mb-3">
+            <div className="col-xs-12 text-center">
+                <h1>Order</h1>
+            </div>
+        </div>
           <div className="row mb-5">
-              <div className="col-md-7 col-sm-6">
-              <h4 className="mb-3 mt-3">Order information</h4>
+              <div className="col-md-12 col-lg-8 col-sm-12 col-xs-12">
+                    <h4 className="header mb-3 mt-3">Order information</h4>
                   <div className="row ">
-                      <div className="col-md-12 mb-3">
+                      <div className="col-md-12 col-xs-12 mb-1">
                           <label htmlFor="photo">Upload photo*</label>
                         </div>
                         {
@@ -163,11 +173,11 @@ const OrderFrom = (props) => {
 
                         }
 
-                        <div className={'col-md-12 mb-3 text-center' + (errors && errors.photo ? ' is-invalid' : '')}>
+                        <div className={'col-md-12 col-xs-12 mb-1 text-center' + (errors && errors.photo ? ' is-invalid' : '')}>
                             <Upload onChange={handlerUpload} name="photo" id="photo" value={values.photo} error={errors.photo} onDelete={handlerDelete} />
                             <ModalBestPet/>
                         </div>
-                        <div className="col-md-12 mb-3">
+                        <div className="col-md-12 col-xs-12 mb-1">
                           <RadioButtonGroup id="style" label="Choose style*" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
                               <Field component={RadioImage} width="100px" name="style" id="Colorfull" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
                               <Field component={RadioImage} width="100px" name="style" id="Anime" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
@@ -176,125 +186,133 @@ const OrderFrom = (props) => {
                           </RadioButtonGroup>
                       </div>
 
-                      <div className="col-md-6 mb-3">
-                            <Field component="select" name="canvasSize"   placeholder="Canvas size"  className={ 'form-control' + (errors.canvasSize && touched.canvasSize ? ' is-invalid' : '')}>
+                      <div className="col-md-6 col-xs-12 mb-1">
+                            <Field component={Select} label="Canvas size" name="canvasSize"   placeholder="Canvas size"  className={ 'form-control' + (errors.canvasSize && touched.canvasSize ? ' is-invalid' : '')}>
                                 {canvasSizeList.map( (canvas,index) => <option value={canvas.value} key={index}>{canvas.label}</option> )}                             
                             </Field>
                           <ErrorMessage name="canvasSize" component="div" className="invalid-feedback" />
                       </div>
-                      <div className="col-md-6 mb-3">
-                          <Field name={'canvasPosition'} placeholder="Canvas position" className={ 'form-control' + (errors.canvasPosition && touched.canvasPosition ? ' is-invalid' : '')}  component="select" >
+                      <div className="col-md-6 col-xs-12 mb-1">
+                          <Field name={'canvasPosition'} component={Select} placeholder="Canvas position"  label="Canvas position">
                                 <option value="">Choose canvas position</option>
                                 <option value="horizontal">Horizontal</option>
                                 <option value="vertical">Vertical</option>
                           </Field>
                           <ErrorMessage name="canvasPosition" component="div" className="invalid-feedback" />
                       </div>
-                      <div className="col-md-12 mb-3">
-                          <label htmlFor="comments">Comments</label>
-                          <Field name="comments" component="textarea" className={ 'form-control' + (errors.comments && touched.comments ? ' is-invalid' : '')} />
+                      <div className="col-md-12 col-xs-12 mb-1">
+                          <Field name="comments" component={Textarea} label="Comments" />
                           <ErrorMessage name="comments" component="div" className="invalid-feedback" />
                       </div>
-                      <div className="col-md-12 mb-3">
-                          <label htmlFor="extraPet">Amount Characters</label>
-                          <Field name="extraPet" type="number" min={1} value={values.extraPet} className={ 'form-control' + (errors.extraPet && touched.extraPet ? ' is-invalid' : '')} />
+                      <div className="col-md-12 col-xs-12 mb-2">
+                          <Field id="extraPet" component={Input}  name="extraPet"  type="number" min={1} value={values.extraPet} label="Amount Characters" />
                           <ErrorMessage name="extraPet" component="div" className="invalid-feedback" />
                       </div>
 
   
                   </div>
-                  <h4 className="mb-3 mt-3">Billing information</h4>
+
+                  <h4 className="header mb-3 mt-3">Customer Information</h4>
                   <div className="row">
-                      <div className="col-md-6 mb-3">
+                      <div className="col-md-6 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_firstName" component={Input} placeholder="First name*" type="text" className={ 'form-control' + (errors.billingAddress_firstName && touched.billingAddress_firstName ? ' is-invalid' : '')}  />
+                              <Field name="billingAddress_firstName" name="billingAddress_firstName" id="billingAddress_firstName" component={Input} label="First name*" type="text"  />
                               <ErrorMessage name="billingAddress_firstName" component="div" className="invalid-feedback" />
                           </div>
                       </div>
-                      <div className="col-md-6 mb-3">
+                      <div className="col-md-6 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_lastName" placeholder="Last name*" type="text" className={ 'form-control' + (errors.billingAddress_lastName && touched.billingAddress_lastName ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_lastName" id="billingAddress_lastName" name="billingAddress_lastName" component={Input}  label="Last name*" type="text"  />
                               <ErrorMessage name="billingAddress_lastName" component="div" className="invalid-feedback" />
                           </div>
                       </div>
-                      <div className="col-md-6 mb-3">
+                      <div className="col-md-6 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_email" placeholder="Email*" type="text" className={ 'form-control' + (errors.billingAddress_email && touched.billingAddress_email ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_email" id="billingAddress_email" name="billingAddress_email" component={Input} label="Email*" type="email" />
                               <ErrorMessage name="billingAddress_email" component="div" className="invalid-feedback" />
                           </div>
                       </div>
-                      <div className="col-md-6  mb-3">
+                      <div className="col-md-6 col-xs-12  mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_phone" type="text" placeholder="Phone" className={ 'form-control' + (errors.billingAddress_phone && touched.billingAddress_phone ? ' is-invalid' : '')} />
+                              <Field id="billingAddress_phone" name="billingAddress_phone" type="text" placeholder="Phone" label="Phone*"   component={Input} />
                               <ErrorMessage name="billingAddress_phone" component="div" className="invalid-feedback" />
                           </div>
                       </div>
-                      <div className="col-8 mb-3">
+                  </div>
+
+                  <h4 className="header mb-3 mt-3">Billing Address</h4>
+                  <div className="row">
+                      <div className="col-md-8 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_address" placeholder="Address*" type="text" className={ 'form-control' + (errors.billingAddress_address && touched.billingAddress_address ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_address" id="billingAddress_address" component={Input} placeholder="Address*" type="text" label="Address"/>
                               <ErrorMessage name="billingAddress_address" component="div" className="invalid-feedback" />
                           </div>
                       </div>
-                    
-                      <div className="col-4 mb-3">
+                      <div className="col-md-4 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_address2" placeholder="Address 2" type="text" className={ 'form-control' + (errors.billingAddress_address2 && touched.billingAddress_address2 ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_address2" id="billingAddress_address2" component={Input} type="text" label="Apt, suite, etc. (optional)" />
                               <ErrorMessage name="billingAddress_address2" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                   </div>
                   <div className="row">
-                      <div className="col-md-6 mb-3">
-                            <Field name='billingAddress_country' placeholder="Country"  className={ 'form-control' + (errors.billingAddress_country && touched.billingAddress_country ? ' is-invalid' : '')} component="select"  >
-                                <option value="">Country</option>
+                      <div className="col-md-6 col-xs-12 mb-1">
+                            <Field name='billingAddress_country'  id='billingAddress_country' label="Country" component={Select}  >
+                                <option value="">Select your country</option>
                                 <option value="Israel">Israel</option>
                             </Field>
                           <ErrorMessage name="country" component="div" className="invalid-feedback" />
                       </div>
-                      <div className="col-md-6 mb-3">
+                      <div className="col-md-6 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_zip" placeholder="Postal code*" type="text" className={ 'form-control' + (errors.billingAddress_zip && touched.billingAddress_zip ? ' is-invalid' : '')} />
+                              <Field name="billingAddress_zip" label="Postal code*" type="text" component={Input} />
                               <ErrorMessage name="billingAddress_zip" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                   </div>
-                  <hr className="mb-4" />
-                  <Field component={CheckboxField} id="isAnotherShippingAddress" label="Shipping address is not the same as my billing address" name="isAnotherShippingAddress" />
-                  {values.isAnotherShippingAddress ? <ShippingAddress {...props} /> : <></>}
-                  
-                  <Field component={CheckboxField} id="isGift" label="As a Gift?" name="isGift" />
-                  {values.isGift ? <GiftInformation {...props} /> : <></>}
+                  <h4 className="header mb-3 mt-3">Shipping Address</h4>
+                 
                     <div className="row">
-                        <div className="col-md-12 mb-3 mt-3 d-flex align-items-center">
-                            <h4 className="mb-3 mt-3 pr-4">Dispatch date</h4>
+                        <div className="col-md-12">
+                            <RadioGroupBorder  id="isAnotherShippingAddress">
+                                <Field component={RadioBorder} id={"true"} label="Same as billing address" name="isAnotherShippingAddress" />
+                                <Field component={RadioBorder} id={"false"} label="Use a different shipping address" name="isAnotherShippingAddress" />
+                            </RadioGroupBorder>
+                        </div>
+                    </div>
+                  {values.isAnotherShippingAddress === "false" ? <ShippingAddress {...props} /> : <></>}
+                    {/* <div className="mb-3 mt-3">
+                        <Field component={CheckboxField} id="isGift" label="As a Gift?" name="isGift" />
+                        {values.isGift ? <GiftInformation {...props} /> : <></>}
+                    </div> */}
+                    <h4 className="header mb-3 mt-3">Shipping Method</h4>
+                    
+                    <div className="row">
+                        <div className="col-md-12 col-xs-12">
+                            <RadioGroupBorder  id="shipping_type">
+                                <Field component={RadioBorder} id={"pickup"} label="Pick up" price="Free" name="shipping_type" />
+                                <Field component={RadioBorder} id={"israelPost"} label="Israel post" price={"40 ils"} name="shipping_type" />
+                            </RadioGroupBorder>
+                        </div>
+                    </div>
+                    <h4 className="header mb-3 mt-3">Dispatch date</h4>
+                    <div className="row">
+                        <div className="col-md-12 col-xs-12 d-flex align-items-center">
                             <div className="mr-4">
                                 <Field component={DatePicker} type="date" className={ 'form-control' + (errors.dispatch_date && touched.dispatch_date ? ' is-invalid' : '')} name="dispatch_date" id="dispatch_date" />
                             </div>
-                            {dispatchDescription(values.dispatch_date)}
+                          {dispatchDescription(values.dispatch_date)}
 
                         </div>
-                        <div className="col">
+                        <div className="col mt-2">
                            <p>This is a standart dispatch date, if you complete your order today.<br/>
                            More Fast options available for extra charge. Please check our calendar below.
                            </p>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-12 mb-3 mt-3 d-flex align-items-center">
-                            <h4 className="mb-3 mt-3 pr-4">Shipping type</h4>
-                            <div className="mr-4">
-                                <Field name={'shipping_type'} placeholder="" className={ 'form-control' + (errors.canvasPosition && touched.canvasPosition ? ' is-invalid' : '')}  component="select" >
-                                    <option value="pickup">Pick up</option>
-                                    <option value="israelpost">Israel Post +40ils</option>
-                                </Field>
-                                <ErrorMessage name="canvasPosition" component="div" className="invalid-feedback" />
-                            </div>
-
-                        </div>
-                    </div>
 
               </div>
-              <div className="col-md-4 col-sm-5">
+              <div className="col-md-12 col-lg-4 col-sm-12 col-xs-12">
                   <StyckyBoxComponent {...props} onSubmit={handleSubmit}  />
               </div>
           </div>

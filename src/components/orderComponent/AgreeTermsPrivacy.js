@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {Button, Modal} from 'react-bootstrap';
+import Checkbox from './Checkbox';
 
-const AgreeTermsPrivacy= ({
-      field: { name, value, onChange, onBlur },
-      form: { errors, touched, setFieldValue },
-      id,
-      label,
-      className,
-      ...props})  => {
+const AgreeTermsPrivacy= (props)  => {
+
+        const {
+          field: { name, value, onChange, onBlur },
+          form: { errors, touched, setFieldValue },
+          id,
+          label
+          } = props;
       const [show, setShow] = useState(false);
     
       const handleClose = () => setShow(false);
@@ -15,7 +17,7 @@ const AgreeTermsPrivacy= ({
     
       return (
         <>
-            <div  className="custom-control custom-checkbox">
+            <div  className="checkbox-wrap">
                   <input
                         name={name}
                         id={id}
@@ -24,9 +26,12 @@ const AgreeTermsPrivacy= ({
                         checked={value}
                         onChange={onChange}
                         onBlur={onBlur}
-                        className="custom-control-input" 
+                        className={`ch-checkbox checkbox-${name}  ${value ? "ch-dirty" : "" } `}
                   />
-                  <label  className="custom-control-label"  htmlFor={id}>{`Agree with `}</label> <span onClick={handleShow} style={{color: "blue", textDecoration: "underline", cursor: "pointer"}}>Terms and Privacy? </span>
+                  <label  className=""  htmlFor={id}>
+                    {`Agree with `}
+                    <span class="ch-custom-checkbox"></span> 
+                  </label> <span onClick={handleShow} style={{color: "blue", textDecoration: "underline", cursor: "pointer"}}>Terms and Privacy? </span>
             </div>
           <Modal {...props} size="lg"
                   aria-labelledby="contained-modal-title-vcenter"
