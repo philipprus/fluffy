@@ -10,6 +10,7 @@ import Email from "../Email";
 import Footer from "../Footer";
 import Admin from "../Admin";
 import FAQ from "../FAQ";
+import CheckOrderStatus from "../CheckOrderStatus";
 import AdminOrder from "../admin/AdminOrder";
 
 export function Routes() {
@@ -22,7 +23,7 @@ export function Routes() {
                     <Route path="/contact" component={Contact} />
                     <Route path="/email" component={Email} />
                     <Route path="/faq" component={FAQ} />
-                    <Route path="/check-order-status" component={FAQ} />
+                    <Route path="/check-order-status" component={CheckOrderStatus} />
                     <Route path="/admin/:id" component={AdminOrder} />
                     <Route path="/admin" component={Admin} />
                     <Route path="/" component={Portfolio} />

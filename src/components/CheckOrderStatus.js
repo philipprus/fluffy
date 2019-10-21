@@ -15,19 +15,20 @@ const CheckOrderStatus = (props) => {
       <div className="container mt-5">     
             <div className="row">
                   <div className="col-12">
-                        <h4 className="mb-3">Contact me</h4>
+                        <h4 className="mb-3">Check Status Order</h4>
                         <p>If you need advice before your order or want to discuss any unique project you want to collaborate, please fill free to contact me:</p>
                   </div>
                   <div className="col-12">
                         {isSubmitting ? <ReactLoading type={"spin"} color={"#000000"} /> : ""}
-                        {status ? "success": ""}
+                        {status.status ? "success": ""}
+                        {status.result}
                         <Form>
                               <div className="row">
                                     <div className="col-md-12 mb-3">
-                                          <label htmlFor="name">Name</label>
+                                          <label htmlFor="name">Number status</label>
                                           <div className="input-group">
-                                                <Field name="name" type="text" className={ 'form-control' + (errors.name && touched.name ? ' is-invalid' : '')} required />
-                                                <ErrorMessage name="name" component="div" className="invalid-feedback" />
+                                                <Field name="id" type="text" className={ 'form-control' + (errors.id && touched.id ? ' is-invalid' : '')} required />
+                                                <ErrorMessage name="id" component="div" className="invalid-feedback" />
                                           </div>
                                     </div>
                                     <div className="col-md-12 form-group">
@@ -44,36 +45,24 @@ const CheckOrderStatus = (props) => {
 
 export default withFormik({
       mapPropsToValues: () => ({
-            name:'',
-            phone:'',
-            email: '',
-            comments: '',
+            id:'',
       }),
       validate: (values) => {
             let errors = {};
-            if(!values.email) {
-                  errors.email = 'Required';
+            if(!values.id) {
+                  errors.id = 'Required';
             }
-            if(!values.phone) {
-                errors.phone = 'Required!';
-            }
-            if(!values.name) {
-                errors.name = 'Required!';
-            }
-            if(!values.comments) {
-                  errors.comments = 'Required!';
-              }
             return errors;
       },
       handleSubmit: (values, { props, setSubmitting, setErrors, setStatus, resetForm }) => {
       
             axios
-            .post("/api/sendmail/contact", values)
+            .get("/api/order/status/"+values.id)
             .then(res => {
                   if(res.status === 200) {
                         setSubmitting(false);
                         resetForm();
-                        setStatus({success: true});
+                        setStatus({status:true, result: res });
                   }
             })
             .catch(({ response }) => {
