@@ -9,7 +9,7 @@ const TermsOfService = () => {
                     <h1>Terms of Service</h1>
                 </div>
                 <div className="col-12">
-                    <h3>OVERVIEW</h3>
+                    <h4>OVERVIEW</h4>
                     <p>This website is operated by Fluffy.co.il. Throughout the site, the terms “I”, “me” and “my” refer to Fluffy.co.il. Fluffy.co.il offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
 </p>
 <p>
@@ -21,16 +21,16 @@ const TermsOfService = () => {
 <p>
     Any new features or tools which are added to the current store shall also be subject to the Terms of Service. You can review the most current version of the Terms of Service at any time on this page. I reserve the right to update, change or replace any part of these Terms of Service by posting updates and/or changes to my website. It is your responsibility to check this page periodically for changes. Your continued use of or access to the website following the posting of any changes constitutes acceptance of those changes.
 </p>
-                    <h3>SECTION 1 - ONLINE STORE TERMS</h3>
+                    <h4>SECTION 1 - ONLINE STORE TERMS</h4>
                     <p>By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.
 </p>
                     <p>You may not use our products for any illegal or unauthorized purpose nor may you, in the use of the Service, violate any laws in your jurisdiction (including but not limited to copyright laws).
 </p>
                     <p>A breach or violation of any of the Terms will result in an immediate termination of your Services.
 </p>
-                    <h3>
+                    <h4>
                         SECTION 2 - GENERAL CONDITIONS
-</h3>
+</h4>
                     <p>
                         I reserve the right to refuse service to anyone for any reason at any time.
 </p>
@@ -43,7 +43,7 @@ const TermsOfService = () => {
 <p>
                         The headings used in this agreement are included for convenience only and will not limit or otherwise affect these Terms.
 </p>
-                    <h3>SECTION 3 - ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION</h3>
+                    <h4>SECTION 3 - ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION</h4>
 
                     <p>
                         I am not responsible if information made available on this site is not accurate, complete or current. The material on this site is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary, more accurate, more complete or more timely sources of information. Any reliance on the material on this site is at your own risk.
@@ -52,16 +52,16 @@ const TermsOfService = () => {
                         This site may contain certain historical information. Historical information, necessarily, is not current and is provided for your reference only. I reserve the right to modify the contents of this site at any time, but I have no obligation to update any information on my site. You agree that it is your responsibility to monitor changes to our site.
 </p>
 
-                    <h3>SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES</h3>
+                    <h4>SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES</h4>
 
                     <p>Prices for my products are subject to change without notice. </p>
                     <p>I reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice at any time.
 </p>
                     <p>I shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.
 </p>
-                    <h3>
+                    <h4>
                         SECTION 5 - PRODUCTS OR SERVICES (if applicable)
-</h3>
+</h4>
                     <p>
                         All purchases are for personal use only. Commercial use of my physical products is strictly prohibited. Commercial use of designs produced for an order placed on this website is strictly prohibited.
 </p>
@@ -73,7 +73,7 @@ const TermsOfService = () => {
 </p><p>
                         I do not warrant that the quality of any products, services, information, or other material purchased or obtained by you will meet your expectations, or that any errors in the Service will be corrected.
 </p>
-                    <h3>SECTION 6 - ACCURACY OF BILLING AND ACCOUNT INFORMATION</h3>
+                    <h4>SECTION 6 - ACCURACY OF BILLING AND ACCOUNT INFORMATION</h4>
                     <p>
                         I reserve the right to refuse any order you place with me. I may, in my sole discretion, limit or cancel quantities purchased per person, per household or per order. These restrictions may include orders placed by or under the same customer account, the same credit card, and/or orders that use the same billing and/or shipping address. In the event that I make a change to or cancel an order, I may attempt to notify you by contacting the e‑mail and/or billing address/phone number provided at the time the order was made. I reserve the right to limit or prohibit orders that, in our sole judgment, appear to be placed by dealers, resellers or distributors.
     </p>
@@ -82,10 +82,10 @@ const TermsOfService = () => {
 </p>
 
                     <p>
-                        For more detail, please review my Returns Policy.
+                        For more detail, please review my <NavLink to="returns-policy">Returns Policy</NavLink>.
     </p>
 
-                    <h3>SECTION 7 - OPTIONAL TOOLS</h3>
+                    <h4>SECTION 7 - OPTIONAL TOOLS</h4>
                     <p>
                         I may provide you with access to third-party tools over which I neither monitor nor have any control nor input.
 </p><p>
@@ -95,7 +95,7 @@ const TermsOfService = () => {
 </p>
                     <p>I may also, in the future, offer new services and/or features through the website (including, the release of new tools and resources). Such new features and/or services shall also be subject to these Terms of Service.
 </p>
-                    <h3>SECTION 8 - THIRD-PARTY LINKS</h3>
+                    <h4>SECTION 8 - THIRD-PARTY LINKS</h4>
                     <p>
                         Certain content, products and services available via my Service may include materials from third-parties.
 </p><p>
@@ -103,7 +103,7 @@ const TermsOfService = () => {
 </p><p>
                         I am not liable for any harm or damages related to the purchase or use of goods, services, resources, content, or any other transactions made in connection with any third-party websites. Please review carefully the third-party's policies and practices and make sure you understand them before you engage in any transaction. Complaints, claims, concerns, or questions regarding third-party products should be directed to the third-party.
 </p>
-                    <h3>SECTION 9 - USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS</h3>
+                    <h4>SECTION 9 - USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS</h4>
                     <p>
                         If, at my request, you send certain specific submissions (for example contest entries) or without a request from me you send creative ideas, suggestions, proposals, plans, or other materials, whether online, by email, by postal mail, or otherwise (collectively, 'comments'), you agree that I may, at any time, without restriction, edit, copy, publish, distribute, translate and otherwise use in any medium any comments that you forward to me. I am and shall be under no obligation (1) to maintain any comments in confidence; (2) to pay compensation for any comments; or (3) to respond to any comments.
 </p><p>
@@ -113,21 +113,21 @@ const TermsOfService = () => {
 </p><p>
                         Note that any photos submitted to my business through my review request emails will be considered as open for use in my marketing and advertising campaigns. By submitting a photo to my website you give me permission to display it on my website, in my marketing on digital and printed media and also give me permission to distribute it to third parties for use on my behalf.
 </p>
-                        <h3>SECTION 10 - PERSONAL INFORMATION</h3>
+                        <h4>SECTION 10 - PERSONAL INFORMATION</h4>
                         <p>
-                            Your submission of personal information through the store is governed by my Privacy Policy. To view my Privacy Policy.
+                            Your submission of personal information through the store is governed by my <NavLink to="privacy-policy">Privacy Policy.</NavLink>
 </p><p>
-                            <h3>SECTION 11 - ERRORS, INACCURACIES AND OMISSIONS</h3>
+                            <h4>SECTION 11 - ERRORS, INACCURACIES AND OMISSIONS</h4>
                             <p>
                                 Occasionally there may be information on my site or in the Service that contains typographical errors, inaccuracies or omissions that may relate to product descriptions, pricing, promotions, offers, product shipping charges, transit times and availability. I reserve the right to correct any errors, inaccuracies or omissions, and to change or update information or cancel orders if any information in the Service or on any related website is inaccurate at any time without prior notice (including after you have submitted your order).
 </p><p>
                                 I undertake no obligation to update, amend or clarify information in the Service or on any related website, including without limitation, pricing information, except as required by law. No specified update or refresh date applied in the Service or on any related website, should be taken to indicate that all information in the Service or on any related website has been modified or updated.
 </p>
-                            <h3>SECTION 12 - PROHIBITED USES</h3>
+                            <h4>SECTION 12 - PROHIBITED USES</h4>
                             <p>
                                 In addition to other prohibitions as set forth in the Terms of Service, you are prohibited from using the site or its content: (a) for any unlawful purpose; (b) to solicit others to perform or participate in any unlawful acts; (c) to violate any international, federal, provincial or state regulations, rules, laws, or local ordinances; (d) to infringe upon or violate our intellectual property rights or the intellectual property rights of others; (e) to harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate based on gender, sexual orientation, religion, ethnicity, race, age, national origin, or disability; (f) to submit false or misleading information; (g) to upload or transmit viruses or any other type of malicious code that will or may be used in any way that will affect the functionality or operation of the Service or of any related website, other websites, or the Internet; (h) to collect or track the personal information of others; (i) to spam, phish, pharm, pretext, spider, crawl, or scrape; (j) for any obscene or immoral purpose; or (k) to interfere with or circumvent the security features of the Service or any related website, other websites, or the Internet. I reserve the right to terminate your use of the Service or any related website for violating any of the prohibited uses.
 </p>
-                            <h3>SECTION 13 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY</h3>
+                            <h4>SECTION 13 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY</h4>
                             <p>
                                 I do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free.
 </p><p>
@@ -139,15 +139,15 @@ const TermsOfService = () => {
 </p><p>
                                 In no case shall Fluffy.co.il, my directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, including, without limitation lost profits, lost revenue, lost savings, loss of data, replacement costs, or any similar damages, whether based in contract, tort (including negligence), strict liability or otherwise, arising from your use of any of the service or any products procured using the service, or for any other claim related in any way to your use of the service or any product, including, but not limited to, any errors or omissions in any content, or any loss or damage of any kind incurred as a result of the use of the service or any content (or product) posted, transmitted, or otherwise made available via the service, even if advised of their possibility. Because some states or jurisdictions do not allow the exclusion or the limitation of liability for consequential or incidental damages, in such states or jurisdictions, my liability shall be limited to the maximum extent permitted by law.
 </p>
-                            <h3>SECTION 14 - INDEMNIFICATION</h3>
+                            <h4>SECTION 14 - INDEMNIFICATION</h4>
                             <p>
                                 You agree to indemnify, defend and hold harmless Fluffy.co.il and my parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, service providers, subcontractors, suppliers, interns and employees, harmless from any claim or demand, including reasonable attorneys’ fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.
 </p>
-                            <h3>SECTION 15 - SEVERABILITY</h3>
+                            <h4>SECTION 15 - SEVERABILITY</h4>
                             <p>
                                 In the event that any provision of these Terms of Service is determined to be unlawful, void or unenforceable, such provision shall nonetheless be enforceable to the fullest extent permitted by applicable law, and the unenforceable portion shall be deemed to be severed from these Terms of Service, such determination shall not affect the validity and enforceability of any other remaining provisions.
 </p>
-                            <h3>SECTION 16 - TERMINATION</h3>
+                            <h4>SECTION 16 - TERMINATION</h4>
                             <p>
                                 The obligations and liabilities of the parties incurred prior to the termination date shall survive the termination of this agreement for all purposes.
 </p><p>
@@ -155,7 +155,7 @@ const TermsOfService = () => {
 </p><p>
                                 If in my sole judgment you fail, or I suspect that you have failed, to comply with any term or provision of these Terms of Service, I also may terminate this agreement at any time without notice and you will remain liable for all amounts due up to and including the date of termination; and/or accordingly may deny you access to mynServices (or any part thereof).
 </p>
-                            <h3>SECTION 17 - ENTIRE AGREEMENT</h3>
+                            <h4>SECTION 17 - ENTIRE AGREEMENT</h4>
                             <p>
                                 The failure of me to exercise or enforce any right or provision of these Terms of Service shall not constitute a waiver of such right or provision.
 </p>
@@ -164,17 +164,17 @@ const TermsOfService = () => {
                         <p>
                             Any ambiguities in the interpretation of these Terms of Service shall not be construed against the drafting party.
 </p>
-                        <h3>SECTION 18 - GOVERNING LAW</h3>
+                        <h4>SECTION 18 - GOVERNING LAW</h4>
                         <p>
                             These Terms of Service and any separate agreements whereby I provide you Services shall be governed by and construed in accordance with the laws of the State of Israel.
 </p>
-                        <h3>SECTION 19 - CHANGES TO TERMS OF SERVICE</h3>
+                        <h4>SECTION 19 - CHANGES TO TERMS OF SERVICE</h4>
                         <p>
                             You can review the most current version of the Terms of Service at any time at this page.
 </p>
                         <p>I reserve the right, at my sole discretion, to update, change or replace any part of these Terms of Service by posting updates and changes to my website. It is your responsibility to check my website periodically for changes. Your continued use of or access to my website or the Service following the posting of any changes to these Terms of Service constitutes acceptance of those changes.
 </p>
-                        <h3>SECTION 20 - CONTACT INFORMATION</h3>
+                        <h4>SECTION 20 - CONTACT INFORMATION</h4>
                         <p>
                             Questions about the Terms of Service should be sent to me at  <a href="mailto:info@fluffy.co.il">info@fluffy.co.il</a>.
 </p>

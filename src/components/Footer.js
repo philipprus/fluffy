@@ -16,6 +16,8 @@ const Footer = () => {
                   
                         <NavLink activeStyle={activeLink} className="nav-link"  to="/check-order-status" >Check Order Status</NavLink>
                         <NavLink activeStyle={activeLink} className="nav-link"  to="/terms-of-service" >Terms Of Service</NavLink>
+                        <NavLink activeStyle={activeLink} className="nav-link"  to="/returns-policy" >Returns Policy</NavLink>
+                        <NavLink activeStyle={activeLink} className="nav-link" to="/privacy-policy">Privacy Policy</NavLink>
                   </div>
                   <div className="col-12">
                         <div className=" pt-3 pb-5 text-center">

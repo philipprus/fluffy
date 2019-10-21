@@ -13,11 +13,15 @@ import FAQ from "../FAQ";
 import CheckOrderStatus from "../CheckOrderStatus";
 import TermsOfService from "../TermsOfService";
 import AdminOrder from "../admin/AdminOrder";
+import ReturnsPolicy from "../ReturnsPolicy";
+import PrivacyPolicy from "../PrivacyPolicy";
+import ScrollToTop from "./ScrollToTop";
 
 export function Routes() {
     return (
-        <BrowserRouter>
-                  <Header/>
+        <BrowserRouter >
+                <Header/>
+                <ScrollToTop  />
                 <Switch>
                     <Route path="/order" component={Order} />
                     <Route path="/about" component={About} />
@@ -26,11 +30,12 @@ export function Routes() {
                     <Route path="/faq" component={FAQ} />
                     <Route path="/check-order-status" component={CheckOrderStatus} />
                     <Route path="/terms-of-service" component={TermsOfService} />
+                    <Route path="/returns-policy" component={ReturnsPolicy}/>
+                    <Route path="/privacy-policy" component={PrivacyPolicy} />
                     <Route path="/admin/:id" component={AdminOrder} />
                     <Route path="/admin" component={Admin} />
                     <Route path="/" component={Portfolio} />
                 </Switch>
-                
                 <Footer/>
         </BrowserRouter>
     )
