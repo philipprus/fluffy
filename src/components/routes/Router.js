@@ -11,6 +11,7 @@ import Footer from "../Footer";
 import Admin from "../Admin";
 import FAQ from "../FAQ";
 import CheckOrderStatus from "../CheckOrderStatus";
+import TermsOfService from "../TermsOfService";
 import AdminOrder from "../admin/AdminOrder";
 
 export function Routes() {
@@ -24,10 +25,12 @@ export function Routes() {
                     <Route path="/email" component={Email} />
                     <Route path="/faq" component={FAQ} />
                     <Route path="/check-order-status" component={CheckOrderStatus} />
+                    <Route path="/terms-of-service" component={TermsOfService} />
                     <Route path="/admin/:id" component={AdminOrder} />
                     <Route path="/admin" component={Admin} />
                     <Route path="/" component={Portfolio} />
                 </Switch>
+                
                 <Footer/>
         </BrowserRouter>
     )
