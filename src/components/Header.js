@@ -18,7 +18,9 @@ const    activeLink = {
             <NavLink exact  activeStyle={activeLink} className="nav-link"  to="/">Portfolio</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link"  to="/order" >Order</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link" to="/about">About</NavLink>
+            <NavLink activeStyle={activeLink} className="nav-link"  to="/faq" >FAQ</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link"  to="/contact" >Contact</NavLink>
+            <NavLink activeStyle={activeLink} className="nav-link"  to="/check-order-status" >Check Order Status</NavLink>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

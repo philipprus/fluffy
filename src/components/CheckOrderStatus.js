@@ -4,7 +4,7 @@ import {CheckboxField} from './orderComponent/CheckboxField';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 
-const Contact = (props) => {
+const CheckOrderStatus = (props) => {
       const {
             errors,
             touched,
@@ -14,11 +14,11 @@ const Contact = (props) => {
       return (
       <div className="container mt-5">     
             <div className="row">
-                  <div className="col-6">
+                  <div className="col-12">
                         <h4 className="mb-3">Contact me</h4>
                         <p>If you need advice before your order or want to discuss any unique project you want to collaborate, please fill free to contact me:</p>
                   </div>
-                  <div className="col-6">
+                  <div className="col-12">
                         {isSubmitting ? <ReactLoading type={"spin"} color={"#000000"} /> : ""}
                         {status ? "success": ""}
                         <Form>
@@ -29,30 +29,6 @@ const Contact = (props) => {
                                                 <Field name="name" type="text" className={ 'form-control' + (errors.name && touched.name ? ' is-invalid' : '')} required />
                                                 <ErrorMessage name="name" component="div" className="invalid-feedback" />
                                           </div>
-                                    </div>
-                                    <div className="col-md-12 mb-3">
-                                          <label htmlFor="phone">Phone</label>
-                                          <div className="input-group">
-                                                <Field name="phone" type="text" className={ 'form-control' + (errors.phone && touched.phone ? ' is-invalid' : '')} required />
-                                                <ErrorMessage name="phone" component="div" className="invalid-feedback" />
-                                          </div>
-                                    </div>
-                                    <div className="col-md-12 mb-3">
-                                          <label htmlFor="email">E-mail</label>
-                                          <div className="input-group">
-                                                <Field name="email" type="text" className={ 'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} required />
-                                                <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                                          </div>
-                                    </div>
-                                    <div className="col-md-12 mb-3">
-                                          <label htmlFor="comments">Comments</label>
-                                          <div className="input-group">
-                                                <Field name="comments" component="textarea" className={ 'form-control' + (errors.comments && touched.comments ? ' is-invalid' : '')} required />
-                                                <ErrorMessage name="comments" component="div" className="invalid-feedback" />
-                                          </div>
-                                    </div>
-                                    <div className="col-md-12 mb-3">
-                                          <Field component={CheckboxField} id="sendCopy" label="*send copy of my request to e-mail" name="sendCopy" />
                                     </div>
                                     <div className="col-md-12 form-group">
                                           <button type="submit" className="btn btn-primary mr-2 text-center form-control" disabled={isSubmitting}>{isSubmitting ? <ReactLoading type={"bubbles"} color={"#ffffff"} /> : "Send"}</button>
@@ -107,5 +83,5 @@ export default withFormik({
 
           },
         
-          displayName: 'ContactForm',
-})(Contact);
+          displayName: 'CheckOrderStatus',
+})(CheckOrderStatus);

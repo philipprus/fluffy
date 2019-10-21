@@ -43,6 +43,17 @@ const updateOrder = async (req,res) => {
   } catch (e) {
     return res.sendStatus(400);
   }
+} 
+
+const checkOrder = async (req,res) => {
+  const id = req.params.id;
+  try {
+    const order = await orderService.getOrderById(id);
+    const status = order.status;
+    return res.status(200).send(status);
+  } catch (e) {
+    return res.sendStatus(400);
+  }
 }
 
-module.exports =  { createOrder, getOrders, getOrderById, updateOrder };
+module.exports =  { createOrder, getOrders, getOrderById, updateOrder, checkOrder };
