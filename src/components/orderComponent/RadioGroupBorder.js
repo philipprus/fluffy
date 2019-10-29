@@ -3,7 +3,7 @@ import '../../css/RadioGroupBorder.css';
 
 const RadioGroupBorder = (props) => {
       return (
-            <ul class="bordered-ul with-hover" id={props.id}>
+            <ul className="bordered-ul with-hover" id={props.id}>
                   {props.children}
             </ul>
       )

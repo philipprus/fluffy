@@ -5,9 +5,7 @@ import {RadioImage} from './RadioImage';
 import StickyBox from "react-sticky-box";
 import Upload from '../orderComponent/Upload';
 import ShippingAddress from './ShipingComponent';
-import {CheckboxField} from './CheckboxField';
 import {canvasSizeList} from '../common/priceTable';
-import GiftInformation from './GiftInformation';
 import { summeryOrder, dispatchDescription } from '../../utils/payment'
 import "../../css/OrderForm.css";
 import DatePicker from "./DatePicker";
@@ -21,15 +19,18 @@ import Textarea from './Textarea';
 import RadioBorder from './RadioBorder';
 import RadioGroupBorder from './RadioGroupBorder';
 import Select from './Select';
-import Checkbox from './Checkbox';
 
 const StyckyBoxComponent = (props) => {
     const {values} = props;
+
+    React.useEffect(()=>{
+        props.setFieldValue('order_total', summeryOrder(props.values));
+        
+    },[props.values]);
      
     const handlerSubmit = (paymentDetails) => {
         props.setFieldValue('payment_description', paymentDetails);
         props.setFieldValue('payment_number', paymentDetails.id);  
-        props.setFieldValue('order_total', summeryOrder(values));
         props.onSubmit();
     };
 
@@ -67,7 +68,7 @@ const StyckyBoxComponent = (props) => {
                             </div>
                         </li>
                         {
-                            values.isAnotherShippingAddress === "false" ? 
+                            values.isSameShippingAddress === "false" ? 
                             <li className="checklist-item">
                                 <div className="mb-2">
                                     <h6 className={`my-0 checklist-agree ${values.shippingAddress_firstName && 
@@ -108,7 +109,9 @@ const StyckyBoxComponent = (props) => {
                                    </small> 
                             </div>
                         </li>
-                    </ul>
+                    </ul> 
+
+
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
                     <span>Total (ILS)</span>
@@ -121,7 +124,7 @@ const StyckyBoxComponent = (props) => {
                 </Field>
             </div>
             <div className="form-group">
-                {!(props.isValid && values.isAgree) ? <PayPalDisabled/> : <PaymentButton handlerSubmit={handlerSubmit} total={summeryOrder(values)} />}
+                {!(props.isValid && values.isAgree) ? <PayPalDisabled/> : <PaymentButton {...props} values={values} handlerSubmit={handlerSubmit} total={summeryOrder(values)} />}
             </div>
         </div>
     </StickyBox>);
@@ -174,8 +177,10 @@ const OrderFrom = (props) => {
                         }
 
                         <div className={'col-md-12 col-xs-12 mb-1 text-center' + (errors && errors.photo ? ' is-invalid' : '')}>
-                            <Upload onChange={handlerUpload} name="photo" id="photo" value={values.photo} error={errors.photo} onDelete={handlerDelete} />
+                            <Upload onChange={handlerUpload} name="photo" id="photo" value={values && values.photo} error={errors.photo} onDelete={handlerDelete} />
                             <ModalBestPet/>
+
+
                         </div>
                         <div className="col-md-12 col-xs-12 mb-1">
                           <RadioButtonGroup id="style" label="Choose style*" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
@@ -216,19 +221,19 @@ const OrderFrom = (props) => {
                   <div className="row">
                       <div className="col-md-6 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_firstName" name="billingAddress_firstName" id="billingAddress_firstName" component={Input} label="First name*" type="text"  />
+                              <Field name="billingAddress_firstName"  id="billingAddress_firstName" component={Input} label="First name*" type="text"  />
                               <ErrorMessage name="billingAddress_firstName" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                       <div className="col-md-6 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_lastName" id="billingAddress_lastName" name="billingAddress_lastName" component={Input}  label="Last name*" type="text"  />
+                              <Field name="billingAddress_lastName" id="billingAddress_lastName" component={Input}  label="Last name*" type="text"  />
                               <ErrorMessage name="billingAddress_lastName" component="div" className="invalid-feedback" />
                           </div>
                       </div>
                       <div className="col-md-6 col-xs-12 mb-1">
                           <div className="input-group">
-                              <Field name="billingAddress_email" id="billingAddress_email" name="billingAddress_email" component={Input} label="Email*" type="email" />
+                              <Field name="billingAddress_email" id="billingAddress_email" component={Input} label="Email*" type="email" />
                               <ErrorMessage name="billingAddress_email" component="div" className="invalid-feedback" />
                           </div>
                       </div>
@@ -274,13 +279,13 @@ const OrderFrom = (props) => {
                  
                     <div className="row">
                         <div className="col-md-12">
-                            <RadioGroupBorder  id="isAnotherShippingAddress">
-                                <Field component={RadioBorder} id={"true"} label="Same as billing address" name="isAnotherShippingAddress" />
-                                <Field component={RadioBorder} id={"false"} label="Use a different shipping address" name="isAnotherShippingAddress" />
+                            <RadioGroupBorder  id="isSameShippingAddress">
+                                <Field component={RadioBorder} id={"true"} label="Same as billing address" name="isSameShippingAddress" />
+                                <Field component={RadioBorder} id={"false"} label="Use a different shipping address" name="isSameShippingAddress" />
                             </RadioGroupBorder>
                         </div>
                     </div>
-                  {values.isAnotherShippingAddress === "false" ? <ShippingAddress {...props} /> : <></>}
+                  {values.isSameShippingAddress === "false" ? <ShippingAddress {...props} /> : <></>}
                     {/* <div className="mb-3 mt-3">
                         <Field component={CheckboxField} id="isGift" label="As a Gift?" name="isGift" />
                         {values.isGift ? <GiftInformation {...props} /> : <></>}

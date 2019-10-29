@@ -2,7 +2,7 @@ import React from 'react';
 
 const Textarea = (props) => {
       const [isFocus, setFocus] = React.useState(false);
-      const {form: {errors, dirty, touched}, field, name, id, label, type, helper, required} = props;
+      const {form: {errors, dirty, touched}, field, name, id, label, type, required} = props;
 
     const _onFocus = () => {
           if(!isFocus) {

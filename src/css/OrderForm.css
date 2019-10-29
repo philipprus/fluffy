@@ -46,8 +46,8 @@ ul.checklist-container {
   }
 
   ul.checklist-container li.checklist-item .checklist-agree.checked:after {
-      background-color: #000;
-      border-color: #000;
+      background-color: #f18381;
+      border-color: #f18381;
   }
 
   .react-datepicker__day.express-date {
@@ -141,9 +141,9 @@ ul.checklist-container {
 }
 
 .input-wrap .ch-input:focus, .select-wrap .ch-select:focus {
-    -moz-box-shadow: 0 0 0 2px black;
-    -webkit-box-shadow: 0 0 0 2px black;
-    box-shadow: 0 0 0 2px black;
+    -moz-box-shadow: 0 0 0 2px #f18381;
+    -webkit-box-shadow: 0 0 0 2px #f18381;
+    box-shadow: 0 0 0 2px #f18381;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
 }
@@ -231,9 +231,9 @@ ul.checklist-container {
 }
 
 .checkbox-wrap .ch-checkbox:checked + label .ch-custom-checkbox {
-    -webkit-box-shadow: inset 0 0 0 9px black;
-    -moz-box-shadow: inset 0 0 0 9px black;
-    box-shadow: inset 0 0 0 9px black;
+    -webkit-box-shadow: inset 0 0 0 9px #f18381;
+    -moz-box-shadow: inset 0 0 0 9px #f18381;
+    box-shadow: inset 0 0 0 9px #f18381;
     -webkit-transition: box-shadow 0.3s;
     transition: box-shadow 0.3s;
 }

@@ -57,21 +57,21 @@ const headerHtml = (order) => {
                                             
                                             <li>
                                             <strong>
-                                                ${order.isAnotherShippingAddress ? order.shippingAddress_firstName : order.billingAddress_firstName} ${order.isAnotherShippingAddress ? order.shippingAddress_lastName : order.billingAddress_lastName}
+                                                ${order.isSameShippingAddress ? order.shippingAddress_firstName : order.billingAddress_firstName} ${order.isSameShippingAddress ? order.shippingAddress_lastName : order.billingAddress_lastName}
                                             </strong> 
                                             </li>
                                             
                                             <li>
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_email : order.billingAddress_email}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_email : order.billingAddress_email}
                                             </li>
                                             <li>
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_phone : order.billingAddress_phone}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_phone : order.billingAddress_phone}
                                             </li>
                                             <li>
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_address : order.billingAddress_address}
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_address2 : order.billingAddress_address2 !== "" ? order.billingAddress_address2 : "" }
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_country : order.billingAddress_country}
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_zip : order.billingAddress_zip}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_address : order.billingAddress_address}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_address2 : order.billingAddress_address2 !== "" ? order.billingAddress_address2 : "" }
+                                            ${order.isSameShippingAddress ? order.shippingAddress_country : order.billingAddress_country}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_zip : order.billingAddress_zip}
                                             </li>
                                         </ul>
                                     </td>

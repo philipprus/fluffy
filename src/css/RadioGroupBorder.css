@@ -62,7 +62,7 @@ ul.bordered-ul {
   }
 
   ul.bordered-ul li:not(.extended-li) label input[type='radio']:checked + .ch-custom-radio {
-      border: 7px solid #1a1a1a;
+      border: 7px solid #f18381;
       -webkit-transition: border-width 0.3s;
       transition: border-width 0.3s;
   }

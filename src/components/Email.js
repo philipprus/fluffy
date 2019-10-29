@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const order = {"_id":{"$oid":"5d936f28c94c167f3c03791f"},"billingAddress_email":"prus@beinisrael.com","billingAddress_phone":"+972524413703","order_total": 100, "order_number": 9,"isAnotherShippingAddress":false,"isGift":false,"addCard":false,"addPaper":false,"photo":[{"_id":{"$oid":"5d936f28c94c167f3c037920"},"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}],"style":"Colorfull","canvasSize":"24x30","canvasPosition":"vertical","comments":"","extraPet":"1","billingAddress_firstName":"Maxim","billingAddress_lastName":"Michaeli","billingAddress_address":"Yalag","billingAddress_address2":"4a","billingAddress_country":"Israel","billingAddress_zip":6438841,"shippingAddress_firstName":"","shippingAddress_lastName":"","shippingAddress_address":"","shippingAddress_address2":"","shippingAddress_country":"Israel","shippingAddress_zip":null,"сongratulation":"","payment_type":"paypal","payment_number":"86A91077P1869551T","created":"1569943336572","dispatch_date":"1569943336572"};
+const order = {"_id":{"$oid":"5d936f28c94c167f3c03791f"},"billingAddress_email":"prus@beinisrael.com","billingAddress_phone":"+972524413703","order_total": 100, "order_number": 9,"isSameShippingAddress":false,"isGift":false,"addCard":false,"addPaper":false,"photo":[{"_id":{"$oid":"5d936f28c94c167f3c037920"},"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}],"style":"Colorfull","canvasSize":"24x30","canvasPosition":"vertical","comments":"","extraPet":"1","billingAddress_firstName":"Maxim","billingAddress_lastName":"Michaeli","billingAddress_address":"Yalag","billingAddress_address2":"4a","billingAddress_country":"Israel","billingAddress_zip":6438841,"shippingAddress_firstName":"","shippingAddress_lastName":"","shippingAddress_address":"","shippingAddress_address2":"","shippingAddress_country":"Israel","shippingAddress_zip":null,"сongratulation":"","payment_type":"paypal","payment_number":"86A91077P1869551T","created":"1569943336572","dispatch_date":"1569943336572"};
 
 const headerHtml = (order) => {
       return `
@@ -58,21 +58,21 @@ const headerHtml = (order) => {
                                             
                                             <li>
                                             <strong>
-                                                ${order.isAnotherShippingAddress ? order.shippingAddress_firstName : order.billingAddress_firstName} ${order.isAnotherShippingAddress ? order.shippingAddress_lastName : order.billingAddress_lastName}
+                                                ${order.isSameShippingAddress ? order.shippingAddress_firstName : order.billingAddress_firstName} ${order.isSameShippingAddress ? order.shippingAddress_lastName : order.billingAddress_lastName}
                                             </strong> 
                                             </li>
                                             
                                             <li>
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_email : order.billingAddress_email}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_email : order.billingAddress_email}
                                             </li>
                                             <li>
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_phone : order.billingAddress_phone}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_phone : order.billingAddress_phone}
                                             </li>
                                             <li>
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_address : order.billingAddress_address}
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_address2 : order.billingAddress_address2 !== "" ? order.billingAddress_address2 : "" }
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_country : order.billingAddress_country}
-                                            ${order.isAnotherShippingAddress ? order.shippingAddress_zip : order.billingAddress_zip}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_address : order.billingAddress_address}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_address2 : order.billingAddress_address2 !== "" ? order.billingAddress_address2 : "" }
+                                            ${order.isSameShippingAddress ? order.shippingAddress_country : order.billingAddress_country}
+                                            ${order.isSameShippingAddress ? order.shippingAddress_zip : order.billingAddress_zip}
                                             </li>
                                         </ul>
                                     </td>

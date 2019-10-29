@@ -53,7 +53,7 @@
     
 .radio-input-image input.radio-input-image-item:checked + label.radio-input-image-src:before {
       /* content: "✓"; */
-      border: 7px solid #1a1a1a;
+      border: 7px solid #f18381;
       transition: border-width 0.3s;
       /* background-color: grey; */
       transform: scale(1);

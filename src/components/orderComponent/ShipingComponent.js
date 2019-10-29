@@ -2,14 +2,10 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import Input from './Input';
-import Textarea from './Textarea';
-import RadioBorder from './RadioBorder';
-import RadioGroupBorder from './RadioGroupBorder';
 import Select from './Select';
 
 const ShippingAddress = (props) => {
 
-      const {errors, touched} = props;
    
       return (
           <>

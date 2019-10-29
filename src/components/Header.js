@@ -7,7 +7,7 @@ const Header = (props) => {
 
 const    activeLink = {
       fontWeight: "bold",
-      color: "red"
+      color: "#f18381"
     };
 
       return <Navbar   expand="lg">

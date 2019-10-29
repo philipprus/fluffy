@@ -36,6 +36,9 @@ const OrderSchema =  new mongoose.Schema({
             type: Number,
             required: [true]
       },
+      invoice_number: {
+            type: Number,
+      },
       billingAddress_firstName: {
             type: String,
             required: [true]
@@ -67,7 +70,7 @@ const OrderSchema =  new mongoose.Schema({
             type: Number,
             required: [true]
       },
-      isAnotherShippingAddress: {
+      isSameShippingAddress: {
             type: Boolean,
             default: false
       },
@@ -116,8 +119,6 @@ const OrderSchema =  new mongoose.Schema({
       },
       payment_number: {
             type: String,
-            required: [true],
-            unique: [true]
       },
       payment_description: {
             type: Object

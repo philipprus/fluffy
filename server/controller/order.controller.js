@@ -34,6 +34,7 @@ const getOrderById = async (req,res) => {
 
 const updateOrder = async (req,res) => {
   const order = req.body;
+  console.log(order);
   try { 
     const replaced = await orderService.update(order);
     if (!replaced || !replaced.ok || !replaced.n) {

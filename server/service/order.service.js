@@ -26,9 +26,8 @@ const getOrderById = async (id) => {
 
 const create = async (order) => {
       try {
-            await Order.insertMany(order);
-            const count = await Order.count();
-            return {count: count};
+            const created = await Order.insertMany(order);
+            return created;
       } catch (e) {
             console.log(e);
             throw Error("Error add order");
@@ -37,9 +36,8 @@ const create = async (order) => {
 
 const update = async (order) => {
       try {
-        const _id = new mongo.ObjectId(order.id);
+        const _id = new mongo.ObjectId(order._id);
         const replaced = await Order.updateOne({_id}, {$set: order}).exec();
-        console.log(replaced);
         return replaced;
       } catch (e) {
         // Log Errors

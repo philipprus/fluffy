@@ -20,9 +20,9 @@ const RadioBorder = ({
                               onChange={onChange}
                               onBlur={onBlur}
                         />
-                        <span class="ch-custom-radio"></span> 
-                        <span class="ch-custom-label"><span>{label}</span></span>
-                        {price && <span class="pull-right price"> {price} </span>}
+                        <span className="ch-custom-radio"></span> 
+                        <span className="ch-custom-label"><span>{label}</span></span>
+                        {price && <span className="pull-right price"> {price} </span>}
                   </label>
             </li>
       )

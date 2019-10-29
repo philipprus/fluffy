@@ -3,8 +3,6 @@ import React from 'react';
 import Accordion from './common/Accordion'
 import { NavLink } from 'react-router-dom';
 
-const paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet natus sint provident vel ab reprehenderit cum soluta, suscipit facere nisi sed earum repellendus fuga debitis, nam molestiae minima voluptates possimus.'
- 
 
 const GENERAL_DATA = [
       {
@@ -133,7 +131,7 @@ const SHIPPING_DATA = [
       },
       {
             title: 'Can I Pick up my painting myself?',
-            paragraph: <>  Yes, I provide free pick up options in Babel Bookshop, located in Tel Aviv on <a href="https://goo.gl/maps/2D2U6ncx2yvWiJ5i6" target="_blank">Yona HaNavi street, 46 Map</a>. Please check its working hours <a href="https://www.facebook.com/BabelTLV/" target="_blank">here</a>.  </>,
+            paragraph: <>  Yes, I provide free pick up options in Babel Bookshop, located in Tel Aviv on <a href="https://goo.gl/maps/2D2U6ncx2yvWiJ5i6" rel="noopener noreferrer" target="_blank">Yona HaNavi street, 46 Map</a>. Please check its working hours <a href="https://www.facebook.com/BabelTLV/" rel="noopener noreferrer" target="_blank">here</a>.  </>,
             id: "shipping2"
       }
 ];

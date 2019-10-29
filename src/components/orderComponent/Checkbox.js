@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Checkbox = (props) => {
-      const {form: {errors, dirty, touched}, field, name, id, label, type, helper, required} = props;
+      const {form: {errors, dirty, touched}, field, name, id, label} = props;
 
       return (
             <div class="checkbox-wrap">

@@ -8,23 +8,23 @@ export default withFormik({
       mapPropsToValues: () => ({
             // photo:'',
             photo: process.env.NODE_ENV !== "production" ? [{"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}] : "",
-            style:'',
-            canvasSize: '',
-            canvasPosition: '',
+            style:'Colorfull',
+            canvasSize: '24x30',
+            canvasPosition: 'horizontal',
             comments: '',
             extraPet: 1,
 
-            billingAddress_firstName: '',
-            billingAddress_lastName: '',
-            billingAddress_email: '',
-            billingAddress_phone: '',
-            billingAddress_address: '',
-            billingAddress_address2: '',
+            billingAddress_firstName: 'Philipp',
+            billingAddress_lastName: 'Philipp',
+            billingAddress_email: 'prus@beinisrael.com',
+            billingAddress_phone: '+972546128689',
+            billingAddress_address: 'Zamenhof 7',
+            billingAddress_address2: '9',
             billingAddress_country: 'Israel',
-            billingAddress_zip: '',
+            billingAddress_zip: '5947320',
 
-            isAnotherShippingAddress: "true",
-
+            isSameShippingAddress: "true",
+            status: "not paid",
             shippingAddress_firstName: '',
             shippingAddress_lastName: '',
             shippingAddress_email: '',
@@ -42,13 +42,10 @@ export default withFormik({
             isAgree: false,
             payment_type: 'paypal',
             shipping_type: 'pickup',
-            payment_number: process.ENV !== "production" ? Math.random() * 10000000 / 5 : "",
-            order_total: process.ENV !== "production" ? 10 : "",
+            payment_number: "",
+            order_total: 0,
 
             dispatch_date: addDays(new Date().setHours(0,0,0,0), 14),
-
-            total: 0
-
       }),
       validate: (values) => {
           let errors = {};
@@ -89,22 +86,22 @@ export default withFormik({
             errors.billingAddress_zip = msg_requier;
         }
 
-        if(values.isAnotherShippingAddress && !values.shippingAddress_firstName) {
+        if(values.isSameShippingAddress !== "true" && !values.shippingAddress_firstName) {
             errors.shippingAddress_firstName = msg_requier;
         }
-        if(values.isAnotherShippingAddress && !values.shippingAddress_lastName) {
+        if(values.isSameShippingAddress !== "true" && !values.shippingAddress_lastName) {
             errors.shippingAddress_lastName = msg_requier;
         }
-        if(values.isAnotherShippingAddress && !values.shippingAddress_email) {
+        if(values.isSameShippingAddress !== "true" && !values.shippingAddress_email) {
             errors.shippingAddress_email = msg_requier;
         }
-        if(values.isAnotherShippingAddress && !values.shippingAddress_phone) {
+        if(values.isSameShippingAddress !== "true" && !values.shippingAddress_phone) {
             errors.shippingAddress_phone = msg_requier;
         }
-        if(values.isAnotherShippingAddress && !values.shippingAddress_address) {
+        if(values.isSameShippingAddress !== "true" && !values.shippingAddress_address) {
             errors.shippingAddress_address = msg_requier;
         }
-        if(values.shippingAddress_zip && !values.shippingAddress_zip) {
+        if(values.isSameShippingAddress !== "true" && !values.shippingAddress_zip) {
             errors.shippingAddress_zip = msg_requier;
         }
 
@@ -118,15 +115,11 @@ export default withFormik({
    
 
       handleSubmit: async (values, {props, setSubmitting, resetForm, setStatus, setErrors}) =>  {
-            console.log("2");
             setStatus("loading");
            
-            axios.post("/api/order", values)
+            axios.put("/api/order", values)
               .then(function (response) {
                 if(response.status === 200) {
-                    console.log(response);
-                    const count = response && response.data && response.data.count;
-                    values.order_number = count;
                     axios.post("/api/sendmail/order", values)
                         .then(function (response){
                             if(response.status === 200) {
@@ -138,13 +131,10 @@ export default withFormik({
                             const { errors } = response.data;
                            console.log(errors);
 
-                            setErrors(errors);
                         });
                 }
               }).catch(({ response }) => {
                   console.log(response);
-                const { errors } = response.data;
-                setErrors(errors);
             });
          
       },

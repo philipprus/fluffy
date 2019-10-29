@@ -86,12 +86,12 @@ const AdminApp = (props) => {
                                     </td>
                                     <td>
                                           <small>
-                                          {item.isAnotherShippingAddress ? item.shippingAddress_firstName : item.billingAddress_firstName} {item.isAnotherShippingAddress ? item.shippingAddress_lastName : item.billingAddress_lastName}, <br/>
-                                          {item.isAnotherShippingAddress ? item.shippingAddress_email : item.billingAddress_email} {item.isAnotherShippingAddress ? item.shippingAddress_phone : item.billingAddress_phone}, <br/>
-                                          {item.isAnotherShippingAddress ? item.shippingAddress_address : item.billingAddress_address} 
-                                          {item.isAnotherShippingAddress ? item.shippingAddress_address2 : item.billingAddress_address2 !== "" ? item.billingAddress_address2 : "" },
-                                          {item.isAnotherShippingAddress ? item.shippingAddress_country : item.billingAddress_country},
-                                          {item.isAnotherShippingAddress ? item.shippingAddress_zip : item.billingAddress_zip}
+                                          {item.isSameShippingAddress ? item.shippingAddress_firstName : item.billingAddress_firstName} {item.isSameShippingAddress ? item.shippingAddress_lastName : item.billingAddress_lastName}, <br/>
+                                          {item.isSameShippingAddress ? item.shippingAddress_email : item.billingAddress_email} {item.isSameShippingAddress ? item.shippingAddress_phone : item.billingAddress_phone}, <br/>
+                                          {item.isSameShippingAddress ? item.shippingAddress_address : item.billingAddress_address} 
+                                          {item.isSameShippingAddress ? item.shippingAddress_address2 : item.billingAddress_address2 !== "" ? item.billingAddress_address2 : "" },
+                                          {item.isSameShippingAddress ? item.shippingAddress_country : item.billingAddress_country},
+                                          {item.isSameShippingAddress ? item.shippingAddress_zip : item.billingAddress_zip}
                                           <span class="description">({item.shipping_type || "Post"})</span>
                                           </small>
                                     </td>
