@@ -61,14 +61,17 @@ const sendContactMail = async ({name, email, phone, comments = "", isCopy = fals
 }
 
 
-const  {builderHtml} = require("../utils/builderEmailOrder.js")
+const  {builderHtml, getSubjectEmail} = require("../utils/builderEmailOrder.js")
 
 const sendOrderMail = async (order) => {
       const htmlOrder = builderHtml(order);
-      let recipients = [{"Email": "order@fluffy.co.il", "Name": "New Order"}, {
+      let recipients = [{
             "Email": order.billingAddress_email, "Name": `${order.billingAddress_firstName} ${order.billingAddress_lastName}`
       }];
-      const messages = buildMessage(recipients, htmlOrder, "Order Form Fluffy");
+      if(order.status === "new" || order.status === "not paid") {
+            recipients.push({"Email": "order@fluffy.co.il", "Name": "New Order"});
+      }
+      const messages = buildMessage(recipients, htmlOrder, getSubjectEmail(order.status));
       try {
             const result = await request(messages);
             return result;

@@ -4,6 +4,21 @@ import { addDays } from "date-fns";
 import axios from 'axios';
 import OrderFrom from './orderComponent/OrderForm';
 
+const sendMailPost = (values, setSubmitting, setStatus, resetForm )=> {
+    console.log(values.status);
+    axios.post("/api/sendmail/order", values)
+        .then(function (response){
+            if(response.status === 200) {
+                setSubmitting(false);
+                resetForm();
+                setStatus("ide");
+            }
+        }).catch(({ response }) => {
+            const { errors } = response.data;
+            console.log(errors);
+        });
+}
+
 export default withFormik({
       mapPropsToValues: () => ({
             // photo:'',
@@ -35,7 +50,7 @@ export default withFormik({
             shippingAddress_zip: '',
 
             isGift: false,
-            gitName: '',
+            coupon: '',
             сongratulation: '',
             addCard: false,
             addPaper: false,
@@ -43,8 +58,10 @@ export default withFormik({
             payment_type: 'paypal',
             shipping_type: 'pickup',
             payment_number: "",
+            amountDiscount: 0,
+            discount: 0,
+            // order: 0,
             order_total: 0,
-
             dispatch_date: addDays(new Date().setHours(0,0,0,0), 14),
       }),
       validate: (values) => {
@@ -116,22 +133,21 @@ export default withFormik({
 
       handleSubmit: async (values, {props, setSubmitting, resetForm, setStatus, setErrors}) =>  {
             setStatus("loading");
-           
-            axios.put("/api/order", values)
+           axios.put("/api/order", values)
               .then(function (response) {
+                console.log("pux axios");
                 if(response.status === 200) {
-                    axios.post("/api/sendmail/order", values)
+                    console.log("pux status 200 axios");
+                    if(values.coupon && values.discount) {
+                        axios.put("/api/giftCard", {coupon: values.coupon, amount: values.discount})
                         .then(function (response){
                             if(response.status === 200) {
-                                setSubmitting(false);
-                                resetForm();
-                                setStatus("ide");
+                                sendMailPost(values, setSubmitting, setStatus, resetForm);
                             }
-                        }).catch(({ response }) => {
-                            const { errors } = response.data;
-                           console.log(errors);
-
                         });
+                    } else {
+                        sendMailPost(values, setSubmitting, setStatus, resetForm);
+                    }
                 }
               }).catch(({ response }) => {
                   console.log(response);

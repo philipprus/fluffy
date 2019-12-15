@@ -130,6 +130,17 @@ const OrderSchema =  new mongoose.Schema({
       status: {
             type: String,
             default: "new"
+      },
+      coupon: {
+            type: String
+      },
+      discount: {
+            type: Number,
+            required: [true]
+      },
+      price: {
+            type: Number, 
+            required: [true]
       }
 
 },{

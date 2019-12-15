@@ -22,10 +22,27 @@ const summeryOrder = (values) => {
             sum = sum +5;
         }
       }
-      if(values.shipping_type !== "pickup") {
-            sum = sum + 40;
-      }
+      if (sum < 0) return 0;
+
       return sum;
+  }
+
+  const isDiscountBigPrice = (discount, price) => {
+        if(discount > price) {
+              return true
+        } else {
+              return false
+        }
+  }
+
+   const shipping = (type) => {
+        switch(type) {
+            case "israelPost":
+              return 40;
+            case "pickup": 
+            default: 
+                  return 0;
+        }
   }
 
   const isDateInThisWeek = (date) => {
@@ -60,6 +77,12 @@ const averageNowDispatch = (dispatch) => {
           return result;
 }
 
+function couponGenerator() {
+      return 'xxxxxxxx'.replace(/[xy]/g, function(c) {
+            // eslint-disable-next-line no-mixed-operators
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+          });
+}
 
-
-  export { summeryOrder, isDateInThisWeek,isDateInAfterWeek, dispatchDescription, averageNowDispatch};
+  export { summeryOrder, isDateInThisWeek,isDateInAfterWeek, dispatchDescription, averageNowDispatch, shipping, isDiscountBigPrice, couponGenerator};

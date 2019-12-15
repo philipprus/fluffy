@@ -1,6 +1,5 @@
 const orderService = require('../service/order.service');
 
-
 const getOrders = async (req, res) => {
       try {
         const result = await orderService.getOrders({});
@@ -13,13 +12,15 @@ const getOrders = async (req, res) => {
 
 const createOrder = async (req, res) => {
   const order = req.body;
-      try {
-        const created = await orderService.create(order);
-            return res.status(200).send(created);
-          } catch (e) {
-            console.log(e);
-            return res.sendStatus(400);
-          } 
+  order["_id"] = undefined;
+  try {
+    const created = await orderService.create(order);
+    return res.status(200).send(created);
+  } catch (e) {
+    console.log(e);
+    return res.sendStatus(400);
+  } 
+
 }
 
 const getOrderById = async (req,res) => {
@@ -34,7 +35,20 @@ const getOrderById = async (req,res) => {
 
 const updateOrder = async (req,res) => {
   const order = req.body;
-  console.log(order);
+  // console.log(order);
+  // if(order.coupon && order.discount) {
+  //   try {
+  //     const giftCardAvailable = await giftCardService.checkAmountByCoupon(order.coupon, order.discount);
+  //     if(!giftCardAvailable) return res.status(400).send({status: "error", msg: "Giftcard not true"});
+  //     const replaced = await giftCardService.update({coupon: order.coupon, amount: order.discount});
+  //     if (!replaced || !replaced.ok || !replaced.n) {
+  //       return res.sendStatus(404);
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //     return res.sendStatus(400);
+  //   }
+  // }
   try { 
     const replaced = await orderService.update(order);
     if (!replaced || !replaced.ok || !replaced.n) {

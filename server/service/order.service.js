@@ -11,7 +11,6 @@ const getOrders = async (query) => {
       }
 }
 
-
 const getOrderById = async (id) => {
       try {
             const _id = new mongo.ObjectId(id);

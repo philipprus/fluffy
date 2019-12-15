@@ -56,8 +56,11 @@ ul.checklist-container {
     border: 1px solid orange;
   }
 
+  .button-amount-check {
+      height: 44px;
+  }
   
-  .react-datepicker__day.super-express-date {
+.react-datepicker__day.super-express-date {
     color: red;
     border-radius: 0.3rem;
     border: 1px solid red;
@@ -72,6 +75,10 @@ ul.checklist-container {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    border: 0;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .paypal-button-disabled > .paypal-logo, .paypal-button > .paypal-logo-card {

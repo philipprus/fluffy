@@ -67,6 +67,7 @@ const AdminOrderForm = (props) => {
                                     <div className="text-muted small">Status</div>
                                     <Field name={'status'} placeholder="Choose canvas position" className={ 'form-control' + (errors.canvasPosition && touched.canvasPosition ? ' is-invalid' : '')}  component="select" >
                                           <option value="new">New</option>
+                                          <option value="not paid">Not paid</option>
                                           <option value="inprocess">In Process</option>
                                           <option value="not_confirmed">Not confirmed</option>
                                           <option value="ready_to_dispatch">Ready to dispatch</option>
@@ -297,7 +298,7 @@ const AdminOrderFormik = withFormik({
             shippingAddress_zip:  props.shippingAddress_zip ? props.shippingAddress_zip : props.billingAddress_zip ,
 
             isGift: props.isGift,
-            gitName: props.gitName ,
+            coupon: props.coupon ,
             сongratulation: props.сongratulation ,
             addCard: props.addCard,
             addPaper: props.addPaper,

@@ -1,16 +1,17 @@
 export const testimonials = {
       paypal: "Paypal",
-      new: "New",
-      sending: "Sending",
       vertical: "Vertical",
+      pickup: "Pick up",
       horizontal: "Horizontal",
+      israelpost: "Israel Post",
+      new: "New",
+      "not paid": "Not paid",
+      sending: "Sending",
       inprocess: "In Process",
       not_confirmed: "Not confirmed",
       ready_to_dispatch: "Ready to dispatch",
       in_delivery: "In Delivery",
       complete: "Complete",
-      pickup: "Pick up",
-      israelpost: "Israel Post"
 }
 
 export function isEmpty(obj) {
@@ -21,3 +22,5 @@ export function isEmpty(obj) {
   
       return true;
   }
+
+

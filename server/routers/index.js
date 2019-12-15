@@ -2,7 +2,7 @@ const uploadImage = require("./upload.routers");
 const sendMail = require("./sendmail.routers");
 const order = require("./order.routers");
 const loginAPI = require("./login.routers");
-
+const giftCardAPI = require('./giftcard.routers');
 const routers = [
   {
     prefix: "/upload",
@@ -19,6 +19,10 @@ const routers = [
   {
     prefix: "/login",
     router: loginAPI
+  },
+  {
+    prefix: "/giftCard",
+    router: giftCardAPI
   }
 ];
 
