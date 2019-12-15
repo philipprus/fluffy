@@ -12,7 +12,6 @@ import DatePicker from "../orderComponent/DatePicker";
 import { summeryOrder, averageNowDispatch } from '../../utils/payment'
 
 const AdminOrder = (props) => {
-
       const orderId = props.match.params.id;
       const [{ data, isLoading, isError }] = useDataApi(
             `/api/order/${orderId}`,
@@ -73,10 +72,8 @@ const AdminOrderForm = (props) => {
                                           <option value="ready_to_dispatch">Ready to dispatch</option>
                                           <option value="in_delivery">In Delivery</option>
                                           <option value="complete">Complete</option>
-
                                     </Field>
                               </div>
-                   
                         </div>
                   </div>
                  
