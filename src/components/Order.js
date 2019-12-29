@@ -133,13 +133,11 @@ export default withFormik({
 
       handleSubmit: async (values, {props, setSubmitting, resetForm, setStatus, setErrors}) =>  {
             setStatus("loading");
-           axios.put("/api/order", values)
+          await axios.put("/api/order", values)
               .then(function (response) {
-                console.log("pux axios");
                 if(response.status === 200) {
-                    console.log("pux status 200 axios");
                     if(values.coupon && values.discount) {
-                        axios   ("/api/giftCard", {coupon: values.coupon, amount: values.discount})
+                        axios("/api/giftCard", {coupon: values.coupon, amount: values.discount})
                         .then(function (response){
                             if(response.status === 200) {
                                 sendMailPost(values, setSubmitting, setStatus, resetForm);

@@ -15,9 +15,10 @@ const StyckyBoxComponent = (props) => {
     const {values} = props;
 
     React.useEffect(()=>{
+      
         props.setFieldValue('amount', props.values.amount);
         
-    }, [props.values]);
+    }, [props.values.amount]);
      
     const handlerSubmit = (paymentDetails) => {
         props.setFieldValue('payment_description', paymentDetails);

@@ -56,7 +56,6 @@ export default withFormik({
             axios
             .get("/api/giftCard/status/"+values.giftCardNumber)
             .then(res => {
-                  console.log(res.status);
                   if(res.status === 200) {
                         setSubmitting(false);
                         setStatus(res.data);

@@ -8,7 +8,6 @@ import {canvasSizeList} from '../common/priceTable';
 import { dispatchDescription} from '../../utils/payment';
 import "../../css/OrderForm.css";
 import DatePicker from "./DatePicker";
-// import moment from 'moment';
 import ModalBestPet from './ModalBestPet';
 import Input from './Input';
 import Textarea from './Textarea';
@@ -43,7 +42,7 @@ const OrderFrom = (props) => {
         </div>
      );
  
-      return (
+return (
     <form onSubmit={handleSubmit}>
       <div className="container mt-5">
           <div className="row mb-3">
