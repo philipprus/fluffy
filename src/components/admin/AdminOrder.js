@@ -281,7 +281,7 @@ const AdminOrderFormik = withFormik({
             billingAddress_email: props.billingAddress_email ,
             billingAddress_phone: props.billingAddress_phone ,
             billingAddress_address: props.billingAddress_address ,
-            billingAddress_address2: props.billingAddress_address2 ,
+            billingAddress_address2: props.billingAddress_address2,
             billingAddress_country: props.billingAddress_country,
             billingAddress_zip: props.billingAddress_zip ,
 

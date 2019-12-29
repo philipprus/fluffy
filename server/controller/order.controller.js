@@ -35,20 +35,6 @@ const getOrderById = async (req,res) => {
 
 const updateOrder = async (req,res) => {
   const order = req.body;
-  // console.log(order);
-  // if(order.coupon && order.discount) {
-  //   try {
-  //     const giftCardAvailable = await giftCardService.checkAmountByCoupon(order.coupon, order.discount);
-  //     if(!giftCardAvailable) return res.status(400).send({status: "error", msg: "Giftcard not true"});
-  //     const replaced = await giftCardService.update({coupon: order.coupon, amount: order.discount});
-  //     if (!replaced || !replaced.ok || !replaced.n) {
-  //       return res.sendStatus(404);
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //     return res.sendStatus(400);
-  //   }
-  // }
   try { 
     const replaced = await orderService.update(order);
     if (!replaced || !replaced.ok || !replaced.n) {

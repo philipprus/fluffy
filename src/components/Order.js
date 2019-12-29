@@ -139,7 +139,7 @@ export default withFormik({
                 if(response.status === 200) {
                     console.log("pux status 200 axios");
                     if(values.coupon && values.discount) {
-                        axios.put("/api/giftCard", {coupon: values.coupon, amount: values.discount})
+                        axios   ("/api/giftCard", {coupon: values.coupon, amount: values.discount})
                         .then(function (response){
                             if(response.status === 200) {
                                 sendMailPost(values, setSubmitting, setStatus, resetForm);

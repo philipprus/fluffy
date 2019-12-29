@@ -1,5 +1,5 @@
 const moment = require('moment');
-
+const CONSTANT = require('./contsText');
 
 const headerHtml = () => {
       return `
@@ -665,123 +665,99 @@ const bodyHtml = (order) => {
 
 const titleMail = (type) => {
   switch (type) {
-    case "new":
-        return MAIL_TEXT.HEADER_TITLE.NEW;
-    case "in_delivery":
-        return MAIL_TEXT.HEADER_TITLE.IN_DELIVERY;
-    case "ready_to_dispatch":
-        return MAIL_TEXT.HEADER_TITLE.READY_TO_DISPATCH;
-    case "not_confirmed":
-        return MAIL_TEXT.HEADER_TITLE.NOT_CONFIRMED;
-    case "inprocess":
-        return MAIL_TEXT.HEADER_TITLE.IN_PROCESS;
-    case "complete":
+    case CONSTANT.STATUS_NEW:
+    case CONSTANT.STATUS_NOT_PAID:
+        return CONSTANT.HEADER_TITLE_NEW;
+    case CONSTANT.STATUS_IN_DELIVERY:
+        return CONSTANT.HEADER_TITLE_IN_DELIVERY;
+    case CONSTANT.STATUS_READY_TO_DISPATCH:
+        return CONSTANT.HEADER_TITLE_READY_TO_DISPATCH;
+    case CONSTANT.STATUS_NOT_CONFIRMED:
+        return CONSTANT.HEADER_TITLE_NOT_CONFIRMED;
+    case CONSTANT.STATUS_IN_PROCESS:
+        return CONSTANT.HEADER_TITLE_IN_PROCESS;
+    case CONSTANT.STATUS_COMPLETE:
     default:
-        return MAIL_TEXT.HEADER_TITLE.THANK_YOU_DELIVERED;
+        return CONSTANT.HEADER_TITLE_COMPLETE;
     } 
 }
 
+const getColorSubTitle = (type) => {
+  switch (type) {
+    case CONSTANT.STATUS_NEW:
+    case CONSTANT.STATUS_NOT_PAID:
+      return CONSTANT.COLOR_SUBTITLE_NEW
+    case  CONSTANT.STATUS_IN_DELIVERY:
+      return CONSTANT.COLOR_SUBTITLE_IN_DELIVERY
+    case CONSTANT.STATUS_READY_TO_DISPATCH:
+      return CONSTANT.COLOR_SUBTITLE_READY_TO_DISPATCH
+    case CONSTANT.STATUS_NOT_CONFIRMED:
+      return CONSTANT.COLOR_SUBTITLE_NOT_CONFIRMED
+    case CONSTANT.STATUS_IN_PROCESS:
+      return CONSTANT.COLOR_SUBTITLE_IN_PROCESS
+    case CONSTANT.STATUS_COMPLETE:
+    default:
+      return CONSTANT.COLOR_SUBTITLE_COMPLETE
+  }
+}
+
 const subTitleMail = (type) => {
-switch (type) {
-  case "new":
-  return MAIL_TEXT.HEADER_SUBTITLE.IN_PROCESS;
-  case "in_delivery":
-  return MAIL_TEXT.HEADER_SUBTITLE.READY_TO_DISPATCH;
-  case "ready_to_dispatch":
-    return "Thank You!";
-  case MAIL_TEXT.HEADER_SUBTITLE.NOT_CONFIRMED:
-    return "Thank You!";
-    case "inprocess":
-  return MAIL_TEXT.HEADER_SUBTITLE.THANK_YOU_DELIVERED;
-  case "complete":
-  default:
-    return MAIL_TEXT.HEADER_SUBTITLE.NEW;
+  switch (type) {
+    case CONSTANT.STATUS_NEW:
+    case CONSTANT.STATUS_NOT_PAID:
+      return CONSTANT.HEADER_SUBTITLE_NEW;
+    case  CONSTANT.STATUS_IN_DELIVERY:
+      return CONSTANT.HEADER_SUBTITLE_IN_DELIVERY;
+    case CONSTANT.STATUS_READY_TO_DISPATCH:
+      return CONSTANT.HEADER_SUBTITLE_READY_TO_DISPATCH;
+    case CONSTANT.STATUS_NOT_CONFIRMED:
+      return CONSTANT.HEADER_SUBTITLE_NOT_CONFIRMED;
+    case CONSTANT.STATUS_IN_PROCESS:
+      return CONSTANT.HEADER_SUBTITLE_IN_PROCESS;
+    case CONSTANT.STATUS_COMPLETE:
+    default:
+      return CONSTANT.HEADER_SUBTITLE_COMPLETE;
   }
 }
 
 const getSubjectEmail = (status) => {
   switch (status) {
-    case STATUS_EMAIL.NEW:
-      return "new order"
-    case STATUS_EMAIL.NOT_PAID:
-      return "not paid order"
-    case STATUS_EMAIL.COMPLETE:
-    case STATUS_EMAIL.IN_DELIVERY:
-    case STATUS_EMAIL.IN_PROCESS:
-    case STATUS_EMAIL.NOT_CONFIRMED:
-    case STATUS_EMAIL.READY_TO_DISPATCH:
-    default:  
-      return "Order Form Fluffy"
+    case CONSTANT.STATUS_NEW:
+    case CONSTANT.STATUS_NOT_PAID:
+      return CONSTANT.SUBJECT_NEW;
+    case CONSTANT.STATUS_IN_PROCESS:
+      return CONSTANT.SUBJECT_IN_PROCESS;
+    case CONSTANT.STATUS_READY_TO_DISPATCH:
+      return CONSTANT.SUBJECT_READY_TO_DISPATCH;
+    case CONSTANT.STATUS_COMPLETE:
+      return CONSTANT.STATUS_COMPLETE;
+    case CONSTANT.STATUS_IN_DELIVERY:
+      return CONSTANT.SUBJECT_IN_DELIVERY;
+    case CONSTANT.STATUS_NOT_CONFIRMED:
+     default:  
+      return CONSTANT.SUBJECT_NOT_CONFIRMED;
   }
 }
-
-
-const STATUS_EMAIL = {
-  NEW: "new",
-  IN_DELIVERY: "in_delivery",
-  READY_TO_DISPATCH: "ready_to_dispatch",
-  NOT_CONFIRMED: "not_confirmed",
-  IN_PROCESS: "inprocess",
-  COMPLETE: "complete",
-  NOT_PAID: "not paid"
-}
-
 
 const bodyText = (status) => {
   switch (status) {
-    case STATUS_EMAIL.NEW:
-    case STATUS_EMAIL.NOT_PAID:
-      return MAIL_TEXT.TEXT_DESCRIPTION.NEW;
-    case STATUS_EMAIL.IN_DELIVERY:
-      return MAIL_TEXT.TEXT_DESCRIPTION.IN_DELIVERY;
-    case STATUS_EMAIL.READY_TO_DISPATCH:
-      return MAIL_TEXT.TEXT_DESCRIPTION.READY_TO_DISPATCH;
-    case STATUS_EMAIL.NOT_CONFIRMED:
-      return MAIL_TEXT.TEXT_DESCRIPTION.NOT_CONFIRMED;
-    case STATUS_EMAIL.IN_PROCESS:
-      return MAIL_TEXT.TEXT_DESCRIPTION.IN_PROCESS;
-    case STATUS_EMAIL.COMPLETE:
+    case CONSTANT.STATUS_NEW:
+    case CONSTANT.STATUS_NOT_PAID:
+      return CONSTANT.TEXT_DESCRIPTION_NEW;
+    case CONSTANT.STATUS_IN_DELIVERY:
+      return CONSTANT.TEXT_DESCRIPTION_IN_DELIVERY;
+    case CONSTANT.STATUS_READY_TO_DISPATCH:
+      return CONSTANT.TEXT_DESCRIPTION_READY_TO_DISPATCH;
+    case CONSTANT.STATUS_NOT_CONFIRMED:
+      return CONSTANT.TEXT_DESCRIPTION_NOT_CONFIRMED;
+    case CONSTANT.STATUS_IN_PROCESS:
+      return CONSTANT.TEXT_DESCRIPTION_IN_PROCESS;
+    case CONSTANT.STATUS_COMPLETE:
     default: 
-        return MAIL_TEXT.TEXT_DESCRIPTION.THANK_YOU_DELIVERED;
+        return CONSTANT.TEXT_DESCRIPTION_THANK_YOU_DELIVERED;
   }
 }
 
-const MAIL_TEXT = {
-    HEADER_TITLE: {
-      IN_PROCESS: 'Getting ready',
-      READY_TO_DISPATCH: "It's ready",
-      IN_DELIVERY: 'On the way!',
-      NOT_CONFIRMED: 'Tell me more!',
-      THANK_YOU_DELIVERED: 'Thank you!',
-      NEW: 'Thank you!',
-    },  
-    HEADER_SUBTITLE: {
-          IN_PROCESS: 'Your order has been confirmed',
-          READY_TO_DISPATCH: "Your painting ready to be despatched",
-          IN_DELIVERY: 'Your painting has been despatched',
-          NOT_CONFIRMED: 'Your order need to be discussed',
-          THANK_YOU_DELIVERED: 'Your painting has been delivered',
-          NEW: 'Your order has been received',
-    },
-    TEXT_DESCRIPTION: {
-      IN_PROCESS: `I got your money,<br /> soon you'll get your Fluffy painting!`,
-      READY_TO_DISPATCH: `I got your Fluffy painting done,<br /> soon you'll get it!`,
-      IN_DELIVERY: `I got your Fluffy painting despatched,<br /> soon you'll get it!`,
-      NOT_CONFIRMED: `We have a questions,<br />Let's talk!`,
-      THANK_YOU_DELIVERED: `You got your Fluffy painting,<br /> tell me about your feelings!`,
-      NEW: `I got your information,<br /> soon you'll get your order confirmation!`,
-    },
-    SUBJECT: {
-      IN_PROCESS: `I got your money,<br /> soon you'll get your Fluffy painting!`,
-      READY_TO_DISPATCH: `I got your Fluffy painting done,<br /> soon you'll get it!`,
-      IN_DELIVERY: `I got your Fluffy painting despatched,<br /> soon you'll get it!`,
-      NOT_CONFIRMED: `We have a questions,<br />Let's talk!`,
-      THANK_YOU_DELIVERED: `You got your Fluffy painting,<br /> tell me about your feelings!`,
-      NEW: `I got your information,<br /> soon you'll get your order confirmation!`,
-      NOT_PAID: ``
-    }
-
-}
 
 const builderHtml = (order) => {
 return `
@@ -862,7 +838,7 @@ style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:50px;font-weig
     >
       
 <div
-style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:18px;font-weight:300;line-height:1;text-align:center;text-transform:uppercase;color:#000000;"
+style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:18px;font-weight:300;line-height:1;text-align:center;text-transform:uppercase;color:${getColorSubTitle(order.status)};"
 >
 ${subTitleMail(order.status)}
 </div>

@@ -67,4 +67,4 @@ const checkGiftCard = async (req,res) => {
   }
 }
 
-module.exports =  { createGiftCard, getGiftCards, getGiftCardById, getStatusGiftCardByCoupon, updateGiftCard, checkGiftCard };
+module.exports =  { createGiftCard, getGiftCards, getGiftCardById, getStatusGiftCardByCoupon,   updateGiftCard, checkGiftCard };
