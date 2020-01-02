@@ -1,4 +1,4 @@
-const GiftCard = require("../model/giftCard.model");
+const GiftCard = require("../model/giftcard.model");
 const  {mongo} = require("mongoose");
 const couponGenerator = require("../utils/couponGenerator");
 

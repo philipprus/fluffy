@@ -1,4 +1,4 @@
-const giftCardService = require('../service/giftCard.service');
+const giftCardService = require('../service/giftcard.service');
 
 
 const getGiftCards = async (req, res) => {
