@@ -1,5 +1,5 @@
 const express = require('express');
-const giftCardController = require('../controller/giftCard.controller');
+const giftCardController = require('../controller/giftcard.controller');
 
 const giftCard =  express.Router();
 
