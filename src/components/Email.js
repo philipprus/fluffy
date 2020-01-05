@@ -44,51 +44,7 @@ const COLOR_SUBTITLE_NOT_CONFIRMED = "#53B0AD";
 const COLOR_SUBTITLE_READY_TO_DISPATCH = "#53B0AD";
 const COLOR_SUBTITLE_COMPLETE = "#EC576B";
 
-const CONSTANT = {
-    HEADER_TITLE_IN_PROCESS,
-    HEADER_TITLE_READY_TO_DISPATCH,
-    HEADER_TITLE_IN_DELIVERY,
-    HEADER_TITLE_NOT_CONFIRMED,
-    
-    HEADER_TITLE_NEW,
-    HEADER_TITLE_COMPLETE,
-    HEADER_SUBTITLE_IN_PROCESS,
-    HEADER_SUBTITLE_READY_TO_DISPATCH,
-    HEADER_SUBTITLE_IN_DELIVERY,
-    HEADER_SUBTITLE_NOT_CONFIRMED,
-    
-    HEADER_SUBTITLE_NEW,
-    HEADER_SUBTITLE_COMPLETE,
-    TEXT_DESCRIPTION_IN_PROCESS,
-    TEXT_DESCRIPTION_READY_TO_DISPATCH,
-    TEXT_DESCRIPTION_IN_DELIVERY,
-    TEXT_DESCRIPTION_NOT_CONFIRMED,
-    
-    TEXT_DESCRIPTION_NEW,
-    TEXT_DESCRIPTION_COMPLETE,
-    SUBJECT_IN_PROCESS,
-    SUBJECT_READY_TO_DISPATCH,
-    SUBJECT_IN_DELIVERY,
-    SUBJECT_NOT_CONFIRMED,
-    
-    SUBJECT_NEW,
-    SUBJECT_NOT_PAID,
-    SUBJECT_COMPLETE,
-    STATUS_NEW,
-    STATUS_IN_DELIVERY,
-    STATUS_READY_TO_DISPATCH,
-    STATUS_NOT_CONFIRMED,
-    STATUS_IN_PROCESS,
-    STATUS_COMPLETE,
-    STATUS_NOT_PAID,
 
-    COLOR_SUBTITLE_NEW,
-    COLOR_SUBTITLE_IN_PROCESS,
-    COLOR_SUBTITLE_IN_DELIVERY,
-    COLOR_SUBTITLE_NOT_CONFIRMED,
-    COLOR_SUBTITLE_READY_TO_DISPATCH,
-    COLOR_SUBTITLE_COMPLETE
-}
 const orderApi =  {
     "_id":"5d936f28c94c167f3c03791f",
     "billingAddress_email":"prus@beinisrael.com",
@@ -98,7 +54,7 @@ const orderApi =  {
     "isGift":false,
     "addCard":false,
     "addPaper":false,
-    "photo":[{"_id":{"$oid":"5d936f28c94c167f3c037920"},"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}],
+    "photo":[{"_id":"5d936f28c94c167f3c037920","secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}],
     "style":"Colorfull",
     "canvasSize":"24x30",
     "canvasPosition":"vertical",
@@ -693,11 +649,7 @@ const bodyHtml = (order) => {
                                   <td align="left" style="font-size:0px;padding:10px 25px;padding-top:10px;padding-right:25px;padding-bottom:10px;padding-left:25px;word-break:break-word;">
 
                                       <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:16px;line-height:25px;text-align:left;color:#000000;">
-                                          <p> Dear Adidma, thank you again for your order!
-                                              <br/> I really hope you are happy with the result of the Fluffy painting!
-                                              <p></p> If you have just a minute I would be very greatfull for your short review on Fluffy.co.il/review
-                                              <br/> And moreover, if you download a photo of your ready artwork
-                                              <br/> I will send you a 50 Nis Gift Certificate for your or your friend next order ) </p>
+                                        ${getBodyTextBySTatus(order)}
                                       </div>
 
                                   </td>
@@ -861,12 +813,6 @@ switch (status) {
 }
 }
 
-const BODY_TEXT_COMPLETE = `<p> Dear Adidma, thank you again for your order!
-<br/> I really hope you are happy with the result of the Fluffy painting!
-<p></p> If you have just a minute I would be very greatfull for your short review on Fluffy.co.il/review
-<br/> And moreover, if you download a photo of your ready artwork
-<br/> I will send you a 50 Nis Gift Certificate for your or your friend next order ) </p>`
-
 const subTitleText = (status) => {
 switch (status) {
   case CONSTANT.STATUS_NEW:
@@ -885,7 +831,6 @@ switch (status) {
       return CONSTANT.TEXT_DESCRIPTION_COMPLETE;
 }
 }
-
 
 const builderHtml = (order) => {
 return `
@@ -1018,45 +963,25 @@ align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" st
   >
     <!--[if mso | IE]>
       <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-    
-<tr>
+        <tr>
+          <td  class="" style="vertical-align:top;width:600px;">
+    <![endif]-->
 
-<td
-  class="" style="vertical-align:top;width:600px;"
->
-<![endif]-->
-
-<div
-class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
->
-
-<table
-border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
->
-
-<tr>
-  <td
-    align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
-  >
-    
-<div
-style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:18px;line-height:1.5;text-align:center;color:${getColorSubTitle(order.status)};"
->
-${subTitleText(order.status)}
+<div class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+    <tr>
+      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+        <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:18px;line-height:1.5;text-align:center;color:${getColorSubTitle(order.status)};">
+          ${subTitleText(order.status)}
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
 
-  </td>
-</tr>
-
-</table>
-
-</div>
-
-<!--[if mso | IE]>
-</td>
-
-</tr>
-
+    <!--[if mso | IE]>
+          </td>
+        </tr>
       </table>
     <![endif]-->
   </td>
@@ -1088,6 +1013,152 @@ ${subTitleText(order.status)}
 `;
 }
 
+const TEXT_BODY_NEW = (order) => {
+  return `
+  <!--[if mso | IE]>
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td  class="" style="vertical-align:top;width:600px;">
+  <![endif]-->
+
+  <div class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+  <tr>
+    <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+      <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:18px;line-height:1.5;text-align:center;color:#000;">
+      <a href="${order.photo[0].secure_url}" target="_blank"> 
+        <img src=${order.photo[0].secure_url} alt=""/> 
+      </a>
+      <h3>
+      ${order.style} - ${order.canvasSize} - ${order.canvasPosition}
+      </h3>
+      <p>Comments: ${order.comments}</p>
+      <p>Extra pet: ${order.extraPet}</p>
+      <p>Add card: ${order.addCard}</p>
+      <p>Add paper: ${order.addPaper}</p>
+      <p>Gift: ${order.isGift}</p>
+      <p>Gift: ${order.order_total}</p>
+      <h2>Billing address</h2>
+      <p>${order.billingAddress_firstName} ${order.billingAddress_lastName}</p>
+      <p>${order.billingAddress_phone} ${order.billingAddress_email}</p>
+      <p>${order.billingAddress_address} ${order.billingAddress_address2}</p>
+      <p>${order.billingAddress_country} ${order.billingAddress_zip}</p>
+      <div>Dispatch date: ${moment(new Date(order.dispatch_date)).format('DD/MM/YYYY')}</div>
+      </div>
+    </td>
+  </tr>
+  </table>
+  </div>
+
+  <!--[if mso | IE]>
+        </td>
+      </tr>
+    </table>
+  <![endif]-->
+  `;
+}
+
+const TEXT_BODY_IN_DELIVERY = (order) => {
+  return `
+  fff
+  `;
+}
+
+const TEXT_BODY_READY_TO_DISPATCH = (order) => {
+  return `
+  fff
+  `;
+}
+
+const TEXT_BODY_NOT_CONFIRMED = (order) => {
+  return `
+  fff
+  `;
+}
+
+const TEXT_BODY_IN_PROCESS = (order) => {
+  return `
+  fff
+  `;
+}
+
+const TEXT_BODY_COMPLETE = (order) => {
+  return `
+  fff
+  `;
+}
+
+const getBodyTextBySTatus = (order) => {
+  switch (order.status) {
+    case CONSTANT.STATUS_NEW:
+    case CONSTANT.STATUS_NOT_PAID:
+      return CONSTANT.TEXT_BODY_NEW(order);
+    case CONSTANT.STATUS_IN_DELIVERY:
+      return CONSTANT.TEXT_BODY_IN_DELIVERY(order);
+    case CONSTANT.STATUS_READY_TO_DISPATCH:
+      return CONSTANT.TEXT_BODY_READY_TO_DISPATCH(order);
+    case CONSTANT.STATUS_NOT_CONFIRMED:
+      return CONSTANT.TEXT_BODY_NOT_CONFIRMED(order);
+    case CONSTANT.STATUS_IN_PROCESS:
+      return CONSTANT.TEXT_BODY_IN_PROCESS(order);
+    case CONSTANT.STATUS_COMPLETE:
+    default: 
+        return CONSTANT.TEXT_BODY_COMPLETE(order);
+  }  
+}
+
+const CONSTANT = {
+  HEADER_TITLE_IN_PROCESS,
+  HEADER_TITLE_READY_TO_DISPATCH,
+  HEADER_TITLE_IN_DELIVERY,
+  HEADER_TITLE_NOT_CONFIRMED,
+  
+  HEADER_TITLE_NEW,
+  HEADER_TITLE_COMPLETE,
+  HEADER_SUBTITLE_IN_PROCESS,
+  HEADER_SUBTITLE_READY_TO_DISPATCH,
+  HEADER_SUBTITLE_IN_DELIVERY,
+  HEADER_SUBTITLE_NOT_CONFIRMED,
+  
+  HEADER_SUBTITLE_NEW,
+  HEADER_SUBTITLE_COMPLETE,
+  TEXT_DESCRIPTION_IN_PROCESS,
+  TEXT_DESCRIPTION_READY_TO_DISPATCH,
+  TEXT_DESCRIPTION_IN_DELIVERY,
+  TEXT_DESCRIPTION_NOT_CONFIRMED,
+  
+  TEXT_DESCRIPTION_NEW,
+  TEXT_DESCRIPTION_COMPLETE,
+  SUBJECT_IN_PROCESS,
+  SUBJECT_READY_TO_DISPATCH,
+  SUBJECT_IN_DELIVERY,
+  SUBJECT_NOT_CONFIRMED,
+  
+  SUBJECT_NEW,
+  SUBJECT_NOT_PAID,
+  SUBJECT_COMPLETE,
+  STATUS_NEW,
+  STATUS_IN_DELIVERY,
+  STATUS_READY_TO_DISPATCH,
+  STATUS_NOT_CONFIRMED,
+  STATUS_IN_PROCESS,
+  STATUS_COMPLETE,
+  STATUS_NOT_PAID,
+
+  COLOR_SUBTITLE_NEW,
+  COLOR_SUBTITLE_IN_PROCESS,
+  COLOR_SUBTITLE_IN_DELIVERY,
+  COLOR_SUBTITLE_NOT_CONFIRMED,
+  COLOR_SUBTITLE_READY_TO_DISPATCH,
+  COLOR_SUBTITLE_COMPLETE,
+
+  TEXT_BODY_NEW,
+  TEXT_BODY_COMPLETE,
+  TEXT_BODY_IN_DELIVERY,
+  TEXT_BODY_IN_PROCESS,
+  TEXT_BODY_NOT_CONFIRMED,
+  TEXT_BODY_READY_TO_DISPATCH
+}
 
 const Email = (props) => {
     
