@@ -285,70 +285,50 @@ const footerHtml = () => {
       <![endif]-->
 
                         <div class="mj-column-per-33 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
-
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
-
                                 <tr>
                                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-
                                         <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:12px;line-height:1;text-align:center;color:#000000;">
                                             <a href="">
                                 RETURNS POLICY
                               </a></div>
-
                                     </td>
                                 </tr>
-
                             </table>
-
                         </div>
-
                         <!--[if mso | IE]>
         </td>
-
         <td
             class="" style="vertical-align:middle;width:199.99999999999997px;"
         >
       <![endif]-->
-
                         <div class="mj-column-per-33 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
-
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
-
                                 <tr>
                                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-
                                         <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:12px;line-height:1;text-align:center;color:#000000;">
                                             <a href="">
                                 PRIVACY POLICY
                               </a></div>
-
                                     </td>
                                 </tr>
-
                             </table>
-
                         </div>
-
                         <!--[if mso | IE]>
         </td>
-
     </tr>
-
               </table>
             <![endif]-->
                     </td>
                 </tr>
             </tbody>
         </table>
-
     </div>
 
     <!--[if mso | IE]>
       </td>
     </tr>
   </table>
-
   <table
       align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
   >
@@ -357,7 +337,6 @@ const footerHtml = () => {
   <![endif]-->
 
     <div style="background:;background-color:;margin:0px auto;max-width:600px;">
-
         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:;background-color:;width:100%;">
             <tbody>
                 <tr>
@@ -366,28 +345,21 @@ const footerHtml = () => {
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
 
     <tr>
-
         <td
             class="" style="vertical-align:middle;width:600px;"
         >
       <![endif]-->
-
                         <div class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
-
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
-
                                 <tr>
                                     <td align="center" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:25px;padding-bottom:0px;padding-left:25px;word-break:break-word;">
-
                                         <div style="font-family:Barlow, Helvetica, Arial, sans-serif;font-size:15px;line-height:1;text-align:center;color:#000000;">
                                             <p style="font-size:16px">Made with Love in Israel</p>
                                             <p style="font-size:16px"> ©&nbsp;2019&nbsp;Ekaterina Preobrazhenski.&nbsp;All Rights Reserved.&nbsp;
                                             </p>
                                         </div>
-
                                     </td>
                                 </tr>
-
                             </table>
 
                         </div>
@@ -607,7 +579,6 @@ return `
 const bodyHtml = (order) => {
   return `
   <div style="">
-
   <!--[if mso | IE]>
 <table
    align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
@@ -615,33 +586,24 @@ const bodyHtml = (order) => {
   <tr>
     <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
 <![endif]-->
-
   <div style="background:;background-color:;margin:0px auto;max-width:600px;">
-
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:;background-color:;width:100%;">
           <tbody>
               <tr>
                   <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:20px;padding-top:20px;text-align:center;">
                       <!--[if mso | IE]>
             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
   <tr>
-
       <td
          class="" style="vertical-align:top;width:600px;"
       >
     <![endif]-->
-
                       <div class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-
                               <tr>
                                   <td style="font-size:0px;padding:10px 25px;word-break:break-word;">
-
                                       <p style="border-top:solid 1px lightgrey;font-size:1;margin:0px auto;width:100%;">
                                       </p>
-
                                       <!--[if mso | IE]>
   <table
      align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px lightgrey;font-size:1;margin:0px auto;width:550px;" role="presentation" width="550px"
@@ -653,17 +615,12 @@ const bodyHtml = (order) => {
     </tr>
   </table>
 <![endif]-->
-
                                   </td>
                               </tr>
-
                           </table>
-
                       </div>
-
                       <!--[if mso | IE]>
       </td>
-
       <td
          class="" style="vertical-align:top;width:30px;"
       >
@@ -676,43 +633,27 @@ const bodyHtml = (order) => {
                           </table>
 
                       </div>
-
                       <!--[if mso | IE]>
       </td>
-
       <td
          class="" style="vertical-align:top;width:540px;"
       >
     <![endif]-->
-
                       <div class="mj-column-per-90 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-
                               <tr>
                                   <td align="left" style="font-size:0px;padding:10px 25px;padding-top:10px;padding-right:25px;padding-bottom:10px;padding-left:25px;word-break:break-word;">
-
                                       <div style="font-family:Nunito, Helvetica, Arial, sans-serif;font-size:16px;line-height:25px;text-align:left;color:#000000;">
-                                          <p> Dear Adidma, thank you again for your order!
-                                              <br/> I really hope you are happy with the result of the Fluffy painting!
-                                              <p></p> If you have just a minute I would be very greatfull for your short review on Fluffy.co.il/review
-                                              <br/> And moreover, if you download a photo of your ready artwork
-                                              <br/> I will send you a 50 Nis Gift Certificate for your or your friend next order ) </p>
+                                          ${bodyMail(order)}
                                       </div>
-
                                   </td>
                               </tr>
-
                           </table>
-
                       </div>
-
                       <!--[if mso | IE]>
       </td>
-
       <td
          class="" style="vertical-align:top;width:30px;"
-      >
     <![endif]-->
 
                       <div class="mj-column-per-5 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
@@ -784,6 +725,26 @@ const bodyHtml = (order) => {
   `
 }
 
+
+const bodyMail = (order) => {
+  switch (order.status) {
+    case CONSTANT.STATUS_NEW:
+    case CONSTANT.STATUS_NOT_PAID:
+        return CONSTANT.HEADER_TITLE_NEW;
+    case CONSTANT.STATUS_IN_DELIVERY:
+        return CONSTANT.HEADER_TITLE_IN_DELIVERY;
+    case CONSTANT.STATUS_READY_TO_DISPATCH:
+        return CONSTANT.HEADER_TITLE_READY_TO_DISPATCH;
+    case CONSTANT.STATUS_NOT_CONFIRMED:
+        return CONSTANT.HEADER_TITLE_NOT_CONFIRMED;
+    case CONSTANT.STATUS_IN_PROCESS:
+        return CONSTANT.HEADER_TITLE_IN_PROCESS;
+    case CONSTANT.STATUS_COMPLETE:
+    default:
+        return CONSTANT.HEADER_TITLE_COMPLETE;
+    } 
+  }
+  
 
 const titleMail = (type) => {
 switch (type) {
