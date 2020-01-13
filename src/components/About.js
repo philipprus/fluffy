@@ -5,12 +5,12 @@ import { Container, Row, Col } from 'react-bootstrap';
 const About = (props) => {
       return <Container className="mt-5">
             <Row>
-                  <Col className="col-5">
+                  <Col lg="5" md="5" xs="12">
                      <p>
                         <img src={aboutme} className="img-fluid" alt="" />
                      </p>
                   </Col >
-                  <Col  className="col-7">
+                  <Col lg="7" md="7" xs="12">
                         <p></p> Hi, my name is Katya Preobrazhenski, I'm an artist working with acrilic paints.
                         <p></p>
                         Once, I looked at my favourite artworks, I did just for joy, and realised that most of them are images of cutie animals and birds. So, drop the facade, drawing pets is my true passion and pure pleasure. We all know that the best creations are combination of skills and love for the process. 

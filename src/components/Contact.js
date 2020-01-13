@@ -14,11 +14,11 @@ const Contact = (props) => {
       return (
       <div className="container mt-5">     
             <div className="row">
-                  <div className="col-6">
+                  <div className="col-md-6 col-xs-12">
                         <h4 className="mb-3">Contact me</h4>
                         <p>If you need advice before your order or want to discuss any unique project you want to collaborate, please fill free to contact me:</p>
                   </div>
-                  <div className="col-6">
+                  <div className="col-md-6 col-xs-12">
                         {isSubmitting ? <ReactLoading type={"spin"} color={"#000000"} /> : ""}
                         {status ? "success": ""}
                         <Form>
