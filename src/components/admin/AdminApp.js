@@ -58,7 +58,7 @@ const AdminApp = (props) => {
                         </tr>
                         </thead>
                         <tbody>
-                              {data.map( (item, index) => (
+                              {data && data.map( (item, index) => (
                               <tr className="text-left">
                                     <th scope="row">
                                           <NavLink to={`/admin/${item._id}`}>#{index+1} {item.billingAddress_firstName} {item.billingAddress_lastName} </NavLink>

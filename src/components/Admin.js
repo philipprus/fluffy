@@ -7,7 +7,7 @@ import AdminApp from './admin/AdminApp';
 
 const Admin = (props) => {
       
-  const [valid, setValid] = React.useState(true);
+  const [valid, setValid] = React.useState(false);
 
   const hadlerValid = (status) => {
       setValid(status);
@@ -44,7 +44,7 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = (props) => {
   return (
-      <form onSubmit={props.handleSubmit} className="col-5 loginForm">
+      <form onSubmit={props.handleSubmit} className="col-4 offset-4 loginForm">
           <input
             onChange={props.handleChange}
             onBlur={props.handleBlur}
