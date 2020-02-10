@@ -15,6 +15,10 @@ import RadioBorder from './RadioBorder';
 import RadioGroupBorder from './RadioGroupBorder';
 import Select from './Select';
 import StyckyBoxComponent from './StyckyBoxComponent';
+import AnimeStyle from "../../images/anime_crop.jpg";
+import ColorfulStyle from "../../images/colorful_crop.jpg";
+import StorytaleStyle from "../../images/storytale_crop.jpg";
+import MemeStyle from "../../images/meme_crop.jpg";
 
 const OrderFrom = (props) => {
     const { errors, touched, values, setFieldValue, handleSubmit, status } = props;
@@ -70,10 +74,10 @@ return (
                         </div>
                         <div className="col-md-12 col-xs-12 mb-1">
                           <RadioButtonGroup id="style" label="Choose style*" value={values.radioGroup} error={errors.radioGroup} touched={touched.radioGroup}>
-                              <Field component={RadioImage} width="100px" name="style" id="Colorfull" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
-                              <Field component={RadioImage} width="100px" name="style" id="Anime" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
-                              <Field component={RadioImage} width="100px" name="style" id="Meme" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
-                              <Field component={RadioImage} width="100px" name="style" id="Storyline" label="https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c.jpg" />
+                              <Field component={RadioImage} width="100px" name="style" id="Colorfull" label={ColorfulStyle} />
+                              <Field component={RadioImage} width="100px" name="style" id="Anime" label={AnimeStyle} />
+                              <Field component={RadioImage} width="100px" name="style" id="Meme" label={MemeStyle} />
+                              <Field component={RadioImage} width="100px" name="style" id="Storyline" label={StorytaleStyle} />
                           </RadioButtonGroup>
                       </div>
 

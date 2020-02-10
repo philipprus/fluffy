@@ -65,6 +65,7 @@
 }
 .badge {color: white}
 .new-color {background: green;}
+.paid-color {background:black;}
 .complete-color {background: yellow; color: black}
 .inprocess-color {background: gray}
 .not_confirmed-color {background: purple; color: white;}

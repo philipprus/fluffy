@@ -1,5 +1,4 @@
-const Header = () => {
-      return `
+const Header =`
     
       <head>
         <title>
@@ -41,6 +40,24 @@ const Header = () => {
           p {
             display: block;
             margin: 13px 0;
+          }
+
+          u + #body a {
+            color: inherit !important;
+            text-decoration: underline!important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+}
+
+
+          #body a[href] {
+            color: "#f18381" !important;
+          }
+
+          .footer a[href]  {
+             color: "#ffffff" !important;
           }
         </style>
         <!--[if mso]>
@@ -104,6 +121,5 @@ const Header = () => {
         </style>
       </head>
       `;
-    }
-
+  
   module.exports = { Header };

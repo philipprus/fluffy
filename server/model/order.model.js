@@ -141,6 +141,9 @@ const OrderSchema =  new mongoose.Schema({
       price: {
             type: Number, 
             required: [true]
+      },
+      notice: {
+            type: String,
       }
 
 },{

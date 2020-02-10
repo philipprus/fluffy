@@ -44,7 +44,7 @@ const AdminApp = (props) => {
                   <div>Loading ...</div>
             ) : (
                   <div className="table-responsive">
-                  <table class="table table-hover">
+                  <table className="table table-hover">
                         <thead>
                         <tr  className="text-left">
                               <th scope="col">#</th>
@@ -59,7 +59,7 @@ const AdminApp = (props) => {
                         </thead>
                         <tbody>
                               {data && data.map( (item, index) => (
-                              <tr className="text-left">
+                              <tr className="text-left" key={`item-${index}`}>
                                     <th scope="row">
                                           <NavLink to={`/admin/${item._id}`}>#{index+1} {item.billingAddress_firstName} {item.billingAddress_lastName} </NavLink>
                                      </th>
@@ -75,24 +75,24 @@ const AdminApp = (props) => {
                                           </small>
                                     </td>
                                     <td>{moment(item.dispatch_date).format('DD/MM/YYYY')}</td>
-                                    <td><StatusOrder id={item._id} status={item.status || "New"} /></td>
+                                    <td><StatusOrder id={item._id} order={item} status={item.status || "New"} /></td>
                                     <td >
                                           <small>
                                           {item.billingAddress_firstName} {item.billingAddress_lastName},<br/>
                                           {item.billingAddress_email} {item.billingAddress_phone}, <br/>
                                           {item.billingAddress_address} {item.billingAddress_address2}, {item.billingAddress_country} {item.billingAddress_zip} 
-                                          <span class="description">({item.payment_type})</span>
+                                          <span className="description"> ({item.payment_type})</span>
                                           </small>
                                     </td>
                                     <td>
                                           <small>
-                                          {item.isSameShippingAddress ? item.shippingAddress_firstName : item.billingAddress_firstName} {item.isSameShippingAddress ? item.shippingAddress_lastName : item.billingAddress_lastName}, <br/>
-                                          {item.isSameShippingAddress ? item.shippingAddress_email : item.billingAddress_email} {item.isSameShippingAddress ? item.shippingAddress_phone : item.billingAddress_phone}, <br/>
-                                          {item.isSameShippingAddress ? item.shippingAddress_address : item.billingAddress_address} 
-                                          {item.isSameShippingAddress ? item.shippingAddress_address2 : item.billingAddress_address2 !== "" ? item.billingAddress_address2 : "" },
-                                          {item.isSameShippingAddress ? item.shippingAddress_country : item.billingAddress_country},
-                                          {item.isSameShippingAddress ? item.shippingAddress_zip : item.billingAddress_zip}
-                                          <span class="description">({item.shipping_type || "Post"})</span>
+                                          {item.shippingAddress_firstName ? item.shippingAddress_firstName : item.billingAddress_firstName} {item.isSameShippingAddress ? item.shippingAddress_lastName : item.billingAddress_lastName}, <br/>
+                                          {item.shippingAddress_email ? item.shippingAddress_email : item.billingAddress_email} {item.isSameShippingAddress ? item.shippingAddress_phone : item.billingAddress_phone}, <br/>
+                                          {item.shippingAddress_address ? item.shippingAddress_address : item.billingAddress_address} 
+                                          {item.shippingAddress_address2 ? item.shippingAddress_address2 : item.billingAddress_address2 !== "" ? item.billingAddress_address2 : "" },
+                                          {item.shippingAddress_country ? item.shippingAddress_country : item.billingAddress_country},
+                                          {item.shippingAddress_zip ? item.shippingAddress_zip : item.billingAddress_zip}
+                                          <span className="description"> ({item.shipping_type || "Post"})</span>
                                           </small>
                                     </td>
                                     <td>{item.order_total}₪</td>

@@ -21,6 +21,7 @@
     "express-form-data": "^2.0.10",
     "express-winston": "^3.3.0",
     "formik": "^1.5.8",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "mongoose": "^5.7.0",
     "node-mailjet": "^3.3.1",

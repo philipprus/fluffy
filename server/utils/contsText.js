@@ -12,12 +12,12 @@ const HEADER_SUBTITLE_NOT_CONFIRMED = 'Your order need to be discussed';
 const HEADER_SUBTITLE_NEW = 'Your order has been received';
 const HEADER_SUBTITLE_COMPLETE = 'Your painting has been delivered'
       
-const TEXT_DESCRIPTION_IN_PROCESS = `I got your money;<br /> soon you'll get your Fluffy painting!`;
-const TEXT_DESCRIPTION_READY_TO_DISPATCH = `I got your Fluffy painting done;<br /> soon you'll get it!`;
-const TEXT_DESCRIPTION_IN_DELIVERY = `I got your Fluffy painting despatched;<br /> soon you'll get it!`;
-const TEXT_DESCRIPTION_NOT_CONFIRMED = `We have a questions;<br />Let's talk!`;
-const TEXT_DESCRIPTION_NEW = `I got your information;<br /> soon you'll get your order confirmation!`;
-const TEXT_DESCRIPTION_COMPLETE = `You got your Fluffy painting; <br/> tell me about your feelings!`
+const TEXT_DESCRIPTION_IN_PROCESS = `I got your money,<br /> soon you'll get your Fluffy painting!`;
+const TEXT_DESCRIPTION_READY_TO_DISPATCH = `I got your Fluffy painting done,<br /> soon you'll get it!`;
+const TEXT_DESCRIPTION_IN_DELIVERY = `I got your Fluffy painting despatched,<br /> soon you'll get it!`;
+const TEXT_DESCRIPTION_NOT_CONFIRMED = `We have a questions,<br />Let's talk!`;
+const TEXT_DESCRIPTION_NEW = `I got your information,<br /> soon you'll get your order confirmation!`;
+const TEXT_DESCRIPTION_COMPLETE = `You got your Fluffy painting, <br/> tell me about your feelings!`
       
 const SUBJECT_IN_PROCESS = "Thanks for you order!";
 const SUBJECT_READY_TO_DISPATCH = "Your Fluffy order is ready!";

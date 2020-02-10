@@ -9,3 +9,8 @@ a:hover {
 footer a {
       color: #2f2c2c;
 }
+
+.btn-primary {
+      background-color: #f18381;
+      border-color: #f18381;
+}

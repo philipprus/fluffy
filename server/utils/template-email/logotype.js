@@ -1,6 +1,4 @@
-
-const Logotype = () => {
-      return `
+const Logotype =  `
       
       <div
          style=""
@@ -184,7 +182,6 @@ const Logotype = () => {
       
       </div>
       
-      `
-      }
-      
-module.exports = { Logotype }
+      `;
+
+module.exports = { Logotype };
