@@ -1,8 +1,8 @@
 const HEADER_TITLE_IN_PROCESS = 'Getting ready';
 const HEADER_TITLE_READY_TO_DISPATCH = "It's ready";
-const HEADER_TITLE_IN_DELIVERY = 'On the way!';
-const HEADER_TITLE_NOT_CONFIRMED = 'Tell me more!';
-const HEADER_TITLE_NEW = 'Thank you!';
+const HEADER_TITLE_IN_DELIVERY = 'On the way';
+const HEADER_TITLE_NOT_CONFIRMED = 'Tell me more';
+const HEADER_TITLE_NEW = 'Thank you';
 const HEADER_TITLE_COMPLETE = 'Thank you!'  
 
 const HEADER_SUBTITLE_IN_PROCESS = 'Your order has been confirmed';

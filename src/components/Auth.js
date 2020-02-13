@@ -3,10 +3,9 @@ import '../css/Admin.css';
 import { withFormik } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import AdminApp from './admin/AdminApp';
 import Loader from 'react-loader-spinner';
 
-const Admin = (props) => {
+const Auth = (props) => {
       
   const [valid, setValid] = React.useState(false);
 
@@ -35,7 +34,7 @@ const Admin = (props) => {
                   <div className="row  justify-content-center">
                         <div className="col   alignCenter">
                             {valid ? 
-                                <AdminApp/>
+                                props.children
                               : <LoginFormFormik
                                     hadlerValid={hadlerValid}
                             />  }
@@ -117,4 +116,4 @@ const LoginFormFormik = withFormik({
 
 
 
-export default Admin;
+export default Auth;

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-import { useDataApi } from './AdminApp';
 import { testimonials } from '../../utils/const';
 import { withFormik } from 'formik';
 import { Field } from 'formik';
@@ -10,6 +9,7 @@ import { canvasSizeList } from '../common/priceTable';
 import Loader from 'react-loader-spinner';
 import DatePicker from '../orderComponent/DatePicker';
 import { summeryOrder, averageNowDispatch } from '../../utils/payment';
+import { useDataApi } from '../../utils/utils';
 
 const AdminOrder = props => {
   const orderId = props.match.params.id;

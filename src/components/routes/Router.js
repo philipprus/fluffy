@@ -7,7 +7,6 @@ import Contact from '../Contact';
 import Portfolio from '../Portfolio';
 import Email from '../Email';
 import Footer from '../Footer';
-import Admin from '../Admin';
 import FAQ from '../FAQ';
 import CheckOrderStatus from '../CheckOrderStatus';
 import TermsOfService from '../TermsOfService';
@@ -17,6 +16,9 @@ import PrivacyPolicy from '../PrivacyPolicy';
 import ScrollToTop from './ScrollToTop';
 import GiftCardOrder from '../GiftCardOrder';
 import HeaderAdmin from '../HeaderAdmin';
+import Reviews from '../admin/review/Reviews';
+import AdminApp from '../admin/AdminApp';
+import Auth from '../Auth';
 
 export function Routes() {
   return (
@@ -42,14 +44,22 @@ export function Routes() {
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/returns-policy" component={ReturnsPolicy} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
-        <Route path="/admin/review">
-          <></>
-        </Route>
         <Route path="/admin/blog">
-          <></>
+        <Auth>
+          </Auth>
+
+        </Route>
+        <Route path="/admin/review">
+        <Auth>
+            <Reviews />
+          </Auth>
         </Route>
         <Route path="/admin/:id" component={AdminOrder} />
-        <Route path="/admin" component={Admin} />
+        <Route path="/admin">
+          <Auth>
+            <AdminApp />
+          </Auth>
+        </Route>
         <Route path="/" component={Portfolio} />
       </Switch>
       <Footer />
