@@ -1,4 +1,3 @@
-const moment = require('moment');
 const CONSTANT = require('./contsText');
 const { Header } = require('./template-email/header');
 const { Footer } = require('./template-email/footer');
@@ -66,6 +65,9 @@ const SloganText = (status) => {
 
 
 const builderHtml = order => {
+
+  
+
   return `
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -77,7 +79,7 @@ ${ Header }
     <td } style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
       <![endif]-->
   <div class="wrapper0234" style="background-color: #ffffff; background-image: url(https://i.ibb.co/cY72NfP/fluffy-logo-1.png); background-size: 100%; background-repeat: no-repeat; background-position: center center; margin: 0px auto; max-width: 600px;">
-    ${Logotype}
+    <a href="http://fluffy.co.il/" target="_blank">${Logotype}</a>
   <div style="">
 <!--[if mso | IE]>
 <table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600">

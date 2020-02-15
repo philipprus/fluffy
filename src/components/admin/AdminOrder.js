@@ -10,10 +10,13 @@ import Loader from 'react-loader-spinner';
 import DatePicker from '../orderComponent/DatePicker';
 import { summeryOrder, averageNowDispatch } from '../../utils/payment';
 import { useDataApi } from '../../utils/utils';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminOrder = props => {
   const orderId = props.match.params.id;
   const [{ data, isLoading, isError }] = useDataApi(`/api/order/${orderId}`, []);
+  
 
   return (
     <>
@@ -33,6 +36,21 @@ const AdminOrder = props => {
 
 const AdminOrderForm = props => {
   const { errors, touched, values, handleSubmit, setFieldValue } = props;
+
+  
+  const notify = () => {
+    toast.info("Save!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000
+    });
+  };
+  
+    useEffect(()=>{
+      console.log(props.status);
+      if(props.status){
+        notify();
+      }
+    },[props.status]);
 
   useEffect(() => {
     if (values.status !== 'not_confirmed') {
@@ -485,6 +503,28 @@ const AdminOrderForm = props => {
                   <div className="text-muted small">Shipping Total</div>
                   {values.payment_number}
                 </div>
+                <div className="col-md-3 mb-3">
+                  <div className="text-muted small">Tracking Number</div>
+                  <Field
+                    name="tracking_number"
+                    type="text"
+                    className={
+                      'form-control' +
+                      (errors.tracking_number && touched.tracking_number ? ' is-invalid' : '')
+                    }
+                  />
+                </div>
+                <div className="col-md-3 mb-3">
+                  <div className="text-muted small">Tracking link</div>
+                  <Field
+                    name="tracking_link"
+                    type="text"
+                    className={
+                      'form-control' +
+                      (errors.tracking_link && touched.tracking_link ? ' is-invalid' : '')
+                    }
+                  />
+                </div>
               </div>
             </div>
             <hr className="m-0" />
@@ -506,12 +546,24 @@ const AdminOrderForm = props => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={4000} />
     </form>
   );
 };
 
 const AdminOrderFormik = withFormik({
   enableReinitialize: true,
+  validate: values => {
+    let errors = {};
+    if (values.status === 'in_delivery' && !values.tracking_link) {
+      errors.tracking_link = 'Required';
+    }
+
+    if (values.status === 'in_delivery' && !values.tracking_number) {
+      errors.tracking_number = 'Required';
+    }
+    return errors;
+  },
   mapPropsToValues: props => ({
     photo: props.photo,
     style: props.style,
@@ -569,6 +621,8 @@ const AdminOrderFormik = withFormik({
     dispatch_date: props.dispatch_date,
     status: props.status || 'new',
     total: props.total,
+    tracking_link: props.tracking_link,
+    tracking_number: props.tracking_number,
   }),
   handleSubmit: (values, bag) => {
     bag.setStatus(undefined);

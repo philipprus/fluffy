@@ -4,7 +4,6 @@ import StorytaleStyle from "../images/storytale2.jpg";
 import MemeStyle from "../images/meme.jpg";
 import g1 from "../images/2.jpg";
 import g2 from "../images/3.jpg";
-import g3 from "../images/4.jpg";
 import g4 from "../images/5.jpg";
 import g5 from "../images/6.jpg";
 import g6 from "../images/7.jpg";

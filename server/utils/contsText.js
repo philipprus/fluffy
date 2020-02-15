@@ -19,13 +19,13 @@ const TEXT_DESCRIPTION_NOT_CONFIRMED = `We have a questions,<br />Let's talk!`;
 const TEXT_DESCRIPTION_NEW = `I got your information,<br /> soon you'll get your order confirmation!`;
 const TEXT_DESCRIPTION_COMPLETE = `You got your Fluffy painting, <br/> tell me about your feelings!`
       
-const SUBJECT_IN_PROCESS = "Thanks for you order!";
-const SUBJECT_READY_TO_DISPATCH = "Your Fluffy order is ready!";
-const SUBJECT_IN_DELIVERY = "Your Fluffy order is on the way to you!";
+const SUBJECT_IN_PROCESS = "Your Fluffy order now is confirmed";
+const SUBJECT_READY_TO_DISPATCH = "Your Fluffy order is ready";
+const SUBJECT_IN_DELIVERY = "Your Fluffy order is on the way to you";
 const SUBJECT_NOT_CONFIRMED = "IMPORTANT/Fluffy order update";
-const SUBJECT_NEW = "Your Fluffy order!";
-const SUBJECT_NOT_PAID = "Your Fluffy order!";
-const SUBJECT_COMPLETE = "Acknowledgement from Fluffy!";
+const SUBJECT_NEW = "Your Fluffy order";
+const SUBJECT_NOT_PAID = "Thank you for your Fluffy order";
+const SUBJECT_COMPLETE = "Acknowledgement from Fluffy";
 
 const STATUS_NEW = "new";
 const STATUS_IN_DELIVERY = "in_delivery";

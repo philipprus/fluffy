@@ -1,6 +1,7 @@
 const CONSTANT = require('../contsText');
 const moment = require('moment');
 const cloudinary = require('cloudinary').v2;
+const config = require('../config');
 
 cloudinary.config({ 
    cloud_name: process.env.CLOUD_NAME || "dxxwojaqv", 
@@ -109,7 +110,7 @@ padding: 0px 25px;
           <td style="padding: 0 15px 0 0;font-size: 14px;">${order.id}</td>
           <td style="padding: 0 15px;font-size: 14px;">${order.created && moment(new Date(order.created)).format('DD/MM/YYYY')}</td>
           <td style="padding: 0 15px;font-size: 14px;">${order.order_total}</td>
-          <td style="padding: 0 0 0 15px;font-size: 14px;">${order.payment_type}</td>
+          <td style="padding: 0 0 0 15px;font-size: 14px;">${config.testimonials[order.payment_type]}</td>
         </tr>
   </table>
 </div>
@@ -147,131 +148,26 @@ const tableBody = (order) => {
                                    <div
                                       class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
                                       >
-                                      <table
-                                         cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;table-layout:auto;width:100%;border:none;"
-                                         >
-                                         <tr style="text-align:center;">
-                                            <th style="">Reference Photo</th>
-                                            <th style="">Style: ${order.style}</th>
-                                         </tr>
-                                         <tr>
-                                            <td style="">
-                                            <div>
-                                            ${cloudinary.image(`${order.photo[0].public_id}.png`, {width: 256, height: 145, crop: "pad", background: "white"})}
-                                               </div>
-                                               </td>
-                                            <td style="">
-                                               <img src="${GET_IMAGE_STYLE(order.style)}" alt="${order.style}" align="center" border="none" width="256px" padding-left="0px" padding-right="0px" padding-bottom="0px" padding-top="0" />
-                                            </td>
-                                         </tr>
-                                      </table>
+                                     
                                       <table
                                          border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
                                          >
                                        
-                                         <tr>
-                                         <td
-                                            align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;"
-                                            >
-                                            <div
-                                               style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                               ><strong>Canvas size:</strong> 
-                                                   ${order.canvasSize}
-                                                </div>
-                                         </td>
-                                      </tr>
+                                       
                                       <tr>
                                       <td
                                          align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;"
                                          >
                                          <div
                                             style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                            ><strong>Position:</strong> ${order.canvasPosition}</div>
-                                      </td>
-                                   </tr>
-                                   <tr>
-                                   <td
-                                      align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;"
-                                      >
-                                      <div
-                                         style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                         ><strong>Extra pet:</strong> ${order.extraPet}</div>
-                                   </td>
-                                </tr>
-                                <tr>
-                                <td
-                                   align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;"
-                                   >
-                                   <div
-                                      style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                      ><strong>Comments:</strong> ${order.comments}</div>
-                                </td>
-                             </tr>
-                             <tr>
-                                <td
-                                   align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;"
-                                   >
-                                   <div
-                                      style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                      ><strong>Congratulation:</strong> ${order.сongratulation}</div>
-                                </td>
-                             </tr>
-                                       
-                                         <tr>
-                                            <td
-                                               align="left" style="font-size:0px;padding:20px 25px;word-break:break-word;" colspan="2"
-                                               >
-                                               <div
-                                                  style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:center;color:#000000;"
-                                                  ><strong>Dispatch date:</strong> ${order.dispatch_date && moment(new Date(order.dispatch_date)).format('DD/MM/YYYY')} or before</div>
-                                            </td>
-                                         </tr>
-                                             <tr>
-                                                   <td
-                                                   align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;" colspan="2"
-                                                   >
-                                                         <div
-                                                         style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                                         ><strong>Payment method:</strong> ${order.payment_type}</div>
-                                                   </td>
-                                             </tr>
-                                         <tr>
-                                         <td
-                                            align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;" colspan="2"
                                             >
-                                            <div
-                                               style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                               ><strong>Price:</strong> ${order.price}$</div>
-                                         </td>
-                                      </tr>
-                                      <tr>
-                                      <td
-                                         align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;" colspan="2"
-                                         >
-                                         <div
-                                            style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                            ><strong>Discount:</strong> -${order.discount}$</div>
+                                            You can track you Fluffy order following this link: <a href="${order.tracking_link}">${order.tracking_link}</a>
+                                            <p>
+                                            Tracking number: ${order.tracking_number}
+                                            </p>
+                                            </div>
                                       </td>
                                    </tr>
-                                   
-                                   <tr>
-                                   <td
-                                      align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;" colspan="2"
-                                      >
-                                      <div
-                                         style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                         ><strong>Gift card:</strong> <a href="//check-gift-card/${order.coupon}">${order.coupon}</a></div>
-                                   </td>
-                                </tr>
-                                         <tr>
-                                            <td
-                                               align="left" style="font-size:0px;padding:5px 25px;word-break:break-word;" colspan="2"
-                                               >
-                                               <div
-                                                  style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;line-height:1;text-align:left;color:#000000;"
-                                                  ><strong>Total:</strong> ${order.order_total}$</div>
-                                            </td>
-                                         </tr>
                                          <tr>
                                          <td colspan="2">
                                          <hr style="
@@ -401,8 +297,8 @@ const checkStatus = ({ id }) => {
            style="font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:14px;/* line-height:1; */text-align:left;color: #ffffff;text-align: center;"
         >
 
-        To <a style="color: #ffffff font-weight: bold;" href="https://fluffy.co.il/check-order-status">Check your order status</a> use this details: 
-        <br>Order: ${id}
+        <a style="color: #ffffff font-weight: bold;" href="https://fluffy.co.il/check-order-status/${id}">Press to check your order status</a>  
+        <br>Order number: ${id}
         </div>
       
                 </td>

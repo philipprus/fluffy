@@ -24,8 +24,10 @@ const Footer = `
                                  <tr>
                                  <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                  <div style="font-family:Barlow,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.5;text-align:center;color:#000000">
-                                 If you have any additional questions, please do not hesitate to <a href="https://fluffy.co.il/contact">contact us</a>.
-Or read our <a href="https://fluffy.co.il/faq">FAQ</a>, <a href="https://fluffy.co.il/returns-policy">Return Policy</a> and <a href="https://fluffy.co.il/privacy-policy">Private Policy</a>.
+                                 If you have any additional questions, please do not hesitate to <a href="mailto:info@fluffy.co.il">contact us</a>. 
+                                 <p>
+                                    Or read our <a href="https://fluffy.co.il/faq">FAQ</a>, <a href="https://fluffy.co.il/returns-policy">Return Policy</a> and <a href="https://fluffy.co.il/privacy-policy">Private Policy</a>.
+                                 </p>
                                  </div>
                                           </td>
                                        </tr>

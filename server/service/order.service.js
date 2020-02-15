@@ -1,5 +1,6 @@
 const Order = require('../model/order.model');
 const { mongo } = require('mongoose');
+const CONSTANT = require('../utils/contsText');
 
 const getOrders = async query => {
   try {
@@ -39,7 +40,7 @@ const update = async order => {
     const _id = new mongo.ObjectId(order.id);
     const orderFromDB = await Order.findById({ _id }).exec();
     const replaced = await Order.updateOne({ _id }, { $set: order }).exec();
-    if (orderFromDB.status !== order.status) {
+    if (orderFromDB.status !== order.status && order.status !== CONSTANT.STATUS_READY_TO_DISPATCH) {
       const replaceOrder = {...orderFromDB._doc, ...order};
       await sendMailService.sendOrderMail(replaceOrder);
     }

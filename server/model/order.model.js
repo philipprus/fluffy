@@ -74,6 +74,12 @@ const OrderSchema =  new mongoose.Schema({
             type: Boolean,
             default: false
       },
+      tracking_number: {
+            type: String
+      },
+      tracking_link: {
+            type: String,
+      },
       shippingAddress_firstName: {
             type: String,
       },
