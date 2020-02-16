@@ -37,7 +37,7 @@ const sendMailService = require('./sendMail.service');
 
 const update = async order => {
   try {
-    const _id = new mongo.ObjectId(order.id);
+    const _id = new mongo.ObjectId(order._id);
     const orderFromDB = await Order.findById({ _id }).exec();
     const replaced = await Order.updateOne({ _id }, { $set: order }).exec();
     if (orderFromDB.status !== order.status && order.status !== CONSTANT.STATUS_READY_TO_DISPATCH) {
