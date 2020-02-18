@@ -28,7 +28,6 @@ const getGiftCardById = async (id) => {
 const getStatusGiftCardByCoupon = async (coupon) => {
       try {
             const giftCard = await GiftCard.find({coupon: coupon}).exec();
-            console.log(giftCard);
             if (giftCard.length > 0) {
                   const {amount, expireDate} = giftCard[0];
                   if (amount === 0) return {amount: 0, status:"Sorry, this Giftcard is empty"};

@@ -29,9 +29,9 @@ const StyckyBoxComponent = (props) => {
     return (<StickyBox offsetTop={20} offsetBottom={20} {...props}>
         <div className=" order-md-2 mt-4 mb-4">
             <h4 className="header d-flex justify-content-between align-items-center mb-1">
-            <span className="text-muted">Your Choise</span>
+            <span className="text-muted">Fluffy eGift Card</span>
         </h4>
-        <ModalPreviewGiftCard amount={values.amount} />
+        <ModalPreviewGiftCard amount={values.amount} message={values.message} />
             <ul className="list-group mb-1">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <ul className="list-unstyled checklist-container">
@@ -39,12 +39,9 @@ const StyckyBoxComponent = (props) => {
                             <div className="mb-2">
                                 <h6 className={`my-0 checklist-agree ${
                                     values.amount &&
-                                    values.fullName &&
-                                    values.congradulation ? "checked": ""}`}>Gift Card information</h6>
+                                    values.to && values.from && 
+                                    values.message ? "checked": ""}`}>Gift Card information</h6>
                                     <small>
-                                    {values.style ? <>Style: {values.style}<br/></> : ""}
-                                    {values.canvasPosition ? <>Canvas position: {values.canvasPosition}<br/></> : ""}
-                                    {values.canvasSize ? <>Canvas size: {values.canvasSize}<br/></> : ""}
                                     </small>
                             </div>
                         </li>
@@ -53,10 +50,7 @@ const StyckyBoxComponent = (props) => {
                                 <h6 className={`my-0 checklist-agree ${values.billingAddress_firstName && 
                                     values.billingAddress_lastName && 
                                     values.billingAddress_email && 
-                                    values.billingAddress_phone && 
-                                    values.billingAddress_address && 
-                                    values.billingAddress_country && 
-                                    values.billingAddress_zip ? "checked": ""}`}>Billing information</h6>
+                                    values.billingAddress_phone ? "checked": ""}`}>Billing information</h6>
                             </div>
                         </li>
                    
@@ -89,7 +83,7 @@ const PayPalDisabled = () => <div className="paypal-button-disabled" >
     
     
     const GiftCardForm = (props) => {
-        const {  setFieldValue, handleSubmit } = props;
+        const {  setFieldValue, handleSubmit,values } = props;
         
         const amounts = [200, 400, 600, 1000,  2000];
       return (
@@ -101,7 +95,7 @@ const PayPalDisabled = () => <div className="paypal-button-disabled" >
               </div>
           </div>
             <div className="row mb-5">
-                <div className="col-md-12 col-lg-8 col-sm-12 col-xs-12">
+                <div className="col-md-12 col-lg-7 col-sm-12 col-xs-12">
                       <h4 className="header mb-3 mt-3">Gift card details</h4>
                     <div className="row ">
                      
@@ -117,31 +111,19 @@ const PayPalDisabled = () => <div className="paypal-button-disabled" >
                         </div>
                         <div className="col-md-6 col-xs-12 mb-1">
                             <div className="input-group">
-                                <Field name="to" type="text" id="to" component={Input} label="To*" />
+                                <Field name="to" type="text" id="to" component={Input} label="Email recipient*" />
                                 <ErrorMessage name="to" component="div" className="invalid-feedback" />
                             </div>
                         </div>
                         <div className="col-md-6 col-xs-12 mb-1">
                             <div className="input-group">
-                                <Field name="emailTo" type="text"  id="emailTo"  component={Input} label="Email recipient*" />
-                                <ErrorMessage name="emailTo" component="div" className="invalid-feedback" />
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-xs-12 mb-1">
-                            <div className="input-group">
-                                <Field name="from" type="text"  id="from" component={Input} label="From*" />
+                                <Field name="from" type="text"  id="from" component={Input} label="Your name*" />
                                 <ErrorMessage name="from" component="div" className="invalid-feedback" />
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-xs-12 mb-1">
-                            <div className="input-group">
-                                <Field name="emailFrom" type="text"  id="emailTo"  component={Input} label="Email sender*" />
-                                <ErrorMessage name="emailFrom" component="div" className="invalid-feedback" />
                             </div>
                         </div>
                           <div className="col-md-12 col-xs-12 mb-1">
                             <div className="input-group">
-                                <Field name="Message" type="text"  id="message"  component={Textarea} label="Message*" />
+                                <Field name="message" type="text"  id="message" component={Textarea} label="Message*" />
                                 <ErrorMessage name="message" component="div" className="invalid-feedback" />
                             </div>
   
@@ -176,38 +158,9 @@ const PayPalDisabled = () => <div className="paypal-button-disabled" >
                         </div>
                     </div>
   
-                    <h4 className="header mb-3 mt-3">Billing Address</h4>
-                    <div className="row">
-                        <div className="col-md-8 col-xs-12 mb-1">
-                            <div className="input-group">
-                                <Field name="billingAddress_address" id="billingAddress_address" component={Input} placefullName="Address*" type="text" label="Address"/>
-                                <ErrorMessage name="billingAddress_address" component="div" className="invalid-feedback" />
-                            </div>
-                        </div>
-                        <div className="col-md-4 col-xs-12 mb-1">
-                            <div className="input-group">
-                                <Field name="billingAddress_address2" id="billingAddress_address2" component={Input} type="text" label="Apt, suite, etc. (optional)" />
-                                <ErrorMessage name="billingAddress_address2" component="div" className="invalid-feedback" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-6 col-xs-12 mb-1">
-                              <Field name='billingAddress_country'  id='billingAddress_country' label="Country" component={Select}  >
-                                  <option value="">Select your country</option>
-                                  <option value="Israel">Israel</option>
-                              </Field>
-                            <ErrorMessage name="country" component="div" className="invalid-feedback" />
-                        </div>
-                        <div className="col-md-6 mb-1">
-                            <div className="input-group">
-                                <Field name="billingAddress_zip" label="Postal code*" type="text" component={Input} />
-                                <ErrorMessage name="billingAddress_zip" component="div" className="invalid-feedback" />
-                            </div>
-                        </div>
-                    </div>
+                 
                 </div>
-                <div className="col-md-12 col-lg-4 col-sm-12 col-xs-12">
+                <div className="col-md-12 col-lg-5 col-sm-12 col-xs-12">
                     <StyckyBoxComponent {...props} onSubmit={handleSubmit}  />
                 </div>
             </div>
@@ -226,25 +179,11 @@ export default withFormik({
             billingAddress_lastName: '',
             billingAddress_email: '',
             billingAddress_phone: '',
-            billingAddress_address: '',
-            billingAddress_address2: '',
-            billingAddress_country: '',
-            billingAddress_zip: '',
-
-            isSameShippingAddress: "true",
             status: "not paid",
-            shippingAddress_firstName: '',
-            shippingAddress_lastName: '',
-            shippingAddress_email: '',
-            shippingAddress_phone: '',
-            shippingAddress_address: '',
-            shippingAddress_address2: '',
-            shippingAddress_country: 'Israel',
-            shippingAddress_zip: '',
-
-            fullName: "",
+            to: "",
+            from: "",
             amount: 300,
-            сongratulation: '',
+            message: 'Hope you enjoy this Fluffy Gift Card!',
             payment_type: 'paypal',
       }),
       validate: (values) => {

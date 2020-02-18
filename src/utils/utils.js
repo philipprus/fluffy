@@ -23,3 +23,7 @@ export const useDataApi = (initialUrl, initialData) => {
       return [{ data, isLoading, isError }, setUrl];
     };
     
+
+  export const consoleLog = (text) => {
+    process.env.NODE_ENV !== "production" && console.log(text);
+  }
