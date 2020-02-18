@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { consoleLog } from '../../utils/utils';
 
 let PayPalButton =  window.paypal.Buttons.driver('react', { React, ReactDOM });
 
 const CLIENT = {
   sandbox:    'Ad-yr0cyOsvmF4Nus0xa29Kc-oltGZnN1WBKLr7YoUIwktBhvJB88K_OjPPYY0ro6a6aILXyP3SDUJck',
-  production: 'AWI7kmB4eYwNozXgpxBmZH0lSOA4h1JQhn0c85j-1vvqZgR2cDmH52JpYEmKLZvMY1vanPkKm5abC8j2'
+  production: process.env.REACT_PAYPAL_CLIENT_ID
 }
 
 const checkGiftCard = async (coupon, discount) => {
@@ -46,24 +47,29 @@ const PaymentButton = (props) => {
         if(coupon && discount) {
             const isCheckGiftCard = await checkGiftCard(coupon, discount)
             if(!isCheckGiftCard) {
-                console.error("Giftcard not valid", coupon, discount);
+                consoleLog("Giftcard not valid");
+                consoleLog(coupon);
+                consoleLog(discount);
                 return "";
             } 
         }
         const getNewOrder = await createNewOrder(typeApi, values);
 
         if(getNewOrder.status !== 200) { return }
-
+        consoleLog(getNewOrder);
         props.setFieldValue('_id', getNewOrder.data[0]["_id"]);
+        props.setFieldValue('created', getNewOrder.data[0]["created"]);
 
+        consoleLog(process.env.NODE_ENV);
         if(total === 0 ) {
+            consoleLog("total 0");
             props.setFieldValue('status', "new");
             props.setFieldValue('payment_type', 'giftcard');
             props.handlerSubmit({id: values.coupon });
             return getNewOrder;
         }
-
-        const isSendMailNewOrder = await sendMailNewOrder(values);
+        consoleLog("send mail");
+        const isSendMailNewOrder = await sendMailNewOrder(getNewOrder.data[0]);
 
         return isSendMailNewOrder.status === 200 &&
             actions.order.create({
