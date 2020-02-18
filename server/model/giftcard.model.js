@@ -8,11 +8,16 @@ const GiftCardSchema =  new mongoose.Schema({
             required: [true],
             unique: [true]
       },
-      сongratulation: {
+      message: {
             type: String
       },
-      fullName: {
-            type: String
+      from: {
+            type: String,
+      },
+      to: {
+            type: String,
+            required: [true],
+
       },
       email: {
             type: String,
@@ -35,6 +40,22 @@ const GiftCardSchema =  new mongoose.Schema({
       },
       payment_description: {
             type: Object
+      },
+      billingAddress_firstName: {
+            type: String,
+            required: [true]
+      },
+      billingAddress_lastName: {
+            type: String,
+            required: [true]
+      },
+      billingAddress_email: {
+            type: String,
+            required: [true]
+      },
+      billingAddress_phone: {
+            type: String,
+            required: [true]
       },
 },{
       versionKey: false // You should be aware of the outcome after set to false

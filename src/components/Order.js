@@ -3,20 +3,12 @@ import { withFormik } from 'formik';
 import { addDays } from "date-fns";
 import axios from 'axios';
 import OrderFrom from './orderComponent/OrderForm';
+import { consoleLog } from '../utils/utils';
 
-const sendMailPost = (values, setSubmitting, setStatus, resetForm )=> {
-    console.log(values.status);
-    axios.post("/api/sendmail/order", values)
-        .then(function (response){
-            if(response.status === 200) {
-                setSubmitting(false);
-                resetForm();
-                setStatus("ide");
-            }
-        }).catch(({ response }) => {
-            const { errors } = response.data;
-            console.log(errors);
-        });
+const onApprove = (setSubmitting, setStatus, resetForm )=> {
+        setSubmitting(false);
+        resetForm();
+        setStatus("ide");
 }
 
 export default withFormik({
@@ -140,11 +132,13 @@ export default withFormik({
                         axios("/api/giftCard", {coupon: values.coupon, amount: values.discount})
                         .then(function (response){
                             if(response.status === 200) {
-                                sendMailPost(values, setSubmitting, setStatus, resetForm);
+                                consoleLog("send gift");
+                                onApprove( setSubmitting, setStatus, resetForm);
                             }
                         });
                     } else {
-                        sendMailPost(values, setSubmitting, setStatus, resetForm);
+                        consoleLog("send not gift");
+                        onApprove( setSubmitting, setStatus, resetForm);
                     }
                 }
               }).catch(({ response }) => {

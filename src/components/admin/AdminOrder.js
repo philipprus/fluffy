@@ -46,7 +46,6 @@ const AdminOrderForm = props => {
   };
   
     useEffect(()=>{
-      console.log(props.status);
       if(props.status){
         notify();
       }

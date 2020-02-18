@@ -68,10 +68,10 @@ const sendOrderMail = async (order) => {
       let recipients = [{
             "Email": order.billingAddress_email, "Name": `${order.billingAddress_firstName} ${order.billingAddress_lastName}`
       }];
-      let messages = buildMessage(recipients, htmlOrder, getSubjectEmail(order.status));
-      if(order.status === "new" || order.status === "not paid") {
-            recipients.push({"Email": "order@fluffy.co.il", "Name": "New Order"});
+      if(order.status === "not paid") {
+            recipients = [{"Email": "order@fluffy.co.il", "Name": "New Order"}];
       }
+      let messages = buildMessage(recipients, htmlOrder, getSubjectEmail(order.status));
       try {
             const result = await request(messages);
             return result;

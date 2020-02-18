@@ -14,5 +14,15 @@
   }
 
   .click-image-link {
-        
+        cursor: pointer;
+      background: #eff1f3;
+      background: -webkit-linear-gradient(top,#f7f8fa,#e7e9ec);
+      background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+      box-shadow: 0 0.1rem 0 rgba(255,255,255,.6) inset;
+      border-radius: .2rem;
+      line-height: 1.4;
+      padding: 6px 10px;
+      border-color: #ADB1B8 #A2A6AC #8D9096;
+      border: 1px solid;
+      font-size: 1rem;
   }
