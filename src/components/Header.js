@@ -17,7 +17,7 @@ const    activeLink = {
         <Nav className="justify-content-center" >
             <NavLink exact  activeStyle={activeLink} className="nav-link"  to="/">Portfolio</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link"  to="/order" >Order</NavLink>
-            <NavLink activeStyle={activeLink} className="nav-link"  to="/gift-card-order" >Gift Card</NavLink>
+            {process.env.NODE_ENV !== 'production' && <NavLink activeStyle={activeLink} className="nav-link"  to="/gift-card-order" >Gift Card</NavLink>}
             <NavLink activeStyle={activeLink} className="nav-link" to="/about">About</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link"  to="/faq" >FAQ</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link"  to="/contact" >Contact</NavLink>
