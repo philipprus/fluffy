@@ -63,8 +63,20 @@ const CheckOrderStatus = props => {
               </div>
             </div>
           </Form>
-          {isSubmitting ? <div style={{margin: "0 auto", alignItems: 'center',
-    justifyContent: 'center', display: 'flex'}}><ReactLoading type={'spin'} color={'#000000'} /></div> : ''}
+          {isSubmitting ? (
+            <div
+              style={{
+                margin: '0 auto',
+                alignItems: 'center',
+                justifyContent: 'center',
+                display: 'flex',
+              }}
+            >
+              <ReactLoading type={'spin'} color={'#000000'} />
+            </div>
+          ) : (
+            ''
+          )}
           {status ? <h3 className="check-order-status text-center">{testimonials[status]}</h3> : ''}
         </div>
       </div>
