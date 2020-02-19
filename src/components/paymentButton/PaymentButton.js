@@ -117,8 +117,8 @@ const PaymentButton = props => {
       <PayPalButton
         amount={values.total}
         options={{
-          clientId: process.env.NODE_ENV === 'production' ? process.env.REACT_PAYPAL_CLIENT_ID : 'sb',
-          currency: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_CURRENCY : 'USD',
+          clientId: process.env.NODE_ENV === 'production' ? process.env.SECRET_REACT_PAYPAL_CLIENT_ID : 'sb',
+          currency: process.env.NODE_ENV === 'production' ? process.env.SECRET_REACT_APP_CURRENCY : 'USD',
           commit: true,
           locale: 'en_US',
         }}
