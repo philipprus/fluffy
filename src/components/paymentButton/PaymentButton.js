@@ -111,6 +111,8 @@ const PaymentButton = props => {
       </button>
     );
 
+    console.log(process.env.SECRET_REACT_PAYPAL_CLIENT_ID );
+    console.log(process.env.REACT_PAYPAL_CLIENT_ID);
   return (
     <>
       {showLoading ? <span>Loading Button...</span> : null}
@@ -118,7 +120,7 @@ const PaymentButton = props => {
         amount={values.total}
         options={{
           clientId: process.env.NODE_ENV === 'production' ? process.env.SECRET_REACT_PAYPAL_CLIENT_ID : 'sb',
-          currency: process.env.NODE_ENV === 'production' ? process.env.SECRET_REACT_APP_CURRENCY : 'USD',
+          currency: process.env.NODE_ENV === 'production' ? "ILS" : 'USD',
           commit: true,
           locale: 'en_US',
         }}
