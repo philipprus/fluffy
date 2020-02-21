@@ -19,10 +19,6 @@ const GiftCardSchema =  new mongoose.Schema({
             required: [true],
 
       },
-      email: {
-            type: String,
-            required: [true],
-      },
       amount: {
             type: Number,
             required: [true]
@@ -56,6 +52,10 @@ const GiftCardSchema =  new mongoose.Schema({
       billingAddress_phone: {
             type: String,
             required: [true]
+      },
+      status: {
+            type: String,
+            default: "not paid"
       },
 },{
       versionKey: false // You should be aware of the outcome after set to false

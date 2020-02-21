@@ -66,7 +66,7 @@ const SloganText = (status) => {
 
 const builderHtml = order => {
 
-  
+
 
   return `
 <!doctype html>
@@ -233,7 +233,13 @@ ${Footer}
 };
 
 
+const builderGiftHtml = (giftOrder) => {
+  return ``
+}
+
+
 module.exports = {
   builderHtml,
+  builderGiftHtml,
   getSubjectEmail,
 };

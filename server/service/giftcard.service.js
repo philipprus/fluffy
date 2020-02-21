@@ -71,6 +71,8 @@ const create = async (giftCard) => {
 const update = async (giftCard) => {
       try {
             const giftCardDB = await GiftCard.find({coupon: giftCard.coupon}).exec();
+            console.log(giftCard);
+            console.log('giftCardDB', giftCardDB);
             const {amount, expireDate} = giftCardDB[0];
             if (!isAmountAvailable(giftCard.amount, amount) || !isDateAvailable(expireDate)) return false;
             const diffAmount = amount - giftCard.amount;

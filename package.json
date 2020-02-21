@@ -51,7 +51,7 @@
   },
   "proxy": "http://localhost:8080",
   "scripts": {
-    "start": "react-scripts build && node .",
+    "start": "react-scripts NODE_ENV=production build && node .",
     "client": "react-scripts start",
     "server": "react-scripts build && node .",
     "build": "react-scripts build",

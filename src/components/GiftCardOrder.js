@@ -83,7 +83,7 @@ const PayPalDisabled = () => <div className="paypal-button-disabled" >
     
     
     const GiftCardForm = (props) => {
-        const {  setFieldValue, handleSubmit,values } = props;
+        const {  setFieldValue, handleSubmit, values } = props;
         
         const amounts = [200, 400, 600, 1000,  2000];
       return (
@@ -174,7 +174,7 @@ const PayPalDisabled = () => <div className="paypal-button-disabled" >
 
 export default withFormik({
       mapPropsToValues: () => ({
-            // photo:'',
+            coupon:'',
             billingAddress_firstName: '',
             billingAddress_lastName: '',
             billingAddress_email: '',
@@ -192,13 +192,13 @@ export default withFormik({
         const msg_requier = "Required";
 
         if(!values.amount){
-            errors.photo = msg_requier;
+            errors.amount = msg_requier;
         }
-        if(!values.fullName) {
+        if(!values.to) {
             errors.style = msg_requier;
         }
-        if(!values.congradulation) {
-            errors.canvasSize = msg_requier;
+        if(!values.message) {
+            errors.message = msg_requier;
         }
         if(!values.billingAddress_firstName) {
             errors.billingAddress_firstName = msg_requier;
@@ -212,16 +212,7 @@ export default withFormik({
         if(!values.billingAddress_phone) {
             errors.billingAddress_phone = msg_requier;
         }
-        if(!values.billingAddress_address) {
-            errors.billingAddress_address = msg_requier;
-        }
-        if(!values.billingAddress_country) {
-            errors.billingAddress_country = msg_requier;
-        }
-        if(!values.billingAddress_zip) {
-            errors.billingAddress_zip = msg_requier;
-        }
-
+ 
           return errors;
       },
 

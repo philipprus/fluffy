@@ -5,10 +5,6 @@ import { consoleLog } from '../../utils/utils';
 import { PayPalButton } from 'react-paypal-button-v2';
 // let PayPalButton =  window.paypal.Buttons.driver('react', { React, ReactDOM });
 
-const CLIENT = {
-  sandbox: 'Ad-yr0cyOsvmF4Nus0xa29Kc-oltGZnN1WBKLr7YoUIwktBhvJB88K_OjPPYY0ro6a6aILXyP3SDUJck',
-  production: process.env.REACT_PAYPAL_CLIENT_ID,
-};
 
 const checkGiftCard = async (coupon, discount) => {
   try {
@@ -41,6 +37,7 @@ const PaymentButton = props => {
   const { total, typeApi, values } = props;
   const { coupon, discount } = values;
   const [showLoading, setShowLoading] = React.useState(true);
+
   const createOrder = async (data, actions) => {
     if (coupon && discount) {
       const isCheckGiftCard = await checkGiftCard(coupon, discount);
@@ -56,7 +53,11 @@ const PaymentButton = props => {
     if (getNewOrder.status !== 200) {
       return;
     }
+
     consoleLog(getNewOrder);
+    if(typeApi === "giftCard"){
+        props.setFieldValue('coupon', getNewOrder.data[0]['coupon']);
+    }
     props.setFieldValue('_id', getNewOrder.data[0]['_id']);
     props.setFieldValue('created', getNewOrder.data[0]['created']);
 
@@ -86,14 +87,14 @@ const PaymentButton = props => {
     );
   };
 
-  const onApprove = async (data, actions) => {
-    const getApprove = await actions.order.capture().then(function(details) {
-      props.setFieldValue('status', 'new');
-      props.handlerSubmit(details);
-    });
+//   const onApprove = async (data, actions) => {
+//     const getApprove = await actions.order.capture().then(function(details) {
+//       props.setFieldValue('status', 'new');
+//       props.handlerSubmit(details);
+//     });
 
-    return getApprove;
-  };
+//     return getApprove;
+//   };
 
   const onSuccess = async (details, data) => {
     props.setFieldValue('status', 'new');
@@ -111,8 +112,6 @@ const PaymentButton = props => {
       </button>
     );
 
-    console.log(process.env.SECRET_REACT_PAYPAL_CLIENT_ID );
-    console.log(process.env.REACT_PAYPAL_CLIENT_ID);
   return (
     <>
       {showLoading ? <span>Loading Button...</span> : null}

@@ -81,5 +81,23 @@ const sendOrderMail = async (order) => {
       }
 }
 
+const sendGiftCardMail = async (giftCard) => {
+      const htmlOrder = builderHtml(giftCard);
+      let recipients = [{
+            "Email": giftCard.billingAddress_email, "Name": `${giftCard.billingAddress_firstName} ${giftCard.billingAddress_lastName}`
+      }];
+            recipients.push([{"Email": "order@fluffy.co.il", "Name": "New Gift Card"}]);
+      let messages = buildMessage(recipients, htmlOrder, getSubjectEmail(giftCard.status));
+      try {
+            const result = await request(messages);
+            return result;
+      } catch (e) {
+            console.log(e);
+            throw Error("Error send mail");
+      }
+}
 
-module.exports = {sendContactMail, sendOrderMail};
+
+
+
+module.exports = {sendContactMail, sendOrderMail, sendGiftCardMail};
