@@ -58,21 +58,27 @@
     "build": "react-scripts build",
     "build:dev": "env-cmd .env.dev react-scripts v build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && firebase deploy"
+
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "browserslist": {
     "production": [
+      "ie >= 9",
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie >= 9",
+      "ie 11"
     ]
   }
 }
