@@ -17,7 +17,9 @@ const    activeLink = {
         <Nav className="justify-content-center" >
             <NavLink exact activeStyle={activeLink} className="nav-link"  to="/admin" >Order</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link"  to="/admin/review" >Review</NavLink>
+            <NavLink activeStyle={activeLink} className="nav-link"  to="/admin/giftcard" >Gift card</NavLink>
             <NavLink activeStyle={activeLink} className="nav-link"  to="/admin/blog" >Blog</NavLink>
+            <NavLink activeStyle={activeLink} className="nav-link"  to="/admin/portfolio" >Portfolio</NavLink>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

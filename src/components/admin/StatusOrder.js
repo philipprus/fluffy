@@ -93,6 +93,11 @@ const StatusOrderFormik = withFormik({
 const StatusOrder = props => {
   const [isEdit, setEdit] = React.useState(false);
   const [status, setStatus] = React.useState(props.status);
+
+  React.useEffect(()=> {
+    setStatus(props.status);
+  }, [props.status])
+
   const handlerCancel = () => {
     setEdit(false);
   };

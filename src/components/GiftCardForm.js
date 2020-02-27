@@ -2,7 +2,6 @@ import React from 'react';
 import { withFormik, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
-// import { testimonials } from '../utils/const';
 
 
 const GiftCardForm = (props) => {

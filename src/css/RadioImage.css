@@ -19,6 +19,16 @@
       float: left;
       width: 25%;
   }
+
+  @media (max-width: 760px) {
+        
+.radio-input-image {
+      display: inline-block;
+      float: left;
+      width: 50%;
+  }
+
+  }
      
 .radio-input-image label.radio-input-image-src:before {
       background-color: white;

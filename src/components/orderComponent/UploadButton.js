@@ -1,20 +1,12 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage } from '@fortawesome/free-solid-svg-icons'
-
+import upload from "../../images/upload_fluffy.png";
 export default props => 
   <div className='buttons fadein '>
     <div className='button'>
       <label htmlFor='single' className="uploadImage">
-        <FontAwesomeIcon icon={faImage} color='#3B5998' size='10x' />
+        <img src={upload} alt="Upload" />
+        {/* <FontAwesomeIcon icon={faImage} color='#3B5998' size='10x' /> */}
       </label>
-      <input type='file' id='single' onChange={props.onChange} /> 
+      <input type='file' id='single' onChange={props.onChange} style={{display: 'none'}} /> 
     </div>
-    
-    {/* <div className='button'>
-      <label htmlFor='multi'>
-        <FontAwesomeIcon icon={faImages} color='#6d84b4' size='10x' />
-      </label>
-      <input type='file' id='multi' onChange={props.onChange} multiple />
-    </div> */}
   </div>

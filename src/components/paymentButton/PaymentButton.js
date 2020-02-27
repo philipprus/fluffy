@@ -15,8 +15,21 @@ const checkGiftCard = async (coupon, discount) => {
   }
 };
 
+function couponGenerator() {
+  return 'giftcard-xxxx4xxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+}
+  
+
 const createNewOrder = async (typeApi, values) => {
   try {
+    if(typeApi === "giftCard") values.coupon = couponGenerator();
+    if(values._id) {
+      const getNewOrder = {data: [{...values}], status: 200};
+      return getNewOrder;
+    }
     const response = await axios.post('/api/' + typeApi, values);
     return response;
   } catch (error) {
@@ -24,9 +37,9 @@ const createNewOrder = async (typeApi, values) => {
   }
 };
 
-const sendMailNewOrder = async values => {
+const sendMailNewOrder = async (values, typeApi) => {
   try {
-    const response = axios.post('/api/sendmail/order', values);
+    const response = axios.post(`/api/sendmail/${typeApi}`, values);
     return response;
   } catch (error) {
     throw new Error(`Не удается послать письмо о новом заказе ${values['_id']}`);
@@ -61,7 +74,6 @@ const PaymentButton = props => {
     props.setFieldValue('_id', getNewOrder.data[0]['_id']);
     props.setFieldValue('created', getNewOrder.data[0]['created']);
 
-    consoleLog(process.env.NODE_ENV);
     if (total === 0) {
       consoleLog('total 0');
       props.setFieldValue('status', 'new');
@@ -70,7 +82,8 @@ const PaymentButton = props => {
       return getNewOrder;
     }
     consoleLog('send mail');
-    const isSendMailNewOrder = await sendMailNewOrder(getNewOrder.data[0]);
+
+    let isSendMailNewOrder = await sendMailNewOrder(getNewOrder.data[0], typeApi);
 
     return (
       isSendMailNewOrder.status === 200 &&

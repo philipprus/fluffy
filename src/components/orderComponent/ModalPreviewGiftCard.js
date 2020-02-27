@@ -51,14 +51,9 @@ const ModalPreviewGiftCard = props => {
               <tr>
                 <td
                   bgColor="#f3f3f3"
+                  className="full-table-wrapper"
                   style={{
-                    fontSize: '12px',
-                    fontFamily: 'Arial, Helvetica, sans-serif',
-                    color: 'rgb(102, 102, 102)',
-                    lineHeight: '1.2em',
-                    padding: '0px',
-                    width: '100%',
-                  }}
+                                   }}
                 >
                   <table
                     border="0"
@@ -68,7 +63,8 @@ const ModalPreviewGiftCard = props => {
                       <tr>
                         <td
                           valign="middle"
-                          style={{ width: '500px', padding: '30px', textAlign: 'center' }}
+                          className="modal-preview-logo"
+                          style={{ }}
                         >
                           <Image src={logotype} fluid alt="Logotype" />
                         </td>
@@ -77,15 +73,10 @@ const ModalPreviewGiftCard = props => {
                   </table>
                   <table
                     bgcolor="ffffff"
-                    className="full-width-table"
+                    className="full-width-table full-table-boxshadow"
                     border="0"
                     style={{
-                      width: '500px',
-                      borderRadius: '4px',
-                      boxShadow: 'rgb(202, 202, 202) 0px 1px 3px !important',
-                      borderCollapse: 'collapse',
-                      borderSpacing: '0px',
-                      margin: '0px auto',
+                     
                     }}
                   >
                     <tbody>
@@ -113,11 +104,7 @@ const ModalPreviewGiftCard = props => {
                                 <td
                                   colspan="5"
                                   style={{
-                                    position: 'relative',
-                                    margin: '0px auto',
-                                    padding: '0px',
-                                    textAlign: 'center',
-                                    width: '520px',
+                                 
                                   }}
                                   id="mainImageContainer"
                                 >
@@ -206,7 +193,6 @@ const ModalPreviewGiftCard = props => {
                     className="full-width-table"
                     border="0"
                     style={{
-                      width: '500px',
                       borderCollapse: 'separate',
                       borderSpacing: '20px',
                       margin: '0px auto',
@@ -243,7 +229,6 @@ const ModalPreviewGiftCard = props => {
                               borderCollapse: 'collapse',
                               borderSpacing: '0px',
                               margin: '0px auto',
-                              width: '500px',
                             }}
                           >
                             <tbody>

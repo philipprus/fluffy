@@ -27,3 +27,25 @@ export const useDataApi = (initialUrl, initialData) => {
   export const consoleLog = (text) => {
     process.env.NODE_ENV !== "production" && console.log(text);
   }
+
+  export const deleteById = async(url, id, cb) => {
+    return await axios
+      .delete(url + id)
+      .then(res => {
+        if (res.status === 200) {
+          return true
+        }
+      })
+      .catch(err => {
+        cb && cb(id, err);
+      });
+  };
+
+  export  const removeByIdFromArr = (id, arr) => {
+
+    const filtered = arr.filter(function(value) {
+      return value._id !== id;
+    });
+
+    return filtered;
+  };

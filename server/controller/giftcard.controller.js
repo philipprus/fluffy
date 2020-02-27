@@ -67,4 +67,18 @@ const checkGiftCard = async (req,res) => {
   }
 }
 
-module.exports =  { createGiftCard, getGiftCards, getGiftCardById, getStatusGiftCardByCoupon,   updateGiftCard, checkGiftCard };
+const deleteGiftCard =  async (req, res) => {
+  const id = req.params.id;
+  try { 
+    const deleted = await giftCardService.deleteById(id);
+    if (!deleted || !deleted.ok || !deleted.n) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(200);
+  } catch (e) {
+    console.log(e);
+    return res.sendStatus(400);
+  }
+}
+
+module.exports =  { createGiftCard, getGiftCards, getGiftCardById, getStatusGiftCardByCoupon, deleteGiftCard,  updateGiftCard, checkGiftCard };

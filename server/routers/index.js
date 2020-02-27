@@ -5,6 +5,7 @@ const loginAPI = require("./login.routers");
 const giftCardAPI = require('./giftcard.routers');
 const reviewAPI = require('./review.routers');
 const postAPI = require('./post.routers');
+const portfolioAPI = require('./portfolio.routers');
 const routers = [
   {
     prefix: "/upload",
@@ -33,6 +34,10 @@ const routers = [
   {
     prefix: "/post",
     router: postAPI
+  },
+  {
+    prefix: "/portfolio",
+    router: portfolioAPI
   }
 ];
 

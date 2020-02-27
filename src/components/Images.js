@@ -11,6 +11,6 @@ export default props =>
       >
         <FontAwesomeIcon icon={faTimesCircle} size='2x' />
       </div>
-      <img src={image.secure_url} alt='' className="img-fluid" />
+      <img src={image.thumbnail} alt='' className="img-fluid" />
     </div>
   )

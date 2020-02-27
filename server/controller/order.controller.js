@@ -57,4 +57,20 @@ const checkOrder = async (req,res) => {
   }
 }
 
-module.exports =  { createOrder, getOrders, getOrderById, updateOrder, checkOrder };
+
+const deleteOrder =  async (req, res) => {
+  const id = req.params.id;
+  try { 
+    const deleted = await orderService.deleteById(id);
+    if (!deleted || !deleted.ok || !deleted.n) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(200);
+  } catch (e) {
+    console.log(e);
+    return res.sendStatus(400);
+  }
+}
+
+
+module.exports =  { createOrder, getOrders, getOrderById, updateOrder, checkOrder, deleteOrder };

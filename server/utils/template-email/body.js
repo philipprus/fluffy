@@ -211,7 +211,7 @@ const tableBody = order => {
                                           <tr>
                                              <td style="">
                                              <div>
-                                             ${cloudinary.image(`${order.photo[0].public_id}.png`, {
+                                             ${cloudinary.image(`${order.photo [0].public_id}.png`, {
                                                width: 256,
                                                height: 145,
                                                crop: 'pad',

@@ -17,7 +17,6 @@ const AdminOrder = props => {
   const orderId = props.match.params.id;
   const [{ data, isLoading, isError }] = useDataApi(`/api/order/${orderId}`, []);
   
-
   return (
     <>
       {isError && <div>Something went wrong ...</div>}
@@ -37,19 +36,18 @@ const AdminOrder = props => {
 const AdminOrderForm = props => {
   const { errors, touched, values, handleSubmit, setFieldValue } = props;
 
-  
   const notify = () => {
-    toast.info("Save!", {
+    toast.info('Save!', {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000
+      autoClose: 2000,
     });
   };
-  
-    useEffect(()=>{
-      if(props.status){
-        notify();
-      }
-    },[props.status]);
+
+  useEffect(() => {
+    if (props.status) {
+      notify();
+    }
+  }, [props.status]);
 
   useEffect(() => {
     if (values.status !== 'not_confirmed') {
@@ -75,12 +73,12 @@ const AdminOrderForm = props => {
                     <tr>
                       <td className="p-4">
                         <a
-                          href={values.photo && values.photo[0].secure_url}
+                          href={values.photo && values.photo[0].src}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           <img
-                            src={values.photo && values.photo[0].secure_url}
+                            src={values.photo && values.photo[0].thumbnail}
                             className="d-block ui-w-40 ui-bordered m-auto mr-4"
                             alt=""
                           />

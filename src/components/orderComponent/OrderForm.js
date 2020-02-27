@@ -50,7 +50,7 @@ return (
     <form onSubmit={handleSubmit}>
       <div className="container mt-5">
           <div className="row mb-3">
-            <div className="col-xs-12 text-center">
+            <div className="col-xs-12 col-md-12">
                 <h1>Order</h1>
             </div>
         </div>

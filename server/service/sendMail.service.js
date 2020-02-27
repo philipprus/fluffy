@@ -61,7 +61,7 @@ const sendContactMail = async ({name, email, phone, comments = "", isCopy = fals
 }
 
 
-const  {builderHtml, getSubjectEmail} = require("../utils/builderEmailOrder.js")
+const  {builderHtml, getSubjectEmail, builderGiftHtml} = require("../utils/builderEmailOrder.js")
 
 const sendOrderMail = async (order) => {
       const htmlOrder = builderHtml(order);
@@ -82,14 +82,15 @@ const sendOrderMail = async (order) => {
 }
 
 const sendGiftCardMail = async (giftCard) => {
-      const htmlOrder = builderHtml(giftCard);
+      console.log(1);
+      const htmlGiftCardHtml = builderGiftHtml(giftCard);
       let recipients = [{
-            "Email": giftCard.billingAddress_email, "Name": `${giftCard.billingAddress_firstName} ${giftCard.billingAddress_lastName}`
+            "Email": giftCard.to
       }];
-            recipients.push([{"Email": "order@fluffy.co.il", "Name": "New Gift Card"}]);
-      let messages = buildMessage(recipients, htmlOrder, getSubjectEmail(giftCard.status));
+            // recipients.push([{"Email": "order@fluffy.co.il", "Name": "New Gift Card"}]);
+      let messagesGiftCard = buildMessage(recipients, htmlGiftCardHtml, `Hi, ${giftCard.from} sent you a gift!`);
       try {
-            const result = await request(messages);
+            const result = await request(messagesGiftCard);
             return result;
       } catch (e) {
             console.log(e);

@@ -18,6 +18,9 @@ import HeaderAdmin from '../HeaderAdmin';
 import Reviews from '../admin/review/Reviews';
 import AdminApp from '../admin/AdminApp';
 import Auth from '../Auth';
+import GiftCards from '../admin/GiftCards';
+import GiftCard from '../admin/GiftCard';
+import PortfolioGallery from '../admin/Portfolio';
 
 export function Routes() {
   return (
@@ -43,13 +46,22 @@ export function Routes() {
         <Route path="/returns-policy" component={ReturnsPolicy} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/admin/blog">
-        <Auth>
-          </Auth>
-
+          <Auth></Auth>
         </Route>
         <Route path="/admin/review">
-        <Auth>
+          <Auth>
             <Reviews />
+          </Auth>
+        </Route>
+        <Route path="/admin/portfolio">
+          <Auth>
+            <PortfolioGallery />
+          </Auth>
+        </Route>
+        <Route path="/admin/giftcard/:id" component={GiftCard}/>
+        <Route path="/admin/giftcard">
+          <Auth>
+            <GiftCards />
           </Auth>
         </Route>
         <Route path="/admin/:id" component={AdminOrder} />

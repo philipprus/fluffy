@@ -51,4 +51,18 @@ const update = async order => {
   }
 };
 
-module.exports = { create, getOrders, getOrderById, update };
+const deleteById = async id => {
+  try {
+    const _id = new mongo.ObjectId(id);
+
+    const deleted = await Order.deleteOne({ _id }).exec();
+    return deleted;
+  } catch (e) {
+    // Log Errors
+    console.log(e);
+    throw Error('Error update GiftCard');
+  }
+};
+
+
+module.exports = { create, getOrders, getOrderById, update, deleteById };

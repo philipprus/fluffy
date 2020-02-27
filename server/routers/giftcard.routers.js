@@ -9,6 +9,6 @@ giftCard.get('/:id', giftCardController.getGiftCardById);
 giftCard.get('/', giftCardController.getGiftCards);
 giftCard.post('/', giftCardController.createGiftCard);
 giftCard.put('/', giftCardController.updateGiftCard);
-     
+giftCard.delete('/:id', giftCardController.deleteGiftCard);
 
 module.exports =  giftCard;
