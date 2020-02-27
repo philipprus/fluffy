@@ -1,6 +1,7 @@
 {
   "name": "fluffyart",
   "version": "0.1.0",
+  "homepage": "/",
   "engines": {
     "node": "10.3.0"
   },
