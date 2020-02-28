@@ -31,7 +31,7 @@ const Header = props => {
   return (
     <Navbar expand="lg">
       <Navbar.Brand href="/">
-        <Image src={isMobile ? logotype : logotype_mobile} fluid alt="Logotype" />
+        <Image src={isMobile ? logotype_mobile : logotype} fluid alt="Logotype" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
