@@ -2,8 +2,12 @@ import React from 'react';
 import logotype from '../images/logotype.png';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { useWindowSize } from './Header';
+import logotype_mobile from '../images/logotype_mobile.png';
 
 const HeaderAdmin = (props) => {
+  const [width, height] = useWindowSize();
+  const isMobile = width <= 720;
 
 const    activeLink = {
       fontWeight: "bold",
@@ -11,7 +15,7 @@ const    activeLink = {
     };
 
       return <Navbar   expand="lg">
-      <Navbar.Brand href="/"><Image src={logotype} fluid alt="Logotype"/></Navbar.Brand>
+      <Navbar.Brand href="/"><Image src={isMobile ? logotype : logotype_mobile} fluid alt="Logotype"/></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="justify-content-center" >

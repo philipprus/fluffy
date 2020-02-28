@@ -10,8 +10,10 @@ import { canvasSizeList } from '../common/priceTable';
 
 const CreatePortfolio = props => {
   const [show, setShow] = useState( false);
+  const {callback} = props;
   const handleClose = () => {
     setShow(false);
+    callback && callback();
   };
   const handleShow = () => setShow(true);
 
@@ -19,7 +21,7 @@ const CreatePortfolio = props => {
     <>
       <div className="modal-preview-gift-card-wrap" onClick={handleShow}>
         <div className="mb-4">
-          <Button className="click-image-link">Create portfolio</Button>
+          <Button className="">Create portfolio</Button>
         </div>
       </div>
       <Modal
@@ -36,6 +38,7 @@ const CreatePortfolio = props => {
         </Modal.Header>
         <Modal.Body>
           <Formik
+            callback={callback}
             onSubmit={async (values, { props, setSubmitting, resetForm, setStatus, setErrors }) => {
               setStatus('loading');
                 await Axios.post('/api/portfolio/', values)

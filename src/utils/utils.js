@@ -4,6 +4,7 @@ import axios from 'axios';
 export const useDataApi = (initialUrl, initialData) => {
       const [data, setData] = useState(initialData);
       const [url, setUrl] = useState(initialUrl);
+      const [fetch, setFetch] = useState(0);
       const [isLoading, setIsLoading] = useState(false);
       const [isError, setIsError] = useState(false);
       useEffect(() => {
@@ -19,8 +20,8 @@ export const useDataApi = (initialUrl, initialData) => {
           setIsLoading(false);
         };
         fetchData();
-      }, [url]);
-      return [{ data, isLoading, isError }, setUrl];
+      }, [url, fetch]);
+      return [{ data, isLoading, isError }, setUrl, fetch, setFetch];
     };
     
 

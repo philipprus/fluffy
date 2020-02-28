@@ -6,18 +6,17 @@ import Gallery from 'react-grid-gallery';
 import { toast, ToastContainer } from 'react-toastify';
 import EditPortfolio from './EditPortfolio';
 
-const url = '/api/portfolio';
+const url = '/api/portfolio/';
 const PortfolioGallery = props => {
-  const [{ data, isLoading, isError }] = useDataApi(url, []);
+  const [{ data, isLoading, isError }, setUrl, fetch, setFetch] = useDataApi(url, []);
   const [openModal, setOpenModal] = React.useState(false);
-  const [mode, setMode] = React.useState('create');
   const createGallery = data => {
     const res = [];
     data &&
       data.map(img => {
         const { image, _id, size, style } = img;
         if (image.length) {
-          const { src, thumbnail, thumbnailHeight, thumbnailWidth,   } = image[0];
+          const { src, thumbnail, thumbnailHeight, thumbnailWidth } = image[0];
           img.image.length &&
             res.push({
               src,
@@ -33,7 +32,6 @@ const PortfolioGallery = props => {
             });
         }
       });
-    console.log(res);
     return res;
   };
 
@@ -55,18 +53,18 @@ const PortfolioGallery = props => {
 
   const deleteImage = async () => {
     if (window.confirm(`Are you sure you want to delete image number ${currentImage}?`)) {
-      // var imagesAr = images.slice();
-      const deleteRes = await deleteById(url, images[currentImage], id =>
+      const deleteRes = await deleteById(url, data[currentImage]._id, id =>
         notify('Problem with' + id)
       );
-      console.log(deleteRes);
-      const imagesAr = images.splice(currentImage, 1);
-      setImages(imagesAr);
-      notify('Removed');
+      if (deleteRes) {
+        //   var imagesAr = images.slice();
+        const imagesAr = images.splice(currentImage, 1);
+        setImages(imagesAr);
+        notify('Removed');
+      }
     }
   };
   const onCurrentImageChange = index => {
-    console.log(index);
     setOpenModal(true);
     setCurrentImage(index);
   };
@@ -80,15 +78,22 @@ const PortfolioGallery = props => {
   };
 
   if (isError) return <div>Something went wrong ...</div>;
-  if (isLoading) return <div>Loading ...</div>;
+  //   if (isLoading) return <div>Loading ...</div>;
 
   return (
     <>
+      {isLoading && <div>Loading...</div>}
       {!images.length && <div> Empty </div>}
       <div className="row">
         <div className="col-md-12">
-          <CreatePortfolio  />
-          <EditPortfolio open={openModal} image={data[currentImage]} handleClose={setOpenModal} />
+          <CreatePortfolio callback={() => setFetch(fetch + 1)} />
+          <EditPortfolio
+            open={openModal}
+            image={data[currentImage]}
+            handleClose={setOpenModal}
+            callback={() => setFetch(fetch + 1)} 
+            handlerDelete={deleteImage}
+          />
         </div>
       </div>
 
@@ -104,17 +109,17 @@ const PortfolioGallery = props => {
         <Gallery
           images={createGallery(images)}
           enableLightbox={false}
+          rowHeight={350}
           onSelectImage={onSelectImage}
           onClickThumbnail={onCurrentImageChange}
           currentImageWillChange={onCurrentImageChange}
-          enableImageSelection={true}
+          enableImageSelection={false}
           customControls={[
             <button key="deleteImage" onClick={deleteImage}>
               Delete Image
             </button>,
           ]}
         />
-        {currentImage}
       </div>
 
       <ToastContainer autoClose={4000} />

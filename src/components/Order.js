@@ -14,7 +14,7 @@ const onApprove = (setSubmitting, setStatus, resetForm )=> {
 export default withFormik({
       mapPropsToValues: () => ({
             // photo:'',
-            photo: process.env.NODE_ENV !== "production" ? [{"secure_url":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"dogrkvyyxuyczyl89lgm"}] : "",
+            photo: process.env.NODE_ENV !== "production" ? [{"thumbnail":"https://res.cloudinary.com/dxxwojaqv/image/upload/v1569943291/dogrkvyyxuyczyl89lgm.png","public_id":"portfolio/kfgrxufie5fm2cpmfsyk"}] : "",
             style:'',
             canvasSize: '',
             canvasPosition: '',

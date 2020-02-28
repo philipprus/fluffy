@@ -9,8 +9,9 @@ import { canvasSizeList } from '../common/priceTable';
 const EditPortfolio = props => {
   const handleClose = () => {
     props.handleClose && props.handleClose(false);
+    props.callback && props.callback();
   };
-  const { image } = props;
+  const { image, id } = props;
   return (
     <>
       <Modal
@@ -36,7 +37,6 @@ const EditPortfolio = props => {
                 .then(function(response) {
                   if (response.status === 200) {
                     setTimeout(handleClose, 2000);
-                    props.callback && props.callback();
                   }
                 })
                 .catch(({ response }) => {
@@ -110,6 +110,9 @@ const EditPortfolio = props => {
           </Formik>
         </Modal.Body>
         <Modal.Footer>
+              <Button onClick={props.handlerDelete}>
+                    Delete
+              </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>

@@ -16,8 +16,8 @@ const CreateReview = props => {
   return (
     <>
       <div className="modal-preview-gift-card-wrap" onClick={handleShow}>
-        <div className="click-image-wrap">
-          <Button className="click-image-link">Create review</Button>
+        <div className="">
+          <Button className="">Create review</Button>
         </div>
       </div>
       <Modal
