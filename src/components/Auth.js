@@ -58,7 +58,7 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = (props) => {
   return (
-      <form onSubmit={props.handleSubmit} className="col-4 offset-4 loginForm">
+      <form onSubmit={props.handleSubmit} className="col-md-4 offset-md-4 loginForm">
           <input
             onChange={props.handleChange}
             onBlur={props.handleBlur}
