@@ -41,6 +41,7 @@ export function Routes() {
         <Route path="/faq" component={FAQ} />
         <Route path="/gift-card-order" component={GiftCardOrder} />
         <Route path="/check-order-status/:orderId" component={CheckOrderStatus} />
+        <Route path="/check-order-status/" component={CheckOrderStatus} />
         <Route path="/check-gift-card/:id" component={CheckOrderStatus} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/returns-policy" component={ReturnsPolicy} />
