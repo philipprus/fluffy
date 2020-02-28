@@ -36,8 +36,6 @@ const Header = props => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="justify-content-center">
-          {isMobile}
-          {window.innerWidth}
           <NavLink exact activeStyle={activeLink} className="nav-link" to="/">
             Portfolio
           </NavLink>
