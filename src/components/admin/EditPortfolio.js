@@ -110,7 +110,7 @@ const EditPortfolio = props => {
           </Formik>
         </Modal.Body>
         <Modal.Footer>
-              <Button onClick={props.handlerDelete}>
+              <Button variant="danger"  onClick={props.handlerDelete}>
                     Delete
               </Button>
           <Button variant="secondary" onClick={handleClose}>

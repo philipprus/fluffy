@@ -16,14 +16,46 @@ const ReviewSchema =  new mongoose.Schema({
       email: {
             type: String,
       },
-      thumbnails: [{
-            public_id: {
+      thumbnails: [
+            {
+              public_id: {
+                type: String,
+                required: [true],
+              },
+              original_image: {
+                url: {
                   type: String,
+                  required: [true],
+                },
+                height: {
+                  type: Number,
+                },
+                width: {
+                  type: Number,
+                },
+              },
+              src: {
+                type: String,
+                required: [true],
+              },
+              height: {
+                type: Number,
+              },
+              width: {
+                type: Number,
+              },
+              thumbnail: {
+                type: String,
+                required: [true],
+              },
+              thumbnailWidth: {
+                type: Number,
+              },
+              thumbnailHeight: {
+                type: Number,
+              },
             },
-            secure_url: {
-                  type: String,
-            },
-      }],
+          ],
       status: {
             type: String,
             enum: ['PUBLISH', 'DRAFT'],

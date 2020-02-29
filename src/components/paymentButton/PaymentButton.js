@@ -100,15 +100,6 @@ const PaymentButton = props => {
     );
   };
 
-//   const onApprove = async (data, actions) => {
-//     const getApprove = await actions.order.capture().then(function(details) {
-//       props.setFieldValue('status', 'new');
-//       props.handlerSubmit(details);
-//     });
-
-//     return getApprove;
-//   };
-
   const onSuccess = async (details, data) => {
     props.setFieldValue('status', 'new');
     props.handlerSubmit(details);

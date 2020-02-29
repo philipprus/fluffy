@@ -3,7 +3,7 @@ const { mongo } = require('mongoose');
 
 const getReviews = async query => {
   try {
-    const reviews = await Review.find(query).exec();
+    const reviews = await Review.find(query).sort({created: -1}).exec();
     return reviews;
   } catch (e) {
     console.log(e);

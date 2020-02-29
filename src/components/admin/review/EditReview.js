@@ -7,28 +7,20 @@ import Textarea from '../../orderComponent/Textarea';
 import Axios from 'axios';
 import Select from '../../orderComponent/Select';
 
-const CreateReview = props => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => {
-    setShow(false);
-    props.callback && props.callback();
-  };
-  const handleShow = () => setShow(true);
+const EditReview = props => {
+      const handleClose = () => {
+            props.handleClose && props.handleClose(false);
+            props.callback && props.callback();
+          };
 
   return (
     <>
-      <div className="mb-3" onClick={handleShow}>
-        <div className="">
-          <Button className="">Create review</Button>
-        </div>
-      </div>
       <Modal
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        show={show}
+        show={props.open}
         onHide={handleClose}
         animation={true}
       >
@@ -37,9 +29,12 @@ const CreateReview = props => {
         </Modal.Header>
         <Modal.Body>
           <Formik
+          enableReinitialize={true} 
+          initialValues={props.item}
+
             onSubmit={ async (values,  {props, setSubmitting, resetForm, setStatus, setErrors}) => {
               setStatus("loading");
-              await Axios.post("/api/review", values)
+              await Axios.put("/api/review", values)
                   .then(function (response) {
                     if(response.status === 200) {
                         setTimeout(handleClose, 2000);
@@ -86,8 +81,8 @@ const CreateReview = props => {
                         name="email"
                         id="email"
                       />
-                      <Upload onChange={handlerUpload} name="thumbnails" id="thumbnails" value={values && values.photo} error={errors.photo} onDelete={handlerDelete} />
-                      <Field name={'canvasPosition'} component={Select} placeholder="Status"  label="Status">
+                      <Upload onChange={handlerUpload} name="thumbnails" id="thumbnails" value={values && values.thumbnails} error={errors.thumbnails} onDelete={handlerDelete} />
+                      <Field name={'status'} component={Select} placeholder="Status"  label="Status">
                                 <option value="">Choose status</option>
                                 <option value="DRAFT">DRAFT</option>
                                 <option value="PUBLISH">PUBLISH</option>
@@ -98,6 +93,9 @@ const CreateReview = props => {
           </Formik>
         </Modal.Body>
         <Modal.Footer>
+        <Button variant="danger" onClick={props.handlerDelete}>
+                    Delete
+              </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
@@ -107,4 +105,4 @@ const CreateReview = props => {
   );
 };
 
-export default CreateReview;
+export default EditReview;

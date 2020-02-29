@@ -24,7 +24,7 @@ const GiftCard = props => {
       <div className="container-fluid">
         <div className="row">
           <div className="col">
-            <NavLink to="/admin">Back to orders</NavLink>
+            <NavLink to="/admin/giftcard">Back to orders</NavLink>
           </div>
         </div>
       </div>

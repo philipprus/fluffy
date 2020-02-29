@@ -1,13 +1,11 @@
 import React from 'react';
-import logotype from '../images/logotype.png';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useWindowSize } from './Header';
 import logotype_mobile from '../images/logotype_mobile.png';
+import logotype from '../images/fluffy_logo.svg';
 
 const HeaderAdmin = props => {
-  const [width, height] = useWindowSize();
-  const isMobile = width <= 720;
 
   const activeLink = {
     fontWeight: 'bold',
@@ -17,7 +15,7 @@ const HeaderAdmin = props => {
   return (
     <Navbar expand="lg">
       <Navbar.Brand href="/">
-        <Image src={isMobile ? logotype_mobile : logotype} fluid alt="Logotype" />
+        <Image src={logotype} fluid alt="Logotype" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -31,9 +29,9 @@ const HeaderAdmin = props => {
           <NavLink activeStyle={activeLink} className="nav-link" to="/admin/giftcard">
             Gift card
           </NavLink>
-          <NavLink activeStyle={activeLink} className="nav-link" to="/admin/blog">
+          {/* <NavLink activeStyle={activeLink} className="nav-link" to="/admin/blog">
             Blog
-          </NavLink>
+          </NavLink> */}
           <NavLink activeStyle={activeLink} className="nav-link" to="/admin/portfolio">
             Portfolio
           </NavLink>

@@ -1,6 +1,5 @@
 import React from 'react';
 import logotype from '../images/fluffy_logo.svg';
-import logotype_mobile from '../images/fluffy_logo.svg';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -19,19 +18,17 @@ export function useWindowSize() {
 
 const Header = props => {
   // const [width, setWidth] = React.useState(window.innerWidth);
-  const [width, height] = useWindowSize();
 
   const activeLink = {
     fontWeight: 'bold',
     color: '#f18381',
   };
 
-  const isMobile = width <= 720;
 
   return (
     <Navbar expand="lg">
       <Navbar.Brand href="/">
-        <Image src={isMobile ? logotype_mobile : logotype} fluid alt="Logotype" />
+        <Image src={logotype} fluid alt="Logotype" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

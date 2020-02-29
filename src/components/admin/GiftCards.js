@@ -11,9 +11,9 @@ import ModalRemove from './review/ModalDelete';
 
 
 const GiftCards = props => {
-  const [{ data, isLoading, isError }] = useDataApi('/api/giftcard', []);
-
   const url = '/api/giftcard/';
+  const [{ data, isLoading, isError }] = useDataApi(url, []);
+
   const [giftCards, setGiftCard] = React.useState([]);
   const [openModal, setModal] = React.useState(false);
   const [chooseGift, setChooseGift] = React.useState('');
@@ -31,7 +31,6 @@ const GiftCards = props => {
 
   const handlerRemove = async () => {
     const deleteRes = await deleteById(url, chooseGift, id => notify('Problem with' + id));
-    console.log(deleteRes);
     if (deleteRes) {
       const removed = removeByIdFromArr(chooseGift, giftCards);
       setModal(false);
@@ -43,12 +42,8 @@ const GiftCards = props => {
     <>
       {isError && <div>Something went wrong ...</div>}
 
-      {isLoading ? (
-        <div>
-          <Loader type="Circles" color="#00BFFF" height={20} width={100} />
-        </div>
-      ) : (
-        <div className="table-responsive">
+        {isLoading && <Loader type="Circles" color="#00BFFF" height={20} width={100} />}
+        {giftCards && <div className="table-responsive">
           <table className="table table-hover">
             <thead>
               <tr className="text-left">
@@ -57,7 +52,7 @@ const GiftCards = props => {
                 <th scope="col">Created Date</th>
                 <th scope="col">To</th>
                 <th scope="col">From</th>
-                <th scope="col">Dispatch date</th>
+                <th scope="col">Finish date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Amount</th>
                 <th scope="col"></th>
@@ -99,7 +94,8 @@ const GiftCards = props => {
             </tbody>
           </table>
         </div>
-      )}
+      }
+    
       <ToastContainer autoClose={4000} />
       <ModalRemove open={openModal} onClose={() => setModal(false)} onChange={handlerRemove} />
     </>
