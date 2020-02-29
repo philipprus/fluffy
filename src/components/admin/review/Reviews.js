@@ -59,7 +59,7 @@ const Reviews = props => {
             handlerDelete={handlerRemove}
           />
         {!reviews.length && <div>Empty</div>}
-        {reviews && <div className="table-responsive">
+        {reviews.length ? <div className="table-responsive">
             <table className="table table-hover">
               <thead>
                 <tr className="text-left">
@@ -73,7 +73,7 @@ const Reviews = props => {
                 </tr>
               </thead>
               <tbody>
-                {reviews.length &&
+                {reviews &&
                   reviews.map((item, index) => (
                     <tr className="text-left" key={`item-${index}`}>
                       <th scope="row">{index + 1}</th>
@@ -102,7 +102,7 @@ const Reviews = props => {
                   ))}
               </tbody>
             </table>
-          </div>}
+          </div> : ""}
       </>
       
       <ToastContainer autoClose={4000} />

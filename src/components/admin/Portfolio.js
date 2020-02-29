@@ -82,8 +82,6 @@ const PortfolioGallery = props => {
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
-      {!images.length && <div> Empty </div>}
       <div className="row">
         <div className="col-md-12">
           <CreatePortfolio callback={() => setFetch(fetch + 1)} />
@@ -96,6 +94,8 @@ const PortfolioGallery = props => {
           />
         </div>
       </div>
+      {isLoading && <div>Loading...</div>}
+      {!images.length ? <div> Empty </div> : 
 
       <div
         style={{
@@ -120,7 +120,7 @@ const PortfolioGallery = props => {
             </button>,
           ]}
         />
-      </div>
+      </div> }
 
       <ToastContainer autoClose={4000} />
     </>

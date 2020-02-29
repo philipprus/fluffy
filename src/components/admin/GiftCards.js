@@ -43,7 +43,7 @@ const GiftCards = props => {
       {isError && <div>Something went wrong ...</div>}
 
         {isLoading && <Loader type="Circles" color="#00BFFF" height={20} width={100} />}
-        {giftCards && <div className="table-responsive">
+        {giftCards.length ? <div className="table-responsive">
           <table className="table table-hover">
             <thead>
               <tr className="text-left">
@@ -93,7 +93,7 @@ const GiftCards = props => {
                 ))}
             </tbody>
           </table>
-        </div>
+        </div> : "Empty"
       }
     
       <ToastContainer autoClose={4000} />
