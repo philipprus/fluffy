@@ -4,6 +4,7 @@ import { addDays } from "date-fns";
 import axios from 'axios';
 import OrderFrom from './orderComponent/OrderForm';
 import { consoleLog } from '../utils/utils';
+import { urlBase } from '../utils/const';
 
 const onApprove = (setSubmitting, setStatus, resetForm )=> {
         setSubmitting(false);
@@ -125,11 +126,11 @@ export default withFormik({
 
       handleSubmit: async (values, {props, setSubmitting, resetForm, setStatus, setErrors}) =>  {
             setStatus("loading");
-          await axios.put("/api/order", values)
+          await axios.put(urlBase + "api/order", values)
               .then(function (response) {
                 if(response.status === 200) {
                     if(values.coupon && values.discount) {
-                        axios("/api/giftCard", {coupon: values.coupon, amount: values.discount})
+                        axios(urlBase + "api/giftCard", {coupon: values.coupon, amount: values.discount})
                         .then(function (response){
                             if(response.status === 200) {
                                 consoleLog("send gift");

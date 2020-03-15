@@ -6,17 +6,17 @@ import PaymentButton from './paymentButton/PaymentButton';
 import AgreeTermsPrivacy from './orderComponent/AgreeTermsPrivacy';
 import Input from './orderComponent/Input';
 import Textarea from './orderComponent/Textarea';
-import Select from './orderComponent/Select';
 import axios from 'axios';
 // import mazel_tov from '../images/mazel_tov.png';
 import ModalPreviewGiftCard from './orderComponent/ModalPreviewGiftCard';
+import { urlBase } from '../utils/const';
 
 const StyckyBoxComponent = props => {
-  const { values } = props;
+  const { values, setFieldValue } = props;
 
   React.useEffect(() => {
-    props.setFieldValue('amount', props.values.amount);
-  }, [props.values.amount]);
+    setFieldValue('amount', values.amount);
+  }, [values.amount, setFieldValue]);
 
   const handlerSubmit = paymentDetails => {
     props.setFieldValue('payment_description', paymentDetails);
@@ -324,11 +324,11 @@ export default withFormik({
     setStatus('loading');
 
     axios
-      .put('/api/giftCard', values)
+      .put(urlBase + 'api/giftCard', values)
       .then(function(response) {
         if (response.status === 200) {
           axios
-            .post('/api/sendmail/giftCard', values)
+            .post(urlBase + 'api/sendmail/giftCard', values)
             .then(function(response) {
               if (response.status === 200) {
                 setSubmitting(false);

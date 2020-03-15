@@ -3,6 +3,7 @@ import { withFormik, Field, Form, ErrorMessage } from 'formik';
 import {CheckboxField} from './orderComponent/CheckboxField';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
+import { urlBase } from '../utils/const';
 
 const Contact = (props) => {
       const {
@@ -92,7 +93,7 @@ export default withFormik({
       handleSubmit: (values, { props, setSubmitting, setErrors, setStatus, resetForm }) => {
       
             axios
-            .post("/api/sendmail/contact", values)
+            .post(urlBase + 'api/sendmail/contact', values)
             .then(res => {
                   if(res.status === 200) {
                         setSubmitting(false);

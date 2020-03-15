@@ -2,6 +2,7 @@ import React from 'react';
 import { withFormik, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
+import { urlBase } from '../utils/const';
 
 
 const GiftCardForm = (props) => {
@@ -53,7 +54,7 @@ export default withFormik({
       handleSubmit: (values, { props, setSubmitting, setErrors, setStatus, resetForm }) => {
       
             axios
-            .get("/api/giftCard/status/"+values.giftCardNumber)
+            .get(urlBase + "api/giftCard/status/"+values.giftCardNumber)
             .then(res => {
                   if(res.status === 200) {
                         setSubmitting(false);

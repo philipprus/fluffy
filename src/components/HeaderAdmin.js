@@ -1,8 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useWindowSize } from './Header';
-import logotype_mobile from '../images/logotype_mobile.png';
 import logotype from '../images/fluffy_logo.svg';
 
 const HeaderAdmin = props => {
