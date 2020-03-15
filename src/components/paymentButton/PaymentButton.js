@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { consoleLog } from '../../utils/utils';
 import { PayPalButton } from 'react-paypal-button-v2';
@@ -17,7 +16,7 @@ const checkGiftCard = async (coupon, discount) => {
 
 function couponGenerator() {
   return 'giftcard-xxxx4xxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 || 0x8);
         return v.toString(16);
       });
 }

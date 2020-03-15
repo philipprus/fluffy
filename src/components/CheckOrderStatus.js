@@ -2,7 +2,7 @@ import React from 'react';
 import { withFormik, Field, Form, ErrorMessage } from 'formik';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
-import { testimonials } from '../utils/const';
+import { testimonials, urlBase } from '../utils/const';
 import { useParams } from 'react-router-dom';
 
 const CheckOrderStatus = props => {
@@ -29,7 +29,7 @@ const CheckOrderStatus = props => {
       };
       getStatus(orderId, success, setErrors);
     }
-  }, [orderId]);
+  }, [orderId, setFieldValue, setSubmitting, setStatus, setErrors]);
 
   return (
     <div className="container mt-5">
@@ -86,7 +86,7 @@ const CheckOrderStatus = props => {
 
 const getStatus = async (orderId, success, error) => {
   await axios
-    .get('/api/order/status/' + orderId)
+    .get(urlBase + 'api/order/status/' + orderId)
     .then(res => {
       if (res.status === 200) {
         success(res.data);

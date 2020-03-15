@@ -1,54 +1,81 @@
-import React, { useState, useCallback } from "react";
-import Gallery from "react-photo-gallery";
+import React from 'react';
 
-import Carousel, { Modal, ModalGateway } from "react-images";
+import { Link } from 'react-router-dom';
+import { useDataApi } from '../utils/utils';
+import Gallery from 'react-grid-gallery';
+const url = '/api/portfolio/';
 
-import { photos } from './photos';
-import {Link} from 'react-router-dom';
+const Portfolio = props => {
+  const [{ data, isLoading, isError }] = useDataApi(url, []);
+  const [images, setImages] = React.useState([]);
+  React.useEffect(() => {
+    if (data) {
+      setImages(data);
+    }
+  }, [data]);
 
-const Portfolio = (props) => {
+  const createGallery = data => {
+    const res = [];
+    data &&
+      data.map(img => {
+        const { image, _id, size, style } = img;
+        if (image.length) {
+          const { src, thumbnail, thumbnailHeight, thumbnailWidth } = image[0];
+          res.push({
+            src,
+            thumbnail,
+            thumbnailWidth,
+            thumbnailHeight,
+            _id,
+            tags: [
+              { value: size, title: size },
+              { value: style, title: style },
+            ],
+          });
+        }
+        return false;
+      });
+    return res;
+  };
 
-      const [currentImage, setCurrentImage] = useState(0);
-      const [viewerIsOpen, setViewerIsOpen] = useState(false);
-    
-      const openLightbox = useCallback((event, { photo, index }) => {
-        setCurrentImage(index);
-        setViewerIsOpen(true);
-      }, []);
-    
-      const closeLightbox = () => {
-        setCurrentImage(0);
-        setViewerIsOpen(false);
-      };
-      
-      return (
-          <div className="container-fluid mt-5">
-            <div className="row">
-              <div className="col text-center"> 
-                <h3 className="lead mt-4 mb-4">I Create Pet Portrait from Photo!</h3>
-                <p><Link to="/order">4 Styles & 1 Step order</Link></p>
-              </div>
-              <hr className="my-4"/>
-              <div className="mt-5">
-                <Gallery photos={photos} onClick={openLightbox} />
-                <ModalGateway>
-                {viewerIsOpen ? (
-                  <Modal onClose={closeLightbox}>
-                      <Carousel
-                      currentIndex={currentImage}
-                      views={photos.map(x => ({
-                        ...x,
-                        srcset: x.srcSet,
-                        caption: x.title
-                      }))}
-                      />
-                </Modal>
-                ) : null}
-                </ModalGateway>
-              </div>
+  if (isError) return <div>Something went wrong ...</div>;
+
+  return (
+    <div className="container-fluid mt-5">
+      <div className="row">
+        <div className="col text-center">
+          <h3 className="lead mt-4 mb-4">I Create Pet Portrait from Photo!</h3>
+          <p>
+            <Link to="/order">4 Styles & 1 Step order</Link>
+          </p>
+        </div>
+        <hr className="my-4" />
+        <div className="col-12 mt-5">
+          {isLoading && <div className="mt-5">Loading...</div>}
+          {!images.length ? (
+            <div> Empty </div>
+          ) : (
+            <div
+              style={{
+                display: 'block',
+                minHeight: '1px',
+                width: '100%',
+                overflow: 'auto',
+              }}
+            >
+              <Gallery
+                images={createGallery(images)}
+                 enableLightbox={true}
+                 rowHeight={350}
+                 onClick={false}
+                 enableImageSelection={false}
+              />{' '}
             </div>
-          </div>
-          );
-}
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Portfolio;

@@ -23,4 +23,4 @@ export function isEmpty(obj) {
       return true;
   }
 
-
+export const urlBase = "http://localhost:8080/";

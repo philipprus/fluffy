@@ -11,7 +11,7 @@ import PaymentButton from '../paymentButton/PaymentButton';
 
 const StyckyBoxComponent = (props) => {
 
-      const {values} = props;
+      const {values, setFieldValue} = props;
       let price = summeryOrder(props.values);
       const isDiscount = isDiscountBigPrice(values.amountDiscount, price);
       const saveGiftCard = values.amountDiscount - price;
@@ -20,10 +20,10 @@ const StyckyBoxComponent = (props) => {
       let order_total = price + shippingPrice - discount;
   
       React.useEffect(()=>{
-          props.setFieldValue('price', price);
-          props.setFieldValue('order_total', order_total);
-          props.setFieldValue('discount', discount); 
-      }, [price, order_total, discount]);
+          setFieldValue('price', price);
+          setFieldValue('order_total', order_total);
+          setFieldValue('discount', discount); 
+      }, [price, order_total, discount, setFieldValue]);
        
       const handlerSubmit = (paymentDetails) => {
           props.setFieldValue('payment_description', paymentDetails);
