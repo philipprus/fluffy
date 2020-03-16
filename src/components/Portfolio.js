@@ -16,7 +16,7 @@ const Portfolio = props => {
 
   const createGallery = data => {
     const res = [];
-    data &&
+    data.length &&
       data.map(img => {
         const { image, _id, size, style } = img;
         if (image.length) {
@@ -51,8 +51,9 @@ const Portfolio = props => {
         </div>
         <hr className="my-4" />
         <div className="col-12 mt-5">
-          {isLoading ? <div className="mt-5">Loading...</div> :
-          !images && !images.length ? (
+          {isLoading ? (
+            <div className="mt-5">Loading...</div>
+          ) : !images && !images.length ? (
             <div> Empty </div>
           ) : (
             <div
@@ -65,10 +66,10 @@ const Portfolio = props => {
             >
               <Gallery
                 images={createGallery(images)}
-                 enableLightbox={true}
-                 rowHeight={350}
-                 onClick={false}
-                 enableImageSelection={false}
+                enableLightbox={true}
+                rowHeight={350}
+                onClick={false}
+                enableImageSelection={false}
               />{' '}
             </div>
           )}
