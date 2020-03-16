@@ -9,7 +9,8 @@ const Portfolio = props => {
   const [{ data, isLoading, isError }] = useDataApi(url, []);
   const [images, setImages] = React.useState([]);
   React.useEffect(() => {
-    if (data) {
+    if (data.length) {
+      console.log(data);
       setImages(createGallery(data));
     }
   }, [data]);
