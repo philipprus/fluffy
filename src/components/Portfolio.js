@@ -10,7 +10,7 @@ const Portfolio = props => {
   const [images, setImages] = React.useState([]);
   React.useEffect(() => {
     if (data) {
-      setImages(data);
+      setImages(createGallery(data));
     }
   }, [data]);
 
@@ -65,7 +65,7 @@ const Portfolio = props => {
               }}
             >
               <Gallery
-                images={createGallery(images)}
+                images={images}
                 enableLightbox={true}
                 rowHeight={350}
                 onClick={false}
