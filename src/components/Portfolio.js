@@ -11,7 +11,6 @@ const Portfolio = props => {
   const [images, setImages] = React.useState([]);
   React.useEffect(() => {
     if (data.length) {
-      console.log(data);
       setImages(createGallery(data));
     }
   }, [data]);
