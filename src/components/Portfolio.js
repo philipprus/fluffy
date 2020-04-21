@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDataApi } from '../utils/utils';
 import Gallery from 'react-grid-gallery';
-const url = '//admin.fluffy.co.il/api/portfolio/';
+const url = process.env.REACT_APP_URL_API ? process.env.REACT_APP_URL_API : '//admin.fluffy.co.il/api/portfolio/';
 
 const Portfolio = props => {
   const [{ data, isLoading, isError }] = useDataApi(url, []);
